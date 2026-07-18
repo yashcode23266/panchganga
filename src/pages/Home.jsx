@@ -155,6 +155,43 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+
+<section className="section-pad devotional-gradient">
+  <div className="container-pad">
+    <div className="soft-panel grid gap-8 p-6 sm:p-8 lg:grid-cols-[1fr_0.95fr] lg:items-center">
+      
+      {/* LEFT TEXT */}
+      <div>
+        <p className="eyebrow">SPECIAL THANKS</p>
+
+        <h2 className="mt-3 font-display text-4xl font-bold text-mandal-green">
+          Honoring Our Supporter
+        </h2>
+
+        <p className="mt-4 max-w-2xl leading-8 text-mandal-ink/70">
+          We extend our heartfelt gratitude to{" "}
+          <span className="font-semibold text-mandal-ink">Mr. [Name]</span>{" "}
+          for his valuable support and contribution towards making this festival successful.
+        </p>
+      </div>
+
+      {/* RIGHT IMAGE (same style as map box) */}
+      <div className="overflow-hidden rounded-[2rem] border border-mandal-green/10 bg-white shadow-soft flex items-center justify-center">
+        
+        <img
+          src="/images/zee.png"   // 👉 replace with your image
+          alt="supporter"
+          className="h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
+        />
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
     </>
   );
 }
