@@ -7,10 +7,10 @@ const navItems = [
   ['/about', 'nav.about'],
   ['/social-work', 'nav.socialWork'],
   ['/gallery', 'nav.gallery'],
-  ['/contact', 'nav.contact'],
   ['/awards', 'nav.awards'],
   ['/news', 'nav.news'],
   ['/celebrity', 'nav.celebrity'],
+  ['/admin', 'Admin'],
 ];
 
 export default function Header() {
