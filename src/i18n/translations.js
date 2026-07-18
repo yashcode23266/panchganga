@@ -88,17 +88,6 @@ export const translations = {
         'A quiet archive of devotion, togetherness, and festival moments. Replace these images from the gallery array whenever new memories are added.',
       allYears: 'All Years',
     },
-    contact: {
-      eyebrow: 'Reach us',
-      title: 'Visit Panchganga Mandal',
-      note:
-        'For darshan timings, cultural participation, or community support, please reach out through email or social channels.',
-      addressLabel: 'Mandal Address',
-      address: 'Panchganga Sarvajanik Ganesh Utsav Mandal, Maharashtra, India',
-      emailValue: 'contact@panchgangamandal.org',
-      socialTitle: 'Social Media',
-      mapTitle: 'Map Location',
-    },
     footer: {
       text: 'A calm premium digital home for devotion, tradition, and community.',
       rights: 'All rights reserved.',
@@ -192,17 +181,6 @@ export const translations = {
       intro:
         'भक्ती, एकोपा आणि उत्सव क्षणांचा शांत संग्रह. नवीन आठवणी जोडताना gallery array मधून प्रतिमा बदला.',
       allYears: 'सर्व वर्षे',
-    },
-    contact: {
-      eyebrow: 'संपर्क',
-      title: 'पंचगंगा मंडळाला भेट द्या',
-      note:
-        'दर्शन वेळा, सांस्कृतिक सहभाग किंवा समाज सहाय्यासाठी ईमेल किंवा सामाजिक माध्यमांद्वारे संपर्क साधा.',
-      addressLabel: 'मंडळाचा पत्ता',
-      address: 'पंचगंगा सार्वजनिक गणेश उत्सव मंडळ, महाराष्ट्र, भारत',
-      emailValue: 'contact@panchgangamandal.org',
-      socialTitle: 'सामाजिक माध्यमे',
-      mapTitle: 'नकाशावरील ठिकाण',
     },
     footer: {
       text: 'भक्ती, परंपरा आणि समाजासाठी शांत प्रीमियम डिजिटल घर.',

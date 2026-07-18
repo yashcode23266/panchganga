@@ -13,12 +13,12 @@
     "@react-three/fiber": "^9.6.1",
     "@vitejs/plugin-react": "latest",
     "framer-motion": "latest",
-    "lucide-react": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "react-router-dom": "latest",
-    "three": "^0.185.1",
-    "vite": "latest"
+    "lucide-react": "^1.25.0",
+"react": "latest",
+"react-dom": "latest",
+"react-router-dom": "latest",
+"three": "^0.185.1",
+"vite": "latest"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",

@@ -7,10 +7,10 @@ import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
 import SocialWork from './pages/SocialWork.jsx';
 import Gallery from './pages/Gallery.jsx';
-import Contact from './pages/Contact.jsx';
 import Awards from './pages/Awards.jsx';
 import News from './pages/News.jsx';
 import Celebrity from './pages/Celebrity.jsx';
+import Admin from "./pages/Admin";
 
 const pageMotion = {
   initial: { opacity: 0, y: 12 },
@@ -33,10 +33,10 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/social-work" element={<SocialWork />} />
             <Route path="/gallery" element={<Gallery />} />
-            <Route path="/contact" element={<Contact />} />
             <Route path="/awards" element={<Awards />} />
             <Route path="/news" element={<News />} />
             <Route path="/celebrity" element={<Celebrity />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </motion.main>
       </AnimatePresence>
