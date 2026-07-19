@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
     Image as ImageIcon,
     Calendar,
@@ -19,7 +20,14 @@ import {
 
 export default function Admin() {
 
-    // Modules configuration for management cards (Members section completely removed)
+    const navigate = useNavigate();
+
+    const logout = () => {
+        localStorage.removeItem("adminLoggedIn");
+        navigate("/");
+    };
+
+    // Modules configuration
     const modules = [
         { title: "Gallery", desc: "Manage gallery images", icon: ImageIcon },
         { title: "News", desc: "Manage news articles", icon: Newspaper },
@@ -28,25 +36,54 @@ export default function Admin() {
         { title: "Awards", desc: "Manage awards", icon: TrophyIcon },
     ];
 
-    // Recent activity logs data
+    // Recent activity logs
     const logs = [
-        { id: 1, action: "New event 'Annual Gathering 2026' published", user: "Admin (Rahul)", time: "10 mins ago", type: "success" },
-        { id: 2, action: "Updated member profiles in directory", user: "Editor (Amit)", time: "2 hours ago", type: "success" },
-        { id: 3, action: "Deleted 2 outdated images from gallery", user: "Admin (Rahul)", time: "Yesterday", type: "info" },
+        {
+            id: 1,
+            action: "New event 'Annual Gathering 2026' published",
+            user: "Admin (Rahul)",
+            time: "10 mins ago",
+            type: "success"
+        },
+        {
+            id: 2,
+            action: "Updated member profiles in directory",
+            user: "Editor (Amit)",
+            time: "2 hours ago",
+            type: "success"
+        },
+        {
+            id: 3,
+            action: "Deleted 2 outdated images from gallery",
+            user: "Admin (Rahul)",
+            time: "Yesterday",
+            type: "info"
+        },
     ];
-
     return (
         <div className="min-h-screen bg-gray-50/60 font-sans">
             <div className="max-w-7xl mx-auto p-6 md:p-8 space-y-8">
 
                 {/* TOP HEADER TITLE */}
-                <div>
-                    <h1 className="text-2xl md:text-3xl font-bold text-emerald-800 tracking-tight">
-                        Admin Dashboard
-                    </h1>
-                    <p className="text-sm text-gray-500 mt-1">
-                        Welcome back! Manage your platform parameters easily below.
-                    </p>
+                <div className="flex items-center justify-between">
+
+                    <div>
+                        <h1 className="text-2xl md:text-3xl font-bold text-emerald-800 tracking-tight">
+                            Admin Dashboard
+                        </h1>
+
+                        <p className="text-sm text-gray-500 mt-1">
+                            Welcome back! Manage your platform parameters easily below.
+                        </p>
+                    </div>
+
+                    <button
+                        onClick={logout}
+                        className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg transition"
+                    >
+                        Logout
+                    </button>
+
                 </div>
 
                 {/* INTERACTIVE MODULE CARDS */}

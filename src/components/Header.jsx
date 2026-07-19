@@ -10,7 +10,7 @@ const navItems = [
   ['/awards', 'nav.awards'],
   ['/news', 'nav.news'],
   ['/celebrity', 'nav.celebrity'],
-  ['/admin', 'Admin'],
+  ['/admin-login', 'Admin'],
 ];
 
 export default function Header() {

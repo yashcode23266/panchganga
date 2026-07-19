@@ -10,7 +10,9 @@ import Gallery from './pages/Gallery.jsx';
 import Awards from './pages/Awards.jsx';
 import News from './pages/News.jsx';
 import Celebrity from './pages/Celebrity.jsx';
-import Admin from "./pages/Admin";
+import Admin from "./pages/Admin.jsx";
+import AdminLogin from "./pages/AdminLogin";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const pageMotion = {
   initial: { opacity: 0, y: 12 },
@@ -37,6 +39,19 @@ export default function App() {
             <Route path="/news" element={<News />} />
             <Route path="/celebrity" element={<Celebrity />} />
             <Route path="/admin" element={<Admin />} />
+            <Route
+              path="/admin-login"
+              element={<AdminLogin />}
+            />
+            <Route
+              path="/admin-dashboard"
+              element={
+                <ProtectedRoute>
+                  <Admin />
+                </ProtectedRoute>
+              }
+            />
+
           </Routes>
         </motion.main>
       </AnimatePresence>
