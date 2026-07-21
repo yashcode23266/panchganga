@@ -218,6 +218,54 @@ export const galleryImages = [
     caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
     alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
   },
+{
+    year: '2022',
+    src: '/ganpati2022.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2022',
+    src: '/ganpati20221.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2022',
+    src: '/ganpati20222.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2022',
+    src: '/ganpati20223.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2021',
+    src: '/ganpati2021.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2021',
+    src: '/ganpati20211.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2021',
+    src: '/ganpati20212.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2021',
+    src: '/ganpati20213.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
 
 
 ];
