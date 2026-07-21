@@ -1,8 +1,8 @@
 export const translations = {
   en: {
     brand: {
-      name: 'Panchganga Sarvajanik Ganesh Utsav Mandal',
-      shortName: 'Panchganga Mandal',
+      name: 'Panchganga Sarvajanik Utsav Mandal',
+      shortName: 'Panchganga',
       established: 'Established 1998',
     },
     nav: {
@@ -96,7 +96,7 @@ export const translations = {
   mr: {
     brand: {
       name: 'पंचगंगा सार्वजनिक गणेश उत्सव मंडळ',
-      shortName: 'पंचगंगा मंडळ',
+      shortName: 'पंचगंगा ',
       established: 'स्थापना १९९८',
     },
     nav: {

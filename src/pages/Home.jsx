@@ -25,7 +25,7 @@ export default function Home() {
     <>
       <Seo titleKey="seo.homeTitle" descriptionKey="seo.homeDescription" />
 
-      <div className="overflow-hidden border-y border-mandal-gold/30 bg-mandal-green py-3 text-white">
+      <div className="overflow-hidden border-y border-mandal-gold/30 bg-[#ffffff] py-3 text-green-1100">
         <div className="marquee-track flex w-max gap-10 whitespace-nowrap text-sm font-semibold">
           {[...Array(3)].map((_, index) => (
             <span key={index} className="flex items-center gap-10">

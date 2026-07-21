@@ -20,24 +20,30 @@ export default function Header() {
 
   const navClass = ({ isActive }) =>
     `text-sm font-semibold transition ${
-      isActive ? 'text-white' : 'text-white/72 hover:text-white'
+      isActive ? 'text-[#1F7A3D]' : 'text-green-1100 hover:text-[#1F7A3D]'
     }`;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-mandal-gold/35 forest-surface text-white shadow-soft">
-      <div className="container-pad flex h-20 items-center justify-between">
+    <header className="sticky top-0 z-40 shadow-md bg-[#A3C73A] overflow-hidden">
+
+      {/* White Gradient Overlay */}
+
+      <div className="relative z-10 container-pad flex h-20 items-center justify-between">
+        
+        {/* Logo */}
         <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
           <img
             src="/images/panlogo.png"
             alt={t('brand.name')}
-            className="h-14 w-14 rounded-full border-2 border-white bg-white object-contain shadow-soft"
+            className="h-14 w-14 rounded-full border-2 border-white bg-white object-contain shadow-md"
           />
-          <span className="max-w-[190px] font-display text-lg font-bold leading-5 text-white sm:max-w-none sm:text-xl">
+          <span className="max-w-[190px] font-bold text-lg text-green-1100 sm:text-xl">
             {t('brand.shortName')}
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
+        {/* Desktop Nav */}
+        <nav className="hidden items-center gap-8 md:flex">
           {navItems.map(([to, key]) => (
             <NavLink key={to} to={to} className={navClass}>
               {t(key)}
@@ -45,19 +51,21 @@ export default function Header() {
           ))}
         </nav>
 
+        {/* Language Button */}
         <div className="hidden items-center gap-3 md:flex">
           <button
             type="button"
             onClick={() => setLanguage(nextLanguage)}
-            className="rounded-full border border-white/35 bg-white px-5 py-2 text-sm font-bold text-mandal-green shadow-sm transition hover:bg-mandal-mint"
+            className="bg-[#0a3217] hover:bg-[#1F7A3D] text-white px-5 py-2 rounded-xl font-semibold shadow-md transition"
           >
             {t('nav.language')}
           </button>
         </div>
 
+        {/* Mobile Menu Button */}
         <button
           type="button"
-          className="grid h-11 w-11 place-items-center rounded-full border border-white/35 bg-white text-mandal-green md:hidden"
+          className="grid h-11 w-11 place-items-center rounded-full bg-[#0a3217] text-white md:hidden shadow-md"
           onClick={() => setOpen((value) => !value)}
           aria-label={open ? t('nav.close') : t('nav.menu')}
         >
@@ -65,16 +73,23 @@ export default function Header() {
         </button>
       </div>
 
-      {open ? (
-        <div className="border-t border-mandal-gold/25 forest-surface md:hidden">
-          <nav className="container-pad flex flex-col gap-1 py-4" aria-label="Mobile navigation">
+      {/* Mobile Menu */}
+      {open && (
+        <div className="relative z-10 md:hidden bg-[#A3C73A]">
+          
+          {/* Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/60 to-transparent"></div>
+
+          <nav className="relative container-pad flex flex-col gap-2 py-4">
             {navItems.map(([to, key]) => (
               <NavLink
                 key={to}
                 to={to}
                 className={({ isActive }) =>
-                  `rounded-2xl px-4 py-3 text-base font-semibold ${
-                    isActive ? 'bg-white text-mandal-green' : 'text-white/80'
+                  `rounded-xl px-4 py-3 text-base font-semibold transition ${
+                    isActive
+                      ? 'bg-[#1F7A3D] text-white'
+                      : 'text-gray-800 hover:bg-white/50'
                   }`
                 }
                 onClick={() => setOpen(false)}
@@ -82,16 +97,17 @@ export default function Header() {
                 {t(key)}
               </NavLink>
             ))}
+
             <button
               type="button"
               onClick={() => setLanguage(nextLanguage)}
-              className="mt-2 rounded-2xl border border-white/25 bg-white px-4 py-3 text-left font-bold text-mandal-green"
+              className="mt-2 bg-[#1F7A3D] text-white px-4 py-3 rounded-xl font-semibold"
             >
               {t('nav.language')}
             </button>
           </nav>
         </div>
-      ) : null}
+      )}
     </header>
   );
 }
