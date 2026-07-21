@@ -1,6 +1,6 @@
 ﻿export const homeImages = {
   hero: {
-    src: '/ganpati.png',
+    src: '/ganpati2018.jpeg',
     alt: {
       en: 'Original devotional Ganpati artwork in green and white theme',
       mr: 'à¤¹à¤¿à¤°à¤µà¥à¤¯à¤¾ à¤†à¤£à¤¿ à¤ªà¤¾à¤‚à¤¢à¤±à¥à¤¯à¤¾ à¤¥à¥€à¤®à¤®à¤§à¥€à¤² à¤—à¤£à¤ªà¤¤à¥€ à¤¬à¤¾à¤ªà¥à¤ªà¤¾à¤šà¥‡ à¤­à¤•à¥à¤¤à¤¿à¤®à¤¯ à¤šà¤¿à¤¤à¥à¤°',
@@ -263,6 +263,454 @@ export const galleryImages = [
 {
     year: '2021',
     src: '/ganpati20213.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2020',
+    src: '/ganpati2020.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2019',
+    src: '/ganpati2019.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2019',
+    src: '/ganpati20191.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2019',
+    src: '/ganpati20192.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2019',
+    src: '/ganpati20193.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2019',
+    src: '/ganpati20194.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2019',
+    src: '/ganpati20195.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2019',
+    src: '/ganpati20196.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2019',
+    src: '/ganpati20197.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2019',
+    src: '/ganpati20198.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2019',
+    src: '/ganpati20199.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2018',
+    src: '/ganpati2018.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2018',
+    src: '/ganpati20181.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2018',
+    src: '/ganpati20182.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2018',
+    src: '/ganpati20183.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2018',
+    src: '/ganpati20184.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2018',
+    src: '/ganpati20185.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2018',
+    src: '/ganpati20186.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2017',
+    src: '/ganpati2017.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2017',
+    src: '/ganpati20171.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+  
+    year: '2016',
+    src: '/ganpati2016.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2016',
+    src: '/ganpati20161.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2016',
+    src: '/ganpati20162.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2016',
+    src: '/ganpati20163.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2016',
+    src: '/ganpati20164.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2016',
+    src: '/ganpati20165.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2016',
+    src: '/ganpati20166.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2016',
+    src: '/ganpati20167.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2016',
+    src: '/ganpati20168.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2016',
+    src: '/ganpati20169.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2016',
+    src: '/ganpati201610.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2016',
+    src: '/ganpati201611.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2016',
+    src: '/ganpati201612.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2016',
+    src: '/ganpati201613.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2016',
+    src: '/ganpati201614.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2016',
+    src: '/ganpati201615.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2016',
+    src: '/ganpati201616.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2015',
+    src: '/ganpati2015.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2015',
+    src: '/ganpati20151.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2015',
+    src: '/ganpati20152.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2015',
+    src: '/ganpati20153.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+  
+    year: '2015',
+    src: '/ganpati20154.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+
+  {
+    year: '2014',
+    src: '/ganpati2014.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+
+  {
+    year: '2014',
+    src: '/ganpati20141.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+
+  {
+    year: '2014',
+    src: '/ganpati20142.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+
+  {
+    year: '2014',
+    src: '/ganpati20143.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+
+{
+    year: '2013',
+    src: '/ganpati2013.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2012',
+    src: '/ganpati2012.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2011',
+    src: '/ganpati2011.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2010',
+    src: '/ganpati2010.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2009',
+    src: '/ganpati2009.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2008',
+    src: '/ganpati2008.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2007',
+    src: '/ganpati2007.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2006',
+    src: '/ganpati2006.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2005',
+    src: '/ganpati2005.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2004',
+    src: '/ganpati2004.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2003',
+    src: '/ganpati2003.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2002',
+    src: '/ganpati2002.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2001',
+    src: '/ganpati2001.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2000',
+    src: '/ganpati2000.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '1999',
+    src: '/ganpati1999.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '1998',
+    src: '/ganpati1998.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '1997',
+    src: '/ganpati1997.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '1996',
+    src: '/ganpati1996.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '1995',
+    src: '/ganpati1995.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '1994',
+    src: '/ganpati1994.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à®à¤¾à¤œ à¤®à¥‡à³ à¤¾à¤µà¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¸ à® à¥‡ à³ à¤¾ àµ à¥ à¯ à¤¾ àš à¥‡ àš à¤¿ à¤ à¥ à°' },
+  },
+{
+    year: '1993',
+    src: '/ganpati1993.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '1992',
+    src: '/ganpati1992.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾àœ à®à¥‡à¤³à¾à¤µà¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤® à¥‡ à³ à¾ àµ à¥ à¯ à¾ àš à¥‡ àš à¿ à à¥ à°' },
+  },
+    
+{
+    year: '1991',
+    src: '/ganpati1991.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '1990',
+    src: '/ganpati1990.jpeg',
     caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
     alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
   },
