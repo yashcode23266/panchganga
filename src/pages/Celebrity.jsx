@@ -1,93 +1,384 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Calendar, Camera, Clapperboard, Search, Sparkles, Star, Trophy, X } from 'lucide-react';
-import Seo from '../components/Seo.jsx';
+// ============================================================
+// Celebrity.jsx
+// 3D Infinite Gallery for Celebrity / Special Guests section
+//
+// HOW TO ADD YOUR OWN PHOTOS:
+//   Edit the GALLERY_IMAGES array below.
+//   Each entry: { src: 'URL_or_/path/to/image.jpg', alt: 'Caption' }
+//   You can add as many as you want — the gallery loops infinitely.
+//
+// HOW TO CONTROL SPEED & SETTINGS:
+//   Edit GALLERY_CONFIG below. All options are documented.
+// ============================================================
 
-const image = (id, width = 1200) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&q=85`;
+import { useRef, useMemo, useCallback, useState, useEffect } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { useTexture } from '@react-three/drei';
+import * as THREE from 'three';
 
-const celebrities = [
-  { name: 'Salman Khan', profession: 'Actor', category: 'Actors', year: '2025', description: 'A warm visit marked by devotion, celebration and time with the Panchganga family.', coverImage: image('photo-1500648767791-00dcc994a43e'), gallery: [image('photo-1500648767791-00dcc994a43e'), image('photo-1519085360753-af0119f7cbe7'), image('photo-1539571696357-5a69c17a67c6'), image('photo-1506794778202-cad84cf45f1d')] },
-  { name: 'Shah Rukh Khan', profession: 'Actor', category: 'Actors', year: '2024', description: 'An unforgettable festive moment shared with devotees and mandal volunteers.', coverImage: image('photo-1507003211169-0a1dd7228f2d'), gallery: [image('photo-1507003211169-0a1dd7228f2d'), image('photo-1501196354995-cbb51c65aaea'), image('photo-1506794778202-cad84cf45f1d'), image('photo-1500648767791-00dcc994a43e')] },
-  { name: 'Amitabh Bachchan', profession: 'Actor', category: 'Actors', year: '2023', description: 'A graceful visit that celebrated faith, heritage and the spirit of Mumbai.', coverImage: image('photo-1506277886164-e25aa3f4ef7f'), gallery: [image('photo-1506277886164-e25aa3f4ef7f'), image('photo-1539571696357-5a69c17a67c6'), image('photo-1507003211169-0a1dd7228f2d'), image('photo-1519085360753-af0119f7cbe7')] },
-  { name: 'Ajay Devgn', profession: 'Actor', category: 'Actors', year: '2022', description: 'A memorable darshan visit during an evening filled with festive warmth.', coverImage: image('photo-1507591064344-4c6ce005b128'), gallery: [image('photo-1507591064344-4c6ce005b128'), image('photo-1500648767791-00dcc994a43e'), image('photo-1501196354995-cbb51c65aaea'), image('photo-1539571696357-5a69c17a67c6')] },
-  { name: 'Madhuri Dixit', profession: 'Actress', category: 'Actresses', year: '2024', description: 'An elegant visit that added joy and grace to the Panchganga celebrations.', coverImage: image('photo-1494790108377-be9c29b29330'), gallery: [image('photo-1494790108377-be9c29b29330'), image('photo-1534528741775-53994a69daeb'), image('photo-1508214751196-bcfd4ca60f91'), image('photo-1517841905240-472988babdf9')] },
-  { name: 'Kajol', profession: 'Actress', category: 'Actresses', year: '2023', description: 'A beautiful moment of devotion and togetherness with the mandal community.', coverImage: image('photo-1531123897727-8f129e1688ce'), gallery: [image('photo-1531123897727-8f129e1688ce'), image('photo-1534528741775-53994a69daeb'), image('photo-1494790108377-be9c29b29330'), image('photo-1508214751196-bcfd4ca60f91')] },
-  { name: 'Aamir Khan', profession: 'Actor', category: 'Actors', year: '2021', description: 'A quiet, meaningful visit celebrating the traditions that bring the city together.', coverImage: image('photo-1560250097-0b93528c311a'), gallery: [image('photo-1560250097-0b93528c311a'), image('photo-1507591064344-4c6ce005b128'), image('photo-1507003211169-0a1dd7228f2d'), image('photo-1500648767791-00dcc994a43e')] },
-  { name: 'Ranveer Singh', profession: 'Actor', category: 'Actors', year: '2020', description: 'A high-spirited festive visit remembered for its warmth and infectious energy.', coverImage: image('photo-1504257432389-52343af06ae3'), gallery: [image('photo-1504257432389-52343af06ae3'), image('photo-1519085360753-af0119f7cbe7'), image('photo-1539571696357-5a69c17a67c6'), image('photo-1501196354995-cbb51c65aaea')] },
-  { name: 'Deepika Padukone', profession: 'Actress', category: 'Actresses', year: '2019', description: 'A cherished festival appearance filled with blessings and community affection.', coverImage: image('photo-1517841905240-472988babdf9'), gallery: [image('photo-1517841905240-472988babdf9'), image('photo-1508214751196-bcfd4ca60f91'), image('photo-1531123897727-8f129e1688ce'), image('photo-1494790108377-be9c29b29330')] },
-  { name: 'Zoya Akhtar', profession: 'Director', category: 'Directors', year: '2018', description: 'A thoughtful visit honouring the cultural stories and creative spirit of the festival.', coverImage: image('photo-1551836022-d5d88e9218df'), gallery: [image('photo-1551836022-d5d88e9218df'), image('photo-1544005313-94ddf0286df2'), image('photo-1531123897727-8f129e1688ce'), image('photo-1534528741775-53994a69daeb')] },
-  { name: 'Shreya Ghoshal', profession: 'Singer', category: 'Singers', year: '2017', description: 'A melodic presence that made the evening’s devotional celebrations especially memorable.', coverImage: image('photo-1488426862026-3ee34a7d66df'), gallery: [image('photo-1488426862026-3ee34a7d66df'), image('photo-1534528741775-53994a69daeb'), image('photo-1508214751196-bcfd4ca60f91'), image('photo-1494790108377-be9c29b29330')] },
-  { name: 'Rupali Ganguly', profession: 'Television Artist', category: 'Television Artists', year: '2016', description: 'A heartfelt visit warmly received by devotees of every generation.', coverImage: image('photo-1544005313-94ddf0286df2'), gallery: [image('photo-1544005313-94ddf0286df2'), image('photo-1551836022-d5d88e9218df'), image('photo-1517841905240-472988babdf9'), image('photo-1531123897727-8f129e1688ce')] },
+// ╔══════════════════════════════════════════════════════════╗
+// ║  📸 ADD YOUR PHOTOS HERE                                 ║
+// ║  Replace or add entries. Use local paths like            ║
+// ║  '/images/celebrity/photo1.jpg'  (put files in           ║
+// ║  client/public/images/celebrity/)                        ║
+// ║  OR use full https:// URLs                               ║
+// ╚══════════════════════════════════════════════════════════╝
+const GALLERY_IMAGES = [
+  {
+    src: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&auto=format&fit=crop&q=80',
+    alt: 'Celebrity Guest 1',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&auto=format&fit=crop&q=80',
+    alt: 'Ganpati Celebration',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&auto=format&fit=crop&q=80',
+    alt: 'Festival Crowd',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=600&auto=format&fit=crop&q=80',
+    alt: 'Cultural Performance',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&auto=format&fit=crop&q=80',
+    alt: 'Music & Dance',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&auto=format&fit=crop&q=80',
+    alt: 'Event Stage',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=600&auto=format&fit=crop&q=80',
+    alt: 'Festival Lights',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&auto=format&fit=crop&q=80',
+    alt: 'Celebration Night',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&auto=format&fit=crop&q=80',
+    alt: 'Artist Performance',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=600&auto=format&fit=crop&q=80',
+    alt: 'Live Concert',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1604537466158-719b1972feb8?w=600&auto=format&fit=crop&q=80',
+    alt: 'Grand Celebration',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1567696153798-9111f9cd3d0d?w=600&auto=format&fit=crop&q=80',
+    alt: 'Devotional Gathering',
+  },
 ];
 
-const categories = ['All', 'Actors', 'Actresses', 'Directors', 'Singers', 'Television Artists'];
-const fadeUp = { hidden: { opacity: 0, y: 22 }, visible: { opacity: 1, y: 0 } };
+// ╔══════════════════════════════════════════════════════════╗
+// ║  ⚙️  GALLERY SETTINGS — tweak these to change behaviour  ║
+// ╚══════════════════════════════════════════════════════════╝
+const GALLERY_CONFIG = {
+  speed: 1.2,          // Auto-scroll speed (0.5 = slow, 2.0 = fast)
+  visibleCount: 10,    // How many images visible at once in 3D space
+  autoPlayDelay: 3000, // ms of inactivity before auto-play resumes
+  fadeIn:  { start: 0.05, end: 0.22 },   // When images fade in (0–1 range)
+  fadeOut: { start: 0.42, end: 0.48 },   // When images fade out
+  blurIn:  { start: 0.0,  end: 0.12 },   // Blur zone near
+  blurOut: { start: 0.42, end: 0.48 },   // Blur zone far
+  maxBlur: 7.0,        // Maximum blur strength
+};
 
-function GalleryModal({ celebrity, onClose }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const touchStart = useRef(null);
-  const goTo = (step) => setActiveIndex((index) => (index + step + celebrity.gallery.length) % celebrity.gallery.length);
+// ── Shader material (cloth + flag wave effect) ─────────────
+const createClothMaterial = () =>
+  new THREE.ShaderMaterial({
+    transparent: true,
+    uniforms: {
+      map:         { value: null },
+      opacity:     { value: 1.0 },
+      blurAmount:  { value: 0.0 },
+      scrollForce: { value: 0.0 },
+      time:        { value: 0.0 },
+      isHovered:   { value: 0.0 },
+    },
+    vertexShader: `
+      uniform float scrollForce;
+      uniform float time;
+      uniform float isHovered;
+      varying vec2 vUv;
+      void main() {
+        vUv = uv;
+        vec3 pos = position;
+        float curveIntensity = scrollForce * 0.3;
+        float dist = length(pos.xy);
+        float curve = dist * dist * curveIntensity;
+        float ripple = sin(pos.x * 2.0 + scrollForce * 3.0) * 0.02
+                     + sin(pos.y * 2.5 + scrollForce * 2.0) * 0.015;
+        float clothEffect = ripple * abs(curveIntensity) * 2.0;
+        float flagWave = 0.0;
+        if (isHovered > 0.5) {
+          float damp = smoothstep(-0.5, 0.5, pos.x);
+          flagWave = sin(pos.x * 3.0 + time * 8.0) * 0.1 * damp
+                   + sin(pos.x * 5.0 + time * 12.0) * 0.03 * damp;
+        }
+        pos.z -= (curve + clothEffect + flagWave);
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+      }
+    `,
+    fragmentShader: `
+      uniform sampler2D map;
+      uniform float opacity;
+      uniform float blurAmount;
+      uniform float scrollForce;
+      varying vec2 vUv;
+      void main() {
+        vec4 color = texture2D(map, vUv);
+        if (blurAmount > 0.0) {
+          vec2 ts = 1.0 / vec2(textureSize(map, 0));
+          vec4 blurred = vec4(0.0);
+          float total = 0.0;
+          for (float x = -2.0; x <= 2.0; x += 1.0) {
+            for (float y = -2.0; y <= 2.0; y += 1.0) {
+              float w = 1.0 / (1.0 + length(vec2(x, y)));
+              blurred += texture2D(map, vUv + vec2(x, y) * ts * blurAmount) * w;
+              total += w;
+            }
+          }
+          color = blurred / total;
+        }
+        color.rgb += vec3(abs(scrollForce) * 0.05 * 0.1);
+        gl_FragColor = vec4(color.rgb, color.a * opacity);
+      }
+    `,
+  });
 
-  useEffect(() => {
-    if (!celebrity) return undefined;
-    const onKeyDown = (event) => {
-      if (event.key === 'Escape') onClose();
-      if (event.key === 'ArrowRight') goTo(1);
-      if (event.key === 'ArrowLeft') goTo(-1);
-    };
-    document.addEventListener('keydown', onKeyDown);
-    document.body.style.overflow = 'hidden';
-    return () => { document.removeEventListener('keydown', onKeyDown); document.body.style.overflow = ''; };
-  }, [celebrity, onClose]);
-
-  if (!celebrity) return null;
-  const activeImage = celebrity.gallery[activeIndex];
-  const onTouchEnd = (event) => {
-    if (touchStart.current === null) return;
-    const distance = event.changedTouches[0].clientX - touchStart.current;
-    if (Math.abs(distance) > 45) goTo(distance > 0 ? -1 : 1);
-    touchStart.current = null;
-  };
-
+// ── Single image plane mesh ────────────────────────────────
+function ImagePlane({ texture, position, scale, material }) {
+  const [hovered, setHovered] = useState(false);
+  useEffect(() => { if (material) material.uniforms.map.value = texture; }, [material, texture]);
+  useEffect(() => { if (material) material.uniforms.isHovered.value = hovered ? 1 : 0; }, [material, hovered]);
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[100] bg-mandal-ink/90 p-3 backdrop-blur-xl sm:p-6" role="dialog" aria-modal="true" aria-label={`${celebrity.name} gallery`}>
-      <button type="button" onClick={onClose} className="absolute inset-0 cursor-default" aria-label="Close gallery" />
-      <motion.div initial={{ opacity: 0, scale: 0.985, y: 12 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.985 }} transition={{ duration: 0.25 }} className="relative mx-auto flex h-full max-w-7xl flex-col overflow-hidden rounded-[1.5rem] border border-white/15 bg-mandal-green/55 shadow-2xl">
-        <header className="relative z-10 flex items-center justify-between border-b border-white/10 px-4 py-4 text-white sm:px-6">
-          <div><p className="text-xs font-bold uppercase tracking-[0.18em] text-mandal-gold">Celebrity visit</p><h2 className="mt-1 font-display text-2xl font-bold sm:text-3xl">{celebrity.name}</h2><p className="mt-0.5 text-sm text-white/65">{celebrity.profession} · {celebrity.year}</p></div>
-          <button type="button" onClick={onClose} className="grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-white/10 transition hover:bg-white hover:text-mandal-green" aria-label="Close gallery"><X className="h-5 w-5" /></button>
-        </header>
-        <div className="relative flex min-h-0 flex-1 items-center justify-center p-3 sm:p-6" onTouchStart={(event) => { touchStart.current = event.touches[0].clientX; }} onTouchEnd={onTouchEnd}>
-          <AnimatePresence mode="wait"><motion.img key={activeImage} initial={{ opacity: 0, scale: 0.985 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.015 }} transition={{ duration: 0.22 }} src={activeImage} alt={`${celebrity.name} visit, photograph ${activeIndex + 1}`} className="max-h-full max-w-full rounded-xl object-contain shadow-2xl" /></AnimatePresence>
-          <button type="button" onClick={() => goTo(-1)} className="absolute left-4 grid h-11 w-11 place-items-center rounded-full border border-white/25 bg-mandal-ink/55 text-white transition hover:bg-white hover:text-mandal-green sm:left-7 sm:h-12 sm:w-12" aria-label="Previous image"><ArrowLeft className="h-5 w-5" /></button>
-          <button type="button" onClick={() => goTo(1)} className="absolute right-4 grid h-11 w-11 place-items-center rounded-full border border-white/25 bg-mandal-ink/55 text-white transition hover:bg-white hover:text-mandal-green sm:right-7 sm:h-12 sm:w-12" aria-label="Next image"><ArrowRight className="h-5 w-5" /></button>
-          <span className="absolute bottom-4 rounded-full bg-mandal-ink/70 px-3 py-1.5 text-xs font-bold text-white">{activeIndex + 1} / {celebrity.gallery.length}</span>
-        </div>
-        <div className="flex gap-2 overflow-x-auto border-t border-white/10 p-3 sm:px-6">{celebrity.gallery.map((photo, index) => <button type="button" key={photo} onClick={() => setActiveIndex(index)} className={`h-14 w-16 shrink-0 overflow-hidden rounded-lg border-2 transition sm:h-16 sm:w-20 ${index === activeIndex ? 'border-mandal-gold opacity-100' : 'border-transparent opacity-55 hover:opacity-100'}`} aria-label={`View image ${index + 1}`}><img src={photo} alt="" className="h-full w-full object-cover" /></button>)}</div>
-      </motion.div>
-    </motion.div>
+    <mesh
+      position={position}
+      scale={scale}
+      material={material}
+      onPointerEnter={() => setHovered(true)}
+      onPointerLeave={() => setHovered(false)}
+    >
+      <planeGeometry args={[1, 1, 32, 32]} />
+    </mesh>
   );
 }
 
-export default function Celebrity() {
-  const [query, setQuery] = useState('');
-  const [category, setCategory] = useState('All');
-  const [selectedCelebrity, setSelectedCelebrity] = useState(null);
-  const filteredCelebrities = useMemo(() => celebrities.filter((celebrity) => (category === 'All' || celebrity.category === category) && `${celebrity.name} ${celebrity.profession}`.toLowerCase().includes(query.toLowerCase())), [category, query]);
-  const featuredCelebrity = celebrities[0];
+// ── Core 3D scene ──────────────────────────────────────────
+function GalleryScene({ images, speed, visibleCount, fadeIn, fadeOut, blurIn, blurOut, maxBlur }) {
+  const [vel, setVel] = useState(0);
+  const [auto, setAuto] = useState(true);
+  const lastTouch = useRef(Date.now());
+  const DEPTH = 50;
+
+  const textures = useTexture(images.map(i => i.src));
+  const materials = useMemo(() => Array.from({ length: visibleCount }, createClothMaterial), [visibleCount]);
+
+  const spatialPos = useMemo(() => Array.from({ length: visibleCount }, (_, i) => {
+    const ha = (i * 2.618) % (Math.PI * 2);
+    const va = (i * 1.618 + Math.PI / 3) % (Math.PI * 2);
+    const hr = (i % 3) * 1.2, vr = ((i + 1) % 4) * 0.8;
+    return { x: Math.sin(ha) * hr * 8 / 3, y: Math.cos(va) * vr * 8 / 4 };
+  }), [visibleCount]);
+
+  const planes = useRef(Array.from({ length: visibleCount }, (_, i) => ({
+    index: i,
+    z: (DEPTH / visibleCount * i) % DEPTH,
+    imageIndex: i % images.length,
+    x: spatialPos[i]?.x ?? 0,
+    y: spatialPos[i]?.y ?? 0,
+  })));
+
+  // Scroll handler
+  const onWheel = useCallback(e => {
+    e.preventDefault();
+    setVel(p => p + e.deltaY * 0.01 * speed);
+    setAuto(false);
+    lastTouch.current = Date.now();
+  }, [speed]);
+
+  // Keyboard handler
+  const onKey = useCallback(e => {
+    if (['ArrowUp','ArrowLeft'].includes(e.key)) { setVel(p => p - 2 * speed); setAuto(false); lastTouch.current = Date.now(); }
+    if (['ArrowDown','ArrowRight'].includes(e.key)) { setVel(p => p + 2 * speed); setAuto(false); lastTouch.current = Date.now(); }
+  }, [speed]);
+
+  useEffect(() => {
+    const canvas = document.querySelector('canvas');
+    if (!canvas) return;
+    canvas.addEventListener('wheel', onWheel, { passive: false });
+    document.addEventListener('keydown', onKey);
+    return () => { canvas.removeEventListener('wheel', onWheel); document.removeEventListener('keydown', onKey); };
+  }, [onWheel, onKey]);
+
+  useEffect(() => {
+    const t = setInterval(() => { if (Date.now() - lastTouch.current > 3000) setAuto(true); }, 1000);
+    return () => clearInterval(t);
+  }, []);
+
+  useFrame((state, delta) => {
+    if (auto) setVel(p => p + 0.3 * delta * speed);
+    setVel(p => p * 0.95);
+
+    const time = state.clock.getElapsedTime();
+    materials.forEach(m => { if (m?.uniforms) { m.uniforms.time.value = time; m.uniforms.scrollForce.value = vel; } });
+
+    const imageAdvance = visibleCount % images.length || images.length;
+
+    planes.current.forEach((plane, i) => {
+      let nz = plane.z + vel * delta * 10;
+      let fw = 0, bw = 0;
+      if (nz >= DEPTH) { fw = Math.floor(nz / DEPTH); nz -= DEPTH * fw; }
+      else if (nz < 0) { bw = Math.ceil(-nz / DEPTH); nz += DEPTH * bw; }
+      if (fw > 0) plane.imageIndex = (plane.imageIndex + fw * imageAdvance) % images.length;
+      if (bw > 0) { const s = plane.imageIndex - bw * imageAdvance; plane.imageIndex = ((s % images.length) + images.length) % images.length; }
+      plane.z = ((nz % DEPTH) + DEPTH) % DEPTH;
+      plane.x = spatialPos[i]?.x ?? 0;
+      plane.y = spatialPos[i]?.y ?? 0;
+
+      const np = plane.z / DEPTH;
+      // Opacity
+      let opacity = 1;
+      if (np < fadeIn.start) opacity = 0;
+      else if (np <= fadeIn.end) opacity = (np - fadeIn.start) / (fadeIn.end - fadeIn.start);
+      else if (np >= fadeOut.end) opacity = 0;
+      else if (np >= fadeOut.start) opacity = 1 - (np - fadeOut.start) / (fadeOut.end - fadeOut.start);
+      opacity = Math.max(0, Math.min(1, opacity));
+      // Blur
+      let blur = 0;
+      if (np < blurIn.start) blur = maxBlur;
+      else if (np <= blurIn.end) blur = maxBlur * (1 - (np - blurIn.start) / (blurIn.end - blurIn.start));
+      else if (np >= blurOut.end) blur = maxBlur;
+      else if (np >= blurOut.start) blur = maxBlur * ((np - blurOut.start) / (blurOut.end - blurOut.start));
+      blur = Math.max(0, Math.min(maxBlur, blur));
+
+      const m = materials[i];
+      if (m?.uniforms) { m.uniforms.opacity.value = opacity; m.uniforms.blurAmount.value = blur; }
+    });
+  });
+
+  if (!images.length) return null;
 
   return (
     <>
-      <Seo titleKey="seo.homeTitle" descriptionKey="seo.homeDescription" />
-      <section className="relative overflow-hidden devotional-gradient"><div className="gold-divider absolute inset-x-0 top-0" /><div className="absolute -right-20 top-16 h-72 w-72 rounded-full border border-mandal-gold/25 bg-mandal-gold/5" /><div className="absolute left-[11%] top-20 h-16 w-16 rotate-45 border border-mandal-gold/20" /><div className="absolute -left-16 bottom-0 h-56 w-56 rounded-full bg-mandal-mint/70 blur-2xl" /><div className="container-pad relative section-pad"><motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.55, ease: 'easeOut' }} className="mx-auto max-w-4xl text-center"><motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.1 }} className="mx-auto grid h-16 w-16 place-items-center rounded-2xl border border-mandal-gold/40 bg-white/85 text-mandal-gold shadow-soft"><Star className="h-8 w-8 fill-current" /></motion.div><p className="eyebrow mt-6">Panchganga Hall of Fame</p><h1 className="headline mt-4">Celebrity Visits</h1><p className="body-copy mt-5">Over the years, Panchganga Sarvajanik Utsav Mandal has been honoured by the presence of renowned actors, actresses, directors, singers and television personalities who visited to seek the blessings of Lord Ganesha.</p></motion.div></div></section>
-
-      <section className="section-pad bg-white/75"><div className="container-pad"><motion.article initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={fadeUp} transition={{ duration: 0.5 }} whileHover={{ y: -5 }} className="group overflow-hidden rounded-[2rem] border border-mandal-gold/35 bg-white shadow-soft lg:grid lg:grid-cols-[1.08fr_0.92fr]"><div className="relative min-h-[22rem] overflow-hidden"><img src={featuredCelebrity.coverImage} alt={`Placeholder portrait for ${featuredCelebrity.name}`} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-mandal-green/60 to-transparent" /><span className="absolute bottom-5 left-5 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold text-mandal-green"><Sparkles className="mr-1.5 inline h-3.5 w-3.5 text-mandal-gold" />Latest visit</span></div><div className="flex flex-col justify-center p-7 sm:p-10"><p className="eyebrow">Featured guest</p><h2 className="mt-3 font-display text-4xl font-bold text-mandal-green sm:text-5xl">{featuredCelebrity.name}</h2><div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold text-mandal-leaf"><span>{featuredCelebrity.profession}</span><span className="inline-flex items-center gap-1.5 text-mandal-ink/60"><Calendar className="h-4 w-4 text-mandal-gold" />{featuredCelebrity.year}</span></div><p className="mt-5 leading-8 text-mandal-ink/70">{featuredCelebrity.description}</p><button type="button" onClick={() => setSelectedCelebrity(featuredCelebrity)} className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-mandal-green px-6 py-3 text-sm font-bold text-white transition hover:bg-mandal-leaf"><Camera className="h-4 w-4 text-mandal-gold" />View gallery <ArrowRight className="h-4 w-4" /></button></div></motion.article></div></section>
-
-      <section className="pb-16 sm:pb-20"><div className="container-pad"><motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{[{ number: '100+', label: 'Celebrity Visits', icon: Star }, { number: '70+', label: 'Film Personalities', icon: Clapperboard }, { number: '2000+', label: 'Memories', icon: Camera }, { number: '50+', label: 'Years of Legacy', icon: Trophy }].map(({ number, label, icon: Icon }) => <motion.div key={label} variants={fadeUp} transition={{ duration: 0.4 }} whileHover={{ y: -5 }} className="soft-panel p-5 sm:p-6"><Icon className="h-6 w-6 text-mandal-gold" /><p className="mt-4 font-display text-4xl font-bold text-mandal-green">{number}</p><p className="mt-1 text-sm font-semibold text-mandal-ink/65">{label}</p></motion.div>)}</motion.div></div></section>
-
-      <section className="section-pad devotional-gradient"><div className="container-pad"><motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.45 }} className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"><div><p className="eyebrow">Browse the collection</p><h2 className="mt-3 font-display text-4xl font-bold text-mandal-green sm:text-5xl">Hall of fame</h2></div><label className="relative block w-full max-w-md"><Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-mandal-leaf" /><input value={query} onChange={(event) => setQuery(event.target.value)} type="search" placeholder="Search celebrity visits" className="w-full rounded-full border border-mandal-green/15 bg-white py-3.5 pl-12 pr-5 text-sm text-mandal-ink shadow-soft outline-none transition placeholder:text-mandal-ink/40 focus:border-mandal-gold focus:ring-2 focus:ring-mandal-gold/20" /></label></motion.div><div className="mt-7 flex gap-2 overflow-x-auto pb-2">{categories.map((item) => <button type="button" key={item} onClick={() => setCategory(item)} className={`shrink-0 rounded-full px-4 py-2.5 text-sm font-bold transition ${category === item ? 'bg-mandal-green text-white shadow-soft' : 'border border-mandal-green/12 bg-white text-mandal-green hover:border-mandal-gold'}`}>{item}</button>)}</div><motion.div layout initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.07 } } }} className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3"><AnimatePresence mode="popLayout">{filteredCelebrities.map((celebrity) => <motion.article layout key={celebrity.name} variants={fadeUp} initial="hidden" animate="visible" exit={{ opacity: 0, scale: 0.96 }} transition={{ duration: 0.35 }} whileHover={{ y: -7 }} className="group overflow-hidden rounded-[1.5rem] border border-mandal-green/10 bg-white shadow-soft transition hover:border-mandal-gold/55 hover:shadow-[0_20px_46px_rgba(13,63,35,0.17)]"><div className="relative aspect-[16/10] overflow-hidden"><img src={celebrity.coverImage} alt={`Placeholder portrait for ${celebrity.name}`} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-mandal-green/60 to-transparent" /><span className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold text-mandal-green"><Camera className="mr-1 inline h-3.5 w-3.5 text-mandal-gold" />{celebrity.gallery.length} Photos</span></div><div className="p-5 sm:p-6"><div className="flex items-start justify-between gap-3"><div><h3 className="font-display text-2xl font-bold text-mandal-green">{celebrity.name}</h3><p className="mt-1 text-sm font-bold text-mandal-leaf">{celebrity.profession}</p></div><span className="rounded-full bg-mandal-mint px-2.5 py-1 text-xs font-bold text-mandal-green">{celebrity.year}</span></div><p className="mt-4 text-sm leading-6 text-mandal-ink/68">{celebrity.description}</p><button type="button" onClick={() => setSelectedCelebrity(celebrity)} className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-mandal-green transition hover:text-mandal-leaf">View gallery <ArrowRight className="h-4 w-4" /></button></div></motion.article>)}</AnimatePresence></motion.div>{filteredCelebrities.length === 0 && <div className="mt-10 rounded-2xl border border-mandal-green/10 bg-white p-10 text-center shadow-soft"><p className="font-display text-2xl font-bold text-mandal-green">No visits found</p><p className="mt-2 text-mandal-ink/65">Try searching for a different celebrity or choose another category.</p></div>}</div></section>
-
-      <AnimatePresence>{selectedCelebrity && <GalleryModal celebrity={selectedCelebrity} onClose={() => setSelectedCelebrity(null)} />}</AnimatePresence>
+      {planes.current.map((plane, i) => {
+        const tex = textures[plane.imageIndex];
+        const mat = materials[i];
+        if (!tex || !mat) return null;
+        const worldZ = plane.z - DEPTH / 2;
+        const aspect = tex.image ? tex.image.width / tex.image.height : 1;
+        const scale = aspect > 1 ? [2 * aspect, 2, 1] : [2, 2 / aspect, 1];
+        return (
+          <ImagePlane
+            key={plane.index}
+            texture={tex}
+            position={[plane.x, plane.y, worldZ]}
+            scale={scale}
+            material={mat}
+          />
+        );
+      })}
     </>
+  );
+}
+
+// ── Fallback grid (no WebGL) ───────────────────────────────
+function FallbackGrid({ images }) {
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-6">
+      {images.map((img, i) => (
+        <div key={i} className="relative group overflow-hidden rounded-xl aspect-square">
+          <img src={img.src} alt={img.alt} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          {img.alt && (
+            <div className="absolute inset-0 bg-gradient-to-t from-white/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+              <span className="text-white text-sm font-medium">{img.alt}</span>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ── Main exported page ─────────────────────────────────────
+export default function Celebrity() {
+  const [webgl, setWebgl] = useState(true);
+
+  useEffect(() => {
+    try {
+      const c = document.createElement('canvas');
+      if (!c.getContext('webgl') && !c.getContext('experimental-webgl')) setWebgl(false);
+    } catch { setWebgl(false); }
+  }, []);
+
+  const cfg = GALLERY_CONFIG;
+
+  return (
+    <div className="min-h-screen bg-white text-black relative overflow-hidden">
+      {/* ── Hero heading ── */}
+      <div className="absolute top-2 left-0 right-0 z-10 text-center">
+        <p className="text-green-700 uppercase tracking-[0.3em] text-[10px] font-semibold mb-1">
+          Special Guests & Celebrities
+        </p>
+        <h1
+          className="text-2xl md:text-3xl font-bold"
+          style={{
+            color: '#176308',
+            fontFamily: '"Georgia", serif',
+          }}
+        >
+          Celebrity Moments
+        </h1>
+        <p className="mt-1 text-white/50 text-[10px] tracking-wide">
+          Scroll • Arrow keys • Touch to navigate
+        </p>
+      </div>
+
+      {/* ── 3D Gallery ── */}
+      <div className="relative" style={{ height: '100vh' }}>
+        {webgl ? (
+          <Canvas
+            camera={{ position: [0, 0, 0], fov: 55 }}
+            gl={{ antialias: true, alpha: true }}
+            style={{ background: 'transparent' }}
+          >
+            <GalleryScene
+              images={GALLERY_IMAGES}
+              speed={cfg.speed}
+              visibleCount={cfg.visibleCount}
+              fadeIn={cfg.fadeIn}
+              fadeOut={cfg.fadeOut}
+              blurIn={cfg.blurIn}
+              blurOut={cfg.blurOut}
+              maxBlur={cfg.maxBlur}
+            />
+          </Canvas>
+        ) : (
+          <FallbackGrid images={GALLERY_IMAGES} />
+        )}
+
+        {/* Overlaid title in centre */}
+        <div className="absolute inset-0 pointer-events-none flex items-center justify-center mix-blend-exclusion">
+          <h2
+            className="font-serif italic text-4xl md:text-6xl text-white text-center leading-tight select-none"
+            style={{ textShadow: '0 0 60px rgba(255,107,0,0.5)' }}
+          >
+            <br />
+          </h2>
+        </div>
+      </div>
+
+      {/* ── Controls hint ── */}
+      <div className="fixed bottom-6 left-0 right-0 z-50 text-center pointer-events-none">
+        <p className="text-white/40 text-[11px] uppercase tracking-widest font-mono">
+          Auto-play resumes after {cfg.autoPlayDelay / 1000}s of inactivity
+        </p>
+      </div>
+    </div>
   );
 }
