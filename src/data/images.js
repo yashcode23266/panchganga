@@ -92,40 +92,182 @@ export const eventImages = [
 export const galleryImages = [
   {
     year: '2025',
-    src: '/ganpati.png',
+    src: '/ganpati2025.jpeg',
     caption: { en: 'Ganpati Bappa Darshan', mr: 'à¤—à¤£à¤ªà¤¤à¥€ à¤¬à¤¾à¤ªà¥à¤ªà¤¾ à¤¦à¤°à¥à¤¶à¤¨' },
     alt: { en: 'Ganpati Bappa darshan artwork', mr: 'à¤—à¤£à¤ªà¤¤à¥€ à¤¬à¤¾à¤ªà¥à¤ªà¤¾ à¤¦à¤°à¥à¤¶à¤¨ à¤šà¤¿à¤¤à¥à¤°' },
   },
+
   {
     year: '2025',
-    src: '/ganpati.png',
+    src: '/ganpati20251.jpeg',
+    caption: { en: 'Ganpati Bappa Darshan', mr: 'à¤—à¤£à¤ªà¤¤à¥€ à¤¬à¤¾à¤ªà¥à¤ªà¤¾ à¤¦à¤°à¥à¤¶à¤¨' },
+    alt: { en: 'Ganpati Bappa darshan artwork', mr: 'à¤—à¤£à¤ªà¤¤à¥€ à¤¬à¤¾à¤ªà¥à¤ªà¤¾ à¤¦à¤°à¥à¤¶à¤¨ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+
+  {
+    year: '2025',
+    src: '/ganpati20252.jpeg',
+    caption: { en: 'Evening Aarti', mr: 'à¤¸à¤‚à¤§à¥à¤¯à¤¾à¤•à¤¾à¤³à¤šà¥€ à¤†à¤°à¤¤à¥€' },
+    alt: { en: 'Evening aarti illustration', mr: 'à¤¸à¤‚à¤§à¥à¤¯à¤¾à¤•à¤¾à¤³à¤šà¥à¤¯à¤¾ à¤†à¤°à¤¤à¥€à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+
+  {
+    year: '2025',
+    src: '/ganpati20253.jpeg',
     caption: { en: 'Evening Aarti', mr: 'à¤¸à¤‚à¤§à¥à¤¯à¤¾à¤•à¤¾à¤³à¤šà¥€ à¤†à¤°à¤¤à¥€' },
     alt: { en: 'Evening aarti illustration', mr: 'à¤¸à¤‚à¤§à¥à¤¯à¤¾à¤•à¤¾à¤³à¤šà¥à¤¯à¤¾ à¤†à¤°à¤¤à¥€à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
   },
   {
+    year: '2025',
+    src: '/ganpati20254.jpeg',
+    caption: { en: 'Evening Aarti', mr: 'à¤¸à¤‚à¤§à¥à¤¯à¤¾à¤•à¤¾à¤³à¤šà¥€ à¤†à¤°à¤¤à¥€' },
+    alt: { en: 'Evening aarti illustration', mr: 'à¤¸à¤‚à¤§à¥à¤¯à¤¾à¤•à¤¾à¤³à¤šà¥à¤¯à¤¾ à¤†à¤°à¤¤à¥€à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2025',
+    src: '/ganpati20255.jpeg',
+    caption: { en: 'Evening Aarti', mr: 'à¤¸à¤‚à¤§à¥à¤¯à¤¾à¤•à¤¾à¤³à¤šà¥€ à¤†à¤°à¤¤à¥€' },
+    alt: { en: 'Evening aarti illustration', mr: 'à¤¸à¤‚à¤§à¥à¤¯à¤¾à¤•à¤¾à¤³à¤šà¥à¤¯à¤¾ à¤†à¤°à¤¤à¥€à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+
+  {
     year: '2024',
-    src: '/ganpati.png',
+    src: '/ganpati2024.jpeg',
     caption: { en: 'Cultural Evening', mr: 'à¤¸à¤¾à¤‚à¤¸à¥à¤•à¥ƒà¤¤à¤¿à¤• à¤¸à¤‚à¤§à¥à¤¯à¤¾' },
     alt: { en: 'Cultural program illustration', mr: 'à¤¸à¤¾à¤‚à¤¸à¥à¤•à¥ƒà¤¤à¤¿à¤• à¤•à¤¾à¤°à¥à¤¯à¤•à¥à¤°à¤®à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
   },
+
   {
     year: '2024',
-    src: '/ganpati.png',
+    src: '/ganpati20241.jpeg',
     caption: { en: 'Deepotsav Lamps', mr: 'à¤¦à¥€à¤ªà¥‹à¤¤à¥à¤¸à¤µ à¤¦à¤¿à¤µà¥‡' },
     alt: { en: 'Deepotsav lamps illustration', mr: 'à¤¦à¥€à¤ªà¥‹à¤¤à¥à¤¸à¤µ à¤¦à¤¿à¤µà¥à¤¯à¤¾à¤‚à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
   },
+{
+    year: '2024',
+    src: '/ganapti20242.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2024',
+    src: '/ganpati20243.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2024',
+    src: '/ganpati20244.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2024',
+    src: '/ganpati20245.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+
   {
     year: '2023',
-    src: '/ganpati.png',
+    src: '/ganpati2023.jpeg',
     caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
     alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
   },
   {
     year: '2023',
-    src: '/ganpati.png',
+    src: '/ganpati20231.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2023',
+    src: '/ganpati20232.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2023',
+    src: '/ganpati20233.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+
+  {
+    year: '2023',
+    src: '/ganpati20234.jpeg',
     caption: { en: 'Mandal Decoration', mr: 'à¤®à¤‚à¤¡à¤³ à¤¸à¤œà¤¾à¤µà¤Ÿ' },
     alt: { en: 'Mandal decoration illustration', mr: 'à¤®à¤‚à¤¡à¤³ à¤¸à¤œà¤¾à¤µà¤Ÿà¥€à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
   },
+  {
+    year: '2023',
+    src: '/ganpati20235.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2023',
+    src: '/ganpati20236.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+
+  {
+    year: '2023',
+    src: '/ganpati20237.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2022',
+    src: '/ganpati2022.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2022',
+    src: '/ganpati20221.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2022',
+    src: '/ganpati20222.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2022',
+    src: '/ganpati20223.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+  {
+    year: '2021',
+    src: '/ganpati2021.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2021',
+    src: '/ganpati20211.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2021',
+    src: '/ganpati20212.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+{
+    year: '2021',
+    src: '/ganpati20213.jpeg',
+    caption: { en: 'Community Gathering', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¤¾' },
+    alt: { en: 'Community gathering artwork', mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°' },
+  },
+
+
 ];
 
 export const sponsorImages = [

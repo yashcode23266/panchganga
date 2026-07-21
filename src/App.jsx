@@ -39,19 +39,13 @@ export default function App() {
             <Route path="/news" element={<News />} />
             <Route path="/celebrity" element={<Celebrity />} />
             <Route path="/admin" element={<Admin />} />
-            <Route
-              path="/admin-login"
-              element={<AdminLogin />}
-            />
-            <Route
-              path="/admin-dashboard"
-              element={
+            <Route path="/admin-login" element={<AdminLogin />} />
+            <Route path="/admin-dashboard" element={
                 <ProtectedRoute>
                   <Admin />
                 </ProtectedRoute>
               }
             />
-
           </Routes>
         </motion.main>
       </AnimatePresence>

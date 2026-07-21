@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import {
     Image as ImageIcon,
@@ -29,12 +29,42 @@ export default function Admin() {
 
     // Modules configuration
     const modules = [
-        { title: "Gallery", desc: "Manage gallery images", icon: ImageIcon },
-        { title: "News", desc: "Manage news articles", icon: Newspaper },
-        { title: "Social Work", desc: "Manage social work", icon: Handshake },
-        { title: "Sponsors", desc: "Manage sponsors", icon: ShieldCheck },
-        { title: "Awards", desc: "Manage awards", icon: TrophyIcon },
-    ];
+    {
+        title: "Gallery",
+        desc: "Manage gallery images",
+        icon: ImageIcon,
+        addRoute: "/admin/gallery/add",
+        viewRoute: "/admin/gallery"
+    },
+    {
+        title: "News",
+        desc: "Manage news articles",
+        icon: Newspaper,
+        addRoute: "/admin/news/add",
+        viewRoute: "/admin/news"
+    },
+    {
+        title: "Social Work",
+        desc: "Manage social work",
+        icon: Handshake,
+        addRoute: "/admin/social-work/add",
+        viewRoute: "/admin/social-work"
+    },
+    {
+        title: "Sponsors",
+        desc: "Manage sponsors",
+        icon: ShieldCheck,
+        addRoute: "/admin/sponsors/add",
+        viewRoute: "/admin/sponsors"
+    },
+    {
+        title: "Awards",
+        desc: "Manage awards",
+        icon: TrophyIcon,
+        addRoute: "/admin/awards/add",
+        viewRoute: "/admin/awards"
+    }
+];
 
     // Recent activity logs
     const logs = [
