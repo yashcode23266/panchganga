@@ -10,12 +10,17 @@ export default function Gallery() {
   const [active, setActive] = useState(null);
   const galleryRef = useRef(null);
   const { t, pick } = useLanguage();
-  const yearlyImages = useMemo(() => {
-    const uniqueYears = new Map();
+  const yearlyGalleries = useMemo(() => {
+    const galleriesByYear = new Map();
     galleryImages.forEach((item) => {
-      if (!uniqueYears.has(item.year)) uniqueYears.set(item.year, item);
+      if (!galleriesByYear.has(item.year)) galleriesByYear.set(item.year, []);
+      galleriesByYear.get(item.year).push(item);
     });
-    return Array.from(uniqueYears.values());
+    return Array.from(galleriesByYear, ([year, images]) => ({
+      year,
+      cover: images[0],
+      images,
+    }));
   }, []);
 
   const scrollGallery = (direction) => {
@@ -48,19 +53,20 @@ export default function Gallery() {
             </div>
           </div>
           <div ref={galleryRef} className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-5 pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:-mx-6 sm:gap-6 sm:px-6 lg:-mx-8 lg:px-8">
-          {yearlyImages.map((image) => (
+          {yearlyGalleries.map(({ year, cover, images }) => (
             <button
               type="button"
-              key={`${image.year}-${pick(image.caption)}`}
-              onClick={() => setActive(image)}
+              key={year}
+              onClick={() => setActive({ year, images })}
               className="group w-[82vw] shrink-0 snap-start overflow-hidden rounded-[1.5rem] bg-white text-left shadow-soft transition hover:-translate-y-1 hover:shadow-[0_18px_38px_rgba(13,63,35,0.16)] sm:w-[22rem] lg:w-[24rem]"
             >
               <div className="relative overflow-hidden bg-mandal-mint/35">
-                <img className="h-72 w-full object-contain transition duration-700 group-hover:scale-105" src={image.src} alt={pick(image.alt)} loading="lazy" />
-                <span className="absolute left-5 top-5 rounded-full bg-mandal-green px-4 py-2 text-sm font-bold text-white shadow-soft">{image.year}</span>
+                <img className="h-72 w-full object-contain transition duration-700 group-hover:scale-105" src={cover.src} alt={pick(cover.alt)} loading="lazy" />
+                <span className="absolute left-5 top-5 rounded-full bg-mandal-green px-4 py-2 text-sm font-bold text-white shadow-soft">{year}</span>
               </div>
               <div className="border-t border-mandal-green/10 p-5">
-                <p className="font-display text-2xl font-bold text-mandal-green">{pick(image.caption)}</p>
+                <p className="font-display text-2xl font-bold text-mandal-green">{pick(cover.caption)}</p>
+                <p className="mt-1 text-sm font-semibold text-mandal-ink/55">{images.length} {images.length === 1 ? 'photo' : 'photos'}</p>
               </div>
             </button>
           ))}
@@ -71,7 +77,7 @@ export default function Gallery() {
           </div>
         </div>
       </section>
-      <Lightbox item={active} onClose={() => setActive(null)} />
+      <Lightbox gallery={active} onClose={() => setActive(null)} />
     </>
   );
 }

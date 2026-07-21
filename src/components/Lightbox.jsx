@@ -1,14 +1,27 @@
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext.jsx';
 
-export default function Lightbox({ item, onClose }) {
+export default function Lightbox({ gallery, onClose }) {
   const { pick, t } = useLanguage();
   const [index, setIndex] = useState(0);
   const startX = useRef(null);
+  const images = gallery?.images ?? [];
+  const activeImage = images[index];
+  const hasMultipleImages = images.length > 1;
+
+  const prev = () => {
+    if (!hasMultipleImages) return;
+    setIndex((currentIndex) => (currentIndex - 1 + images.length) % images.length);
+  };
+
+  const next = () => {
+    if (!hasMultipleImages) return;
+    setIndex((currentIndex) => (currentIndex + 1) % images.length);
+  };
 
   useEffect(() => {
-    if (!item) return undefined;
+    if (!gallery) return undefined;
     setIndex(0);
     const onKeyDown = (event) => {
       if (event.key === 'Escape') onClose();
@@ -22,23 +35,9 @@ export default function Lightbox({ item, onClose }) {
       document.body.style.overflow = '';
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [item]);
+  }, [gallery]);
 
-  if (!item) return null;
-
-  const images = item.images || item.photos || item.gallery || (item.src ? [item.src] : item.photo ? [item.photo] : []);
-  const hasGallery = Array.isArray(images) && images.length > 0;
-  const activeSrc = hasGallery ? images[index] : item.src || item.photo;
-
-  function prev() {
-    if (!hasGallery) return;
-    setIndex((i) => (i - 1 + images.length) % images.length);
-  }
-
-  function next() {
-    if (!hasGallery) return;
-    setIndex((i) => (i + 1) % images.length);
-  }
+  if (!gallery || !activeImage) return null;
 
   function onPointerDown(e) {
     startX.current = e.clientX || (e.touches && e.touches[0] && e.touches[0].clientX) || 0;
@@ -67,7 +66,7 @@ export default function Lightbox({ item, onClose }) {
           <X size={20} />
         </button>
 
-        {hasGallery && (
+        {hasMultipleImages && (
           <>
             <button
               type="button"
@@ -92,27 +91,30 @@ export default function Lightbox({ item, onClose }) {
         <div className="px-6 pt-6 pb-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="eyebrow text-sm font-medium text-mandal-green/80">{t('common.sponsorGallery') || 'Sponsor Gallery'}</p>
-              <h3 className="mt-1 font-display text-2xl font-bold text-mandal-green">{pick(item.name)}</h3>
+              <p className="eyebrow text-sm font-medium text-mandal-green/80">{t('gallery.eyebrow')}</p>
+              <h3 className="mt-1 font-display text-2xl font-bold text-mandal-green">{gallery.year}</h3>
             </div>
+            <p className="mr-14 rounded-full bg-mandal-mint px-3 py-1 text-sm font-bold text-mandal-green">{index + 1} / {images.length}</p>
           </div>
         </div>
 
         <div className="px-6 pb-6">
           <div className="mb-4 w-full rounded-lg bg-white p-3" onPointerDown={onPointerDown} onPointerUp={onPointerUp} onTouchStart={onPointerDown} onTouchEnd={onPointerUp}>
-            <img className="mx-auto max-h-[60vh] w-full object-contain rounded" src={activeSrc} alt={pick(item.alt) || pick(item.name)} loading="lazy" decoding="async" />
+            <img className="mx-auto max-h-[60vh] w-full rounded object-contain" src={activeImage.src} alt={pick(activeImage.alt)} loading="lazy" decoding="async" />
           </div>
 
-          {hasGallery && (
+          <p className="mb-4 text-center font-display text-xl font-bold text-mandal-green">{pick(activeImage.caption)}</p>
+
+          {hasMultipleImages && (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-              {images.map((src, i) => (
+              {images.map((image, i) => (
                 <button
-                  key={i}
+                  key={`${image.src}-${i}`}
                   type="button"
                   onClick={() => setIndex(i)}
                   className={`overflow-hidden rounded-xl bg-white p-1 transition-shadow ${i === index ? 'ring-2 ring-mandal-green/50' : 'hover:shadow-sm'}`}
                 >
-                  <img className="h-32 w-full object-cover" src={src} alt={`${pick(item.name)} ${i + 1}`} loading="lazy" decoding="async" />
+                  <img className="h-32 w-full object-cover" src={image.src} alt={pick(image.alt)} loading="lazy" decoding="async" />
                 </button>
               ))}
             </div>
