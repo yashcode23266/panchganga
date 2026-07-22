@@ -5,7 +5,7 @@ import ButtonLink from '../components/ButtonLink.jsx';
 import Seo from '../components/Seo.jsx';
 import SponsorsSection from '../components/SponsorsSection.jsx';
 import { useLanguage } from '../context/LanguageContext.jsx';
-import { galleryImages, homeImages } from '../data/images.js';
+import { fixedimages, homeImages } from '../data/images.js';
 import Countdown from '../components/countdown.jsx';
 
 const homeMapEmbedUrl =
@@ -121,7 +121,7 @@ export default function Home() {
           </div>
           <p className="mt-4 max-w-2xl leading-8 text-mandal-ink/70">{t('home.galleryText')}</p>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {galleryImages.slice(0, 3).map((item) => (
+            {fixedimages.slice(0, 3).map((item) => (
               <figure key={`${item.year}-${pick(item.caption)}`} className="overflow-hidden rounded-[1.5rem] bg-white shadow-soft">
                 <img className="h-64 w-full object-contain" src={item.src} alt={pick(item.alt)} loading="lazy" />
                 <figcaption className="border-t border-mandal-green/10 px-5 py-4 font-bold text-mandal-green">

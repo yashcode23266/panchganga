@@ -1,4 +1,30 @@
-﻿export const homeImages = {
+﻿export const fixedimages = [
+  {
+    src: '/ganpati2025.jpeg',
+    alt: {
+      en: '2025',
+      mr: 'à¤ªà¤¾à¤°à¤‚à¤ªà¤°à¤¿à¤• à¤¹à¤¿à¤°à¤µà¥à¤¯à¤¾ à¤†à¤£à¤¿ à¤ªà¤¾à¤‚à¤¢à¤±à¥à¤¯à¤¾ à¤¸à¤œà¤¾à¤µà¤Ÿà¥€à¤¸à¤¹ à¤®à¤‚à¤¡à¤³à¤¾à¤šà¥‡ à¤¸à¥à¤¥à¤¾à¤¨',
+    },
+  },
+  {
+    src: '/ganpati2024.jpeg',
+    alt: {
+      en: 'Community gathering illustration',
+      mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°',
+    },
+  },
+  { 
+    src: '/ganpati2023.jpeg',
+    alt: {
+      en: 'Community gathering illustration',
+      mr: 'à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤³à¤¾à¤µà¥à¤¯à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°',
+    },
+  },
+
+];
+
+
+export const homeImages = {
   hero: {
     src: '/ganpati2018.jpeg',
     alt: {
@@ -7,7 +33,7 @@
     },
   },
   intro: {
-    src: '/ganpati.png',
+    src: '/ganpati1990.jpeg',
     alt: {
       en: 'Peaceful mandal courtyard illustration',
       mr: 'à¤¶à¤¾à¤‚à¤¤ à¤®à¤‚à¤¡à¤³ à¤ªà¥à¤°à¤¾à¤‚à¤—à¤£à¤¾à¤šà¥‡ à¤šà¤¿à¤¤à¥à¤°',
