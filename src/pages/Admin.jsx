@@ -1,20 +1,16 @@
-import React, { useState } from "react";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
 import { useNavigate } from 'react-router-dom';
 import {
     Image as ImageIcon,
-    Calendar,
     Newspaper,
     Plus,
     Eye,
     History,
     CheckCircle,
     AlertCircle,
-    Group,
     Handshake,
     ShieldCheck,
-    BriefcaseBusinessIcon,
-    Star,
-    Trophy,
     TrophyIcon
 } from 'lucide-react';
 
@@ -22,8 +18,8 @@ export default function Admin() {
 
     const navigate = useNavigate();
 
-    const logout = () => {
-        localStorage.removeItem("adminLoggedIn");
+    const logout = async () => {
+        await signOut(auth);
         navigate("/");
     };
 
@@ -144,10 +140,18 @@ export default function Admin() {
 
                                     {/* Action row at bottom of card */}
                                     <div className="flex items-center gap-2 border-t border-gray-100 pt-4 mt-auto">
-                                        <button className="flex-1 flex items-center justify-center gap-1.5 text-xs font-semibold text-gray-600 bg-gray-50 hover:bg-gray-100 py-2.5 rounded-lg transition-colors">
+                                        <button
+                                            type="button"
+                                            onClick={() => navigate(item.viewRoute)}
+                                            className="flex-1 flex items-center justify-center gap-1.5 text-xs font-semibold text-gray-600 bg-gray-50 hover:bg-gray-100 py-2.5 rounded-lg transition-colors"
+                                        >
                                             <Eye className="w-3.5 h-3.5" /> View All
                                         </button>
-                                        <button className="flex-1 flex items-center justify-center gap-1.5 text-xs font-semibold text-white bg-emerald-700 hover:bg-emerald-800 py-2.5 rounded-lg transition-colors shadow-sm">
+                                        <button
+                                            type="button"
+                                            onClick={() => navigate(item.addRoute)}
+                                            className="flex-1 flex items-center justify-center gap-1.5 text-xs font-semibold text-white bg-emerald-700 hover:bg-emerald-800 py-2.5 rounded-lg transition-colors shadow-sm"
+                                        >
                                             <Plus className="w-3.5 h-3.5" /> Add New
                                         </button>
                                     </div>

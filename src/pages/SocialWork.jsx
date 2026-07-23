@@ -1,10 +1,21 @@
 import Seo from '../components/Seo.jsx';
 import SectionIntro from '../components/SectionIntro.jsx';
+import { CardSkeleton } from '../components/Skeleton.jsx';
 import { useLanguage } from '../context/LanguageContext.jsx';
 import { eventImages } from '../data/images.js';
+import useFirestoreItems from '../hooks/useFirestoreItems.js';
+import { contentCollections, toLocalized } from '../utils/contentStore.js';
 
 export default function SocialWork() {
   const { t, pick } = useLanguage();
+  const { items: uploadedItems, loading } = useFirestoreItems(contentCollections.socialWork);
+  const dynamicItems = uploadedItems.map((item) => ({
+    key: item.id,
+    image: item.image || item.images?.[0],
+    title: toLocalized(item.title || 'Social Work'),
+    text: toLocalized(item.description || ''),
+  }));
+  const socialWorkItems = [...dynamicItems, ...eventImages];
 
   return (
     <>
@@ -22,7 +33,8 @@ export default function SocialWork() {
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-            {eventImages.map((event, index) => (
+            {loading ? Array.from({ length: 3 }).map((_, index) => <CardSkeleton key={index} />) : null}
+            {socialWorkItems.map((event, index) => (
               <article key={event.key} className="group overflow-hidden rounded-[2rem] border border-mandal-green/10 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-xl">
                 <div className="overflow-hidden rounded-[1.75rem] bg-mandal-mint/30">
                   <img

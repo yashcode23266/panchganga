@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowRight, Award, Calendar, Medal, Sparkles, Star, Trophy } from 'lucide-react';
 import Seo from '../components/Seo.jsx';
+import { CardSkeleton } from '../components/Skeleton.jsx';
+import useFirestoreItems from '../hooks/useFirestoreItems.js';
+import { contentCollections } from '../utils/contentStore.js';
 
 const imageUrls = {
   trophy: 'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=1200&q=85',
@@ -67,6 +70,25 @@ function AnimatedCount({ value, suffix }) {
 }
 
 export default function Awards() {
+  const { items: uploadedAwards, loading } = useFirestoreItems(contentCollections.awards);
+  const dynamicAwards = uploadedAwards.map((award) => ({
+    name: award.name || 'Award',
+    organization: award.organization || 'Panchganga',
+    year: award.year || '2026',
+    description: award.description || '',
+    image: award.image || award.images?.[0] || imageUrls.trophy,
+  }));
+  const allOtherAwards = [...dynamicAwards, ...otherAwards];
+  const allGalleryItems = [
+    ...uploadedAwards.flatMap((award) =>
+      (award.images?.length ? award.images : [award.image].filter(Boolean)).map((image, index) => ({
+        label: index === 0 ? award.name || 'Award' : `${award.name || 'Award'} ${index + 1}`,
+        image,
+      })),
+    ),
+    ...galleryItems,
+  ];
+
   return (
     <>
       <Seo titleKey="seo.homeTitle" descriptionKey="seo.homeDescription" />
@@ -152,12 +174,13 @@ export default function Awards() {
       <section className="section-pad devotional-gradient">
         <div className="container-pad"><motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={fadeUp} transition={{ duration: 0.45 }}><p className="eyebrow">Honours we cherish</p><h2 className="mt-3 font-display text-4xl font-bold text-mandal-green sm:text-5xl">Other awards</h2></motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={stagger} className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {otherAwards.map((award) => <motion.article key={award.name} variants={fadeUp} transition={{ duration: 0.42 }} whileHover={{ y: -7 }} className="group overflow-hidden rounded-[1.5rem] border border-mandal-green/10 bg-white shadow-soft transition-shadow hover:shadow-[0_20px_46px_rgba(13,63,35,0.17)]"><div className="relative aspect-[16/9] overflow-hidden"><img src={award.image} alt={award.name} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" /><span className="absolute bottom-4 left-4 grid h-10 w-10 place-items-center rounded-full border border-mandal-gold/50 bg-white/95 text-mandal-gold"><Trophy className="h-5 w-5" /></span></div><div className="p-5 sm:p-6"><p className="text-xs font-bold uppercase tracking-[0.12em] text-mandal-leaf">{award.organization}</p><h3 className="mt-2 font-display text-2xl font-bold leading-tight text-mandal-green">{award.name}</h3><p className="mt-3 text-sm leading-6 text-mandal-ink/68">{award.description}</p><p className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-mandal-green"><Calendar className="h-4 w-4 text-mandal-gold" />{award.year}</p></div></motion.article>)}
+            {loading ? Array.from({ length: 3 }).map((_, index) => <CardSkeleton key={index} />) : null}
+            {allOtherAwards.map((award) => <motion.article key={`${award.name}-${award.year}`} variants={fadeUp} transition={{ duration: 0.42 }} whileHover={{ y: -7 }} className="group overflow-hidden rounded-[1.5rem] border border-mandal-green/10 bg-white shadow-soft transition-shadow hover:shadow-[0_20px_46px_rgba(13,63,35,0.17)]"><div className="relative aspect-[16/9] overflow-hidden"><img src={award.image} alt={award.name} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" /><span className="absolute bottom-4 left-4 grid h-10 w-10 place-items-center rounded-full border border-mandal-gold/50 bg-white/95 text-mandal-gold"><Trophy className="h-5 w-5" /></span></div><div className="p-5 sm:p-6"><p className="text-xs font-bold uppercase tracking-[0.12em] text-mandal-leaf">{award.organization}</p><h3 className="mt-2 font-display text-2xl font-bold leading-tight text-mandal-green">{award.name}</h3><p className="mt-3 text-sm leading-6 text-mandal-ink/68">{award.description}</p><p className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-mandal-green"><Calendar className="h-4 w-4 text-mandal-gold" />{award.year}</p></div></motion.article>)}
           </motion.div>
         </div>
       </section>
 
-      <section className="section-pad bg-white/75"><div className="container-pad"><motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={fadeUp} transition={{ duration: 0.45 }} className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"><div><p className="eyebrow">Moments of pride</p><h2 className="mt-3 font-display text-4xl font-bold text-mandal-green sm:text-5xl">Award gallery</h2></div><p className="max-w-sm text-sm leading-6 text-mandal-ink/65">Snapshots that honour the people and moments behind every recognition.</p></motion.div><motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={stagger} className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{galleryItems.map((item) => <motion.figure key={item.label} variants={fadeUp} transition={{ duration: 0.4 }} whileHover={{ y: -5 }} className="group overflow-hidden rounded-2xl border border-mandal-green/10 bg-white shadow-soft"><div className="aspect-square overflow-hidden"><img src={item.image} alt={item.label} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" /></div><figcaption className="px-4 py-3 text-sm font-bold text-mandal-green">{item.label}</figcaption></motion.figure>)}</motion.div></div></section>
+      <section className="section-pad bg-white/75"><div className="container-pad"><motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={fadeUp} transition={{ duration: 0.45 }} className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"><div><p className="eyebrow">Moments of pride</p><h2 className="mt-3 font-display text-4xl font-bold text-mandal-green sm:text-5xl">Award gallery</h2></div><p className="max-w-sm text-sm leading-6 text-mandal-ink/65">Snapshots that honour the people and moments behind every recognition.</p></motion.div><motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={stagger} className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{allGalleryItems.map((item) => <motion.figure key={`${item.label}-${item.image}`} variants={fadeUp} transition={{ duration: 0.4 }} whileHover={{ y: -5 }} className="group overflow-hidden rounded-2xl border border-mandal-green/10 bg-white shadow-soft"><div className="aspect-square overflow-hidden"><img src={item.image} alt={item.label} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" /></div><figcaption className="px-4 py-3 text-sm font-bold text-mandal-green">{item.label}</figcaption></motion.figure>)}</motion.div></div></section>
     </>
   );
 }

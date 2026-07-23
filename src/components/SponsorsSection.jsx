@@ -3,6 +3,9 @@ import { X } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { sponsorImages } from '../data/images.js';
 import { useLanguage } from '../context/LanguageContext.jsx';
+import useFirestoreItems from '../hooks/useFirestoreItems.js';
+import { contentCollections, toLocalized } from '../utils/contentStore.js';
+import { RowSkeleton } from './Skeleton.jsx';
 
 export default function SponsorsSection() {
   const { pick } = useLanguage();
@@ -10,7 +13,14 @@ export default function SponsorsSection() {
   const [activeImage, setActiveImage] = useState(0);
   const carouselRef = useRef(null);
   const isInteractingRef = useRef(false);
-  const sponsors = sponsorImages;
+  const { items: uploadedSponsors, loading } = useFirestoreItems(contentCollections.sponsors);
+  const dynamicSponsors = uploadedSponsors.map((sponsor) => ({
+    ...sponsor,
+    name: toLocalized(sponsor.name || 'Sponsor'),
+    alt: toLocalized(`${sponsor.name || 'Sponsor'} logo`),
+    images: sponsor.images?.length ? sponsor.images : [sponsor.logo].filter(Boolean),
+  }));
+  const sponsors = [...dynamicSponsors, ...sponsorImages];
   const loopSponsors = [...sponsors, ...sponsors];
 
   const modalImages = useMemo(() => active?.images || [active?.logo].filter(Boolean), [active]);
@@ -64,6 +74,7 @@ export default function SponsorsSection() {
         </div>
 
         <div className="mt-11 overflow-hidden">
+          {loading ? <RowSkeleton count={5} /> : null}
           <div
             ref={carouselRef}
             className="flex gap-6 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"

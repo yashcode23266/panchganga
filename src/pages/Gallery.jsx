@@ -3,16 +3,27 @@ import { useMemo, useRef, useState } from 'react';
 import Lightbox from '../components/Lightbox.jsx';
 import Seo from '../components/Seo.jsx';
 import SectionIntro from '../components/SectionIntro.jsx';
+import { CardSkeleton } from '../components/Skeleton.jsx';
 import { useLanguage } from '../context/LanguageContext.jsx';
 import { galleryImages } from '../data/images.js';
+import useFirestoreItems from '../hooks/useFirestoreItems.js';
+import { contentCollections, toLocalized } from '../utils/contentStore.js';
 
 export default function Gallery() {
   const [active, setActive] = useState(null);
   const galleryRef = useRef(null);
   const { t, pick } = useLanguage();
+  const { items: uploadedImages, loading } = useFirestoreItems(contentCollections.gallery);
   const yearlyGalleries = useMemo(() => {
     const galleriesByYear = new Map();
-    galleryImages.forEach((item) => {
+    const dynamicImages = uploadedImages.map((item) => ({
+      year: item.year || 'New',
+      src: item.src,
+      caption: toLocalized(item.caption || 'Uploaded photo'),
+      alt: toLocalized(item.alt || item.caption || 'Uploaded mandal photo'),
+    }));
+
+    [...dynamicImages, ...galleryImages].forEach((item) => {
       if (!galleriesByYear.has(item.year)) galleriesByYear.set(item.year, []);
       galleriesByYear.get(item.year).push(item);
     });
@@ -21,7 +32,7 @@ export default function Gallery() {
       cover: images[0],
       images,
     }));
-  }, []);
+  }, [uploadedImages]);
 
   const scrollGallery = (direction) => {
     galleryRef.current?.scrollBy({
@@ -53,6 +64,9 @@ export default function Gallery() {
             </div>
           </div>
           <div ref={galleryRef} className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-5 pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:-mx-6 sm:gap-6 sm:px-6 lg:-mx-8 lg:px-8">
+          {loading
+            ? Array.from({ length: 3 }).map((_, index) => <CardSkeleton key={index} className="w-[82vw] shrink-0 sm:w-[22rem] lg:w-[24rem]" />)
+            : null}
           {yearlyGalleries.map(({ year, cover, images }) => (
             <button
               type="button"

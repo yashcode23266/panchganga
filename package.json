@@ -12,13 +12,14 @@
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
     "@vitejs/plugin-react": "latest",
+    "firebase": "^12.16.0",
     "framer-motion": "latest",
     "lucide-react": "^1.25.0",
-"react": "latest",
-"react-dom": "latest",
-"react-router-dom": "latest",
-"three": "^0.185.1",
-"vite": "latest"
+    "react": "latest",
+    "react-dom": "latest",
+    "react-router-dom": "latest",
+    "three": "^0.185.1",
+    "vite": "latest"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",

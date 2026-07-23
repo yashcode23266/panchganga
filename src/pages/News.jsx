@@ -2,6 +2,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Calendar, Camera, ChevronLeft, ChevronRight, Play, Search, X } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import Seo from '../components/Seo.jsx';
+import { CardSkeleton } from '../components/Skeleton.jsx';
+import useFirestoreItems from '../hooks/useFirestoreItems.js';
+import { contentCollections } from '../utils/contentStore.js';
 
 const photos = [
   'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?auto=format&fit=crop&w=1400&q=85',
@@ -72,11 +75,25 @@ export default function News() {
   const [query, setQuery] = useState('');
   const [year, setYear] = useState('All');
   const [galleryItem, setGalleryItem] = useState(null);
-  const filteredItems = useMemo(() => newsItems.filter((item) => {
+  const { items: uploadedNews, loading } = useFirestoreItems(contentCollections.news);
+  const allNewsItems = useMemo(() => {
+    const dynamic = uploadedNews.map((item) => ({
+      title: item.title || 'News Update',
+      media: item.media || 'Panchganga',
+      year: item.year || '2026',
+      description: item.description || '',
+      youtubeLink: item.youtubeLink || '',
+      coverImage: item.coverImage || item.gallery?.[0],
+      gallery: item.gallery?.length ? item.gallery : [item.coverImage].filter(Boolean),
+    }));
+    return [...dynamic, ...newsItems];
+  }, [uploadedNews]);
+  const availableYears = useMemo(() => ['All', ...new Set(allNewsItems.map((item) => item.year).filter(Boolean))], [allNewsItems]);
+  const filteredItems = useMemo(() => allNewsItems.filter((item) => {
     const matchesYear = year === 'All' || item.year === year;
     const text = `${item.title} ${item.media} ${item.year}`.toLowerCase();
     return matchesYear && text.includes(query.toLowerCase().trim());
-  }), [query, year]);
+  }), [allNewsItems, query, year]);
 
   return <>
     <Seo titleKey="seo.homeTitle" descriptionKey="seo.homeDescription" />
@@ -88,8 +105,9 @@ export default function News() {
     </section>
     <section className="section-pad bg-white/65 pt-10 sm:pt-14"><div className="container-pad">
       <div className="soft-panel mx-auto max-w-3xl p-2"><label className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3.5 text-mandal-ink/55"><Search className="h-5 w-5 shrink-0 text-mandal-gold" /><input value={query} onChange={(event) => setQuery(event.target.value)} className="w-full bg-transparent text-sm font-medium text-mandal-ink outline-none placeholder:text-mandal-ink/45 sm:text-base" placeholder="Search by news title, channel, newspaper or year…" aria-label="Search media coverage" /></label></div>
-      <div className="mt-8 flex flex-wrap justify-center gap-2 sm:gap-3">{years.map((option) => <button type="button" key={option} onClick={() => setYear(option)} className={`rounded-full px-4 py-2 text-sm font-bold transition sm:px-5 ${year === option ? 'bg-mandal-green text-white shadow-soft' : 'border border-mandal-green/10 bg-white text-mandal-green hover:border-mandal-gold hover:text-mandal-leaf'}`}>{option}</button>)}</div>
+      <div className="mt-8 flex flex-wrap justify-center gap-2 sm:gap-3">{availableYears.map((option) => <button type="button" key={option} onClick={() => setYear(option)} className={`rounded-full px-4 py-2 text-sm font-bold transition sm:px-5 ${year === option ? 'bg-mandal-green text-white shadow-soft' : 'border border-mandal-green/10 bg-white text-mandal-green hover:border-mandal-gold hover:text-mandal-leaf'}`}>{option}</button>)}</div>
       <AnimatePresence mode="wait"><motion.div key={`${year}-${query}`} initial="hidden" animate="visible" exit="hidden" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.07 } } }} className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {loading ? Array.from({ length: 3 }).map((_, index) => <CardSkeleton key={index} />) : null}
         {filteredItems.map((item) => <motion.article key={item.title} variants={fadeUp} transition={{ duration: 0.4 }} whileHover={{ y: -7 }} className="group flex overflow-hidden rounded-[1.5rem] border border-mandal-green/10 bg-white shadow-soft transition hover:border-mandal-gold/80 hover:shadow-[0_20px_45px_rgba(13,63,35,0.17)]"><div className="flex w-full flex-col"><div className="relative aspect-[16/10] overflow-hidden"><img src={item.coverImage} alt="" className="h-full w-full object-cover transition duration-700 group-hover:scale-110" loading="lazy" /><div className="absolute inset-0 bg-gradient-to-t from-mandal-green/45 to-transparent" /><span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-mandal-green/85 px-3 py-1.5 text-xs font-bold text-white backdrop-blur"><Camera className="h-3.5 w-3.5 text-mandal-gold" />{item.gallery.length} Photos</span></div><div className="flex flex-1 flex-col p-5 sm:p-6"><div className="flex items-center justify-between gap-3 text-xs font-bold"><span className="truncate text-mandal-leaf">{item.media}</span><span className="inline-flex shrink-0 items-center gap-1 text-mandal-ink/50"><Calendar className="h-3.5 w-3.5 text-mandal-gold" />{item.year}</span></div><h2 className="mt-3 font-display text-2xl font-bold leading-tight text-mandal-green">{item.title}</h2><p className="mt-3 text-sm leading-6 text-mandal-ink/65">{item.description}</p><div className="mt-5 flex flex-wrap gap-2 pt-1">{item.youtubeLink && <a href={item.youtubeLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-full bg-mandal-green px-4 py-2.5 text-sm font-bold text-white transition hover:bg-mandal-leaf"><Play className="h-3.5 w-3.5 fill-mandal-gold text-mandal-gold" />Watch Video</a>}<button type="button" onClick={() => setGalleryItem(item)} className="inline-flex items-center gap-1.5 rounded-full border border-mandal-green/15 bg-mandal-mint/55 px-4 py-2.5 text-sm font-bold text-mandal-green transition hover:border-mandal-gold hover:bg-mandal-gold/15"><Camera className="h-4 w-4 text-mandal-gold" />View Gallery</button></div></div></div></motion.article>)}
       </motion.div></AnimatePresence>
       {filteredItems.length === 0 && <div className="soft-panel mx-auto mt-10 max-w-xl p-10 text-center"><p className="font-display text-2xl font-bold text-mandal-green">No media coverage found</p><p className="mt-2 text-sm text-mandal-ink/65">Try another year or a different search phrase.</p></div>}
