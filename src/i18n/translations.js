@@ -47,7 +47,7 @@ export const translations = {
         'Welcome to Panchganga Sarvajanik Ganesh Utsav Mandal, where devotion is celebrated with grace, discipline, and togetherness.',
       announcement:
         'Panchganga Sarvajanik Ganesh Utsav Mandal | Established 1990.',
-      introTitle: 'Rooted in faith, shaped by people',
+      introTitle: 'Every festival for society... every initiative for transformation.',
       introText:
         'Our mandal brings families, friends, and neighbours together through prayer, service, cultural programs, and respectful celebration.',
       festivalTitle: 'Upcoming Festival Highlight',
@@ -141,7 +141,7 @@ export const translations = {
         'पंचगंगा सार्वजनिक गणेश उत्सव मंडळात आपले स्वागत आहे. येथे भक्ती, शिस्त आणि एकोप्याने उत्सव साजरा होतो.',
       announcement:
         'पंचगंगा सार्वजनिक गणेश उत्सव मंडळ | स्थापना 1990.',
-      introTitle: 'श्रद्धेतून रुजलेले, लोकांनी घडवलेले',
+      introTitle: 'प्रत्येक उत्सव समाजासाठी... प्रत्येक उपक्रम परिवर्तनासाठी.',
       introText:
         'प्रार्थना, सेवा, सांस्कृतिक कार्यक्रम आणि सन्मानपूर्वक उत्सव यांमधून आमचे मंडळ सर्वांना एकत्र आणते.',
       festivalTitle: 'आगामी उत्सव वैशिष्ट्य',
