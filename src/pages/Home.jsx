@@ -171,7 +171,7 @@ export default function Home() {
 
         <p className="mt-4 max-w-2xl leading-8 text-mandal-ink/70">
           We extend our heartfelt gratitude to{" "}
-          <span className="font-semibold text-mandal-ink">Mr. [Name]</span>{" "}
+          <span className="font-semibold text-mandal-ink">Dr. Sumeet Sanjay Patil</span>{" "}
           for his valuable support and contribution towards making this festival successful.
         </p>
       </div>
@@ -180,7 +180,7 @@ export default function Home() {
       <div className="overflow-hidden rounded-[2rem] border border-mandal-green/10 bg-white shadow-soft flex items-center justify-center">
         
         <img
-          src="/images/zee.png"   // 👉 replace with your image
+          src="/images/drsumit.jpeg"   // 👉 replace with your image
           alt="supporter"
           className="h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
         />

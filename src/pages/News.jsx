@@ -1,117 +1,590 @@
-import { AnimatePresence, motion } from 'framer-motion';
-import { Calendar, Camera, ChevronLeft, ChevronRight, Play, Search, X } from 'lucide-react';
-import { useEffect, useMemo, useState } from 'react';
+import { AnimatePresence, motion, useAnimationFrame, useMotionValue } from 'framer-motion';
+import { Calendar, Camera, ChevronLeft, ChevronRight, Play, Search, X, Newspaper } from 'lucide-react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Seo from '../components/Seo.jsx';
 import { CardSkeleton } from '../components/Skeleton.jsx';
 import useFirestoreItems from '../hooks/useFirestoreItems.js';
 import { contentCollections } from '../utils/contentStore.js';
 
-const photos = [
-  'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?auto=format&fit=crop&w=1400&q=85',
-  'https://images.unsplash.com/photo-1600100397608-f0108a02ef5f?auto=format&fit=crop&w=1400&q=85',
-  'https://images.unsplash.com/photo-1594376852272-69a2a15b3b61?auto=format&fit=crop&w=1400&q=85',
-  'https://images.unsplash.com/photo-1567591379221-7be4995a21e0?auto=format&fit=crop&w=1400&q=85',
-  'https://images.unsplash.com/photo-1621112904887-419379ce6824?auto=format&fit=crop&w=1400&q=85',
-  'https://images.unsplash.com/photo-1599507593499-a3f7d7d97667?auto=format&fit=crop&w=1400&q=85',
-  'https://images.unsplash.com/photo-1606293926249-ed22a4f67f56?auto=format&fit=crop&w=1400&q=85',
-  'https://images.unsplash.com/photo-1610041321420-a596dd14ebc9?auto=format&fit=crop&w=1400&q=85',
-  'https://images.unsplash.com/photo-1591453089816-0fbb971b454c?auto=format&fit=crop&w=1400&q=85',
-  'https://images.unsplash.com/photo-1606293926075-69a00dbfde81?auto=format&fit=crop&w=1400&q=85',
+// ═════════════════════════════════════════════════════════════════════════════
+// MEDIA LOGOS — auto-rotating + swipeable logo strip (Electronic & Print media)
+// Add your own logo images in: client/public/images/logos/electronic/ and .../print/
+// Then reference them as: '/images/logos/electronic/your-logo.png'
+// ═════════════════════════════════════════════════════════════════════════════
+const electronicMediaLogos = [
+  { name: 'Zee 24 Taas', src: '/images/logos/electronic/zee-24-taas.png' },
+  { name: 'ABP Majha', src: '/images/logos/electronic/abp-majha.png' },
+  { name: 'tv9 Marathi', src: '/images/logos/electronic/tv9-marathi.png' },
+  { name: 'News18 Lokmat', src: '/images/logos/electronic/news18-lokmat.png' },
+  { name: 'Saam TV', src: '/images/logos/electronic/saam-tv.png' },
 ];
 
+const printMediaLogos = [
+  { name: 'Maharashtra Times', src: '/images/logos/print/maharashtra-times.png' },
+  { name: 'Lokmat', src: '/images/logos/print/lokmat.png' },
+  { name: 'Sakal', src: '/images/logos/print/sakal.png' },
+  { name: 'Mumbai Mirror', src: '/images/logos/print/mumbai-mirror.png' },
+  { name: 'Loksatta', src: '/images/logos/print/loksatta.png' },
+];
+
+function LogoMarquee({ logos, direction = 'left', speed = 45 }) {
+  const trackRef = useRef(null);
+  const x = useMotionValue(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [loopWidth, setLoopWidth] = useState(0);
+
+  useEffect(() => {
+    if (trackRef.current) {
+      setLoopWidth(trackRef.current.scrollWidth / 2);
+    }
+  }, [logos]);
+
+  useAnimationFrame((_, delta) => {
+    if (isPaused || !loopWidth) return;
+    const dir = direction === 'left' ? -1 : 1;
+    let next = x.get() + (dir * speed * delta) / 1000;
+    if (direction === 'left' && next <= -loopWidth) next += loopWidth;
+    if (direction === 'right' && next >= 0) next -= loopWidth;
+    x.set(next);
+  });
+
+  return (
+    <div
+      className="overflow-hidden"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <motion.div
+        ref={trackRef}
+        className="flex w-max gap-10 py-2"
+        style={{ x }}
+        drag="x"
+        dragConstraints={{ left: -loopWidth * 2, right: loopWidth * 2 }}
+        dragElastic={0.06}
+        dragMomentum={false}
+        onDragStart={() => setIsPaused(true)}
+        onDragEnd={() => setIsPaused(false)}
+        onTouchStart={() => setIsPaused(true)}
+        onTouchEnd={() => setIsPaused(false)}
+      >
+        {[...logos, ...logos].map((logo, i) => (
+          <div
+            key={`${logo.name}-${i}`}
+            className="flex shrink-0 select-none items-center justify-center rounded-xl border border-mandal-green/10 bg-white px-6"
+            style={{ width: 170, height: 96 }}
+          >
+            <img
+              src={logo.src}
+              alt={logo.name}
+              draggable={false}
+              className="max-h-14 max-w-[130px] object-contain opacity-80 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                e.currentTarget.nextSibling.style.display = 'block';
+              }}
+            />
+            <span className="hidden text-center text-xs font-bold text-mandal-ink/40">
+              {logo.name}
+            </span>
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+}
+
+function LogoSection({ title, logos, direction }) {
+  return (
+    <div>
+      <p className="mb-4 text-center text-xs font-bold uppercase tracking-[0.28em] text-mandal-gold">
+        {title}
+      </p>
+      <LogoMarquee logos={logos} direction={direction} />
+    </div>
+  );
+}
+
+// Note: no "export default" here — News.jsx already has the default export below,
+// and a file can only have one default export.
+function MediaLogos() {
+  return (
+    <section className="section-pad bg-white">
+      <div className="container-pad">
+        
+        
+
+          <LogoSection title="Electronic Media" logos={electronicMediaLogos} direction="left" />
+          <div className="mt-12 grid gap-12"></div>
+          <LogoSection title="Print Media" logos={printMediaLogos} direction="right" />
+        </div>
+
+        
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// NEWSPAPER CLIPPINGS — Replace these with your actual newspaper cut-out photos.
+// Put your images in: client/public/images/news/
+// Then reference them as: '/images/news/your-clipping.jpg'
+//
+// Each entry:
+//   title       — headline of the news coverage
+//   media       — newspaper / channel name
+//   year        — year of coverage (string)
+//   description — short summary shown on the card
+//   type        — 'newspaper' | 'yt' | 'online'
+//   youtubeLink — (required for yt) YouTube URL — thumbnail is auto-fetched from this,
+//                 and clicking the card opens this video
+//   coverImage  — newspaper clipping photo (main card image) — NOT needed for yt items,
+//                 the YouTube thumbnail is used automatically instead
+//   gallery     — array of clipping photos (opens in lightbox, newspaper items only)
+// ─────────────────────────────────────────────────────────────────────────────
 const newsItems = [
-  { title: 'Ganeshotsav 2026: Tradition in Every Detail', media: 'Zee 24 Taas', year: '2026', description: 'A festival special showcasing the artistry, devotion and disciplined preparation behind this year’s celebration.', youtubeLink: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', coverImage: photos[0], gallery: [photos[0], photos[1], photos[2], photos[3]] },
-  { title: 'Panchganga Brings the Neighbourhood Together', media: 'Maharashtra Times', year: '2026', description: 'A warm print feature on the mandal’s people-first celebrations and shared spirit of service.', youtubeLink: '', coverImage: photos[1], gallery: [photos[1], photos[4], photos[5]] },
-  { title: 'A Celebration Rooted in Seva', media: 'TV9 Marathi', year: '2025', description: 'An on-ground television report following volunteers as they transform festival devotion into community action.', youtubeLink: 'https://www.youtube.com/watch?v=3JZ_D3ELwOQ', coverImage: photos[2], gallery: [photos[2], photos[6], photos[0], photos[7], photos[3]] },
-  { title: 'The Art and Soul of Panchganga', media: 'Loksatta', year: '2025', description: 'A detailed newspaper story about the craft, heritage and volunteers behind the mandal’s distinctive decor.', youtubeLink: '', coverImage: photos[3], gallery: [photos[3], photos[0], photos[8], photos[1]] },
-  { title: 'Mumbai’s Ganeshotsav: A Special Report', media: 'ABP Majha', year: '2025', description: 'A citywide festival report featuring Panchganga’s welcoming traditions and memorable evening aarti.', youtubeLink: 'https://www.youtube.com/watch?v=L_jWHffIx5E', coverImage: photos[4], gallery: [photos[4], photos[2], photos[9], photos[5]] },
-  { title: 'Where Heritage Meets Hope', media: 'Sakal', year: '2024', description: 'Coverage of the mandal’s social initiatives alongside its thoughtful and graceful Ganeshotsav presentation.', youtubeLink: '', coverImage: photos[5], gallery: [photos[5], photos[0], photos[6]] },
-  { title: 'Inside the Grand Festival Preparations', media: 'News18 Lokmat', year: '2024', description: 'A behind-the-scenes look at the teams, planning and care that shape the Panchganga experience.', youtubeLink: 'https://www.youtube.com/watch?v=kJQP7kiw5Fk', coverImage: photos[6], gallery: [photos[6], photos[7], photos[1], photos[4], photos[8]] },
-  { title: 'Devotion, Design and Community', media: 'Saam TV', year: '2023', description: 'A visual report celebrating the creative vision and inclusive energy of the festival.', youtubeLink: 'https://www.youtube.com/watch?v=OPf0YbXqDm0', coverImage: photos[7], gallery: [photos[7], photos[3], photos[9], photos[2]] },
-  { title: 'An Enduring Legacy in the City', media: 'Mumbai Mirror', year: '2023', description: 'A retrospective newspaper article on the people and values that continue to guide the mandal.', youtubeLink: '', coverImage: photos[8], gallery: [photos[8], photos[5], photos[0]] },
-  { title: 'Ganeshotsav Through the Lens of Faith', media: 'Lokmat News', year: '2022', description: 'Festival coverage capturing the vibrant darshan, cultural moments and heartfelt participation of devotees.', youtubeLink: 'https://www.youtube.com/watch?v=fJ9rUzIMcZQ', coverImage: photos[9], gallery: [photos[9], photos[1], photos[4], photos[6]] },
+  {
+    media: 'Maharashtra Times',
+    year: '2024',
+    type: 'newspaper',
+    coverImage: '/images/news/clipping-maha-times-2024.jpg',
+    gallery: [
+      '/images/news/clipping-maha-times-2024.jpg',
+      '/images/news/clipping-maha-times-2024-2.jpg',
+    ],
+  },
+  {
+    media: 'Local Paper',
+    year: '2015',
+    type: 'newspaper',
+    coverImage: '/images/news1.jpeg',
+    gallery: [
+      '/images/news1.jpeg',
+    ],
+  },
+  {
+    media: 'Sakal',
+    year: '2023',
+    type: 'newspaper',
+    coverImage: '/images/news/clipping-sakal-2023.jpg',
+    gallery: [
+      '/images/news/clipping-sakal-2023.jpg',
+      '/images/news/clipping-sakal-2023-2.jpg',
+    ],
+  },
+  {
+    media: 'Lokmat',
+    year: '2023',
+    type: 'newspaper',
+    coverImage: '/images/news/clipping-lokmat-2023.jpg',
+    gallery: [
+      '/images/news/clipping-lokmat-2023.jpg',
+    ],
+  },
+  {
+    media: 'Zee 24 Taas',
+    year: '2022',
+    type: 'yt',
+    youtubeLink: 'https://youtu.be/jez2CUTYrUQ?si=kGcGiLteTk80qWHD',
+  },
+  {
+    media: 'tv9 Marathi',
+    year: '2022',
+    type: 'yt',
+    youtubeLink: '', // add the real YouTube URL here to enable this card
+  },
+  {
+    media: 'Mumbai Mirror',
+    year: '2021',
+    type: 'newspaper',
+    coverImage: '/images/news/clipping-mumbai-mirror-2021.jpg',
+    gallery: [
+      '/images/news/clipping-mumbai-mirror-2021.jpg',
+    ],
+  },
+  {
+    media: 'ABP Majha',
+    year: '2019',
+    type: 'yt',
+    youtubeLink: '', // add the real YouTube URL here to enable this card
+  },
 ];
 
-const years = ['All', '2026', '2025', '2024', '2023', '2022'];
-const fadeUp = { hidden: { opacity: 0, y: 22 }, visible: { opacity: 1, y: 0 } };
+const TYPE_LABELS = {
+  newspaper: 'Newspaper',
+  yt: 'Youtube',
+};
 
-function GalleryModal({ item, onClose }) {
+const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+
+// ─── Extract a real thumbnail image straight from a YouTube URL ──────────────
+function getYouTubeThumbnail(url) {
+  if (!url) return null;
+  try {
+    const parsed = new URL(url);
+    let id = null;
+
+    if (parsed.hostname.includes('youtu.be')) {
+      id = parsed.pathname.slice(1).split('/')[0];
+    } else if (parsed.hostname.includes('youtube.com')) {
+      if (parsed.searchParams.get('v')) {
+        id = parsed.searchParams.get('v');
+      } else if (parsed.pathname.startsWith('/embed/')) {
+        id = parsed.pathname.split('/embed/')[1];
+      } else if (parsed.pathname.startsWith('/shorts/')) {
+        id = parsed.pathname.split('/shorts/')[1];
+      }
+    }
+
+    if (!id) return null;
+    id = id.split('?')[0].split('&')[0];
+    return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+  } catch {
+    return null;
+  }
+}
+
+// ─── Gallery / Clipping Lightbox ──────────────────────────────────────────────
+function ClippingModal({ item, onClose }) {
   const [active, setActive] = useState(0);
   const [touchStart, setTouchStart] = useState(null);
   const total = item.gallery.length;
-  const previous = () => setActive((value) => (value - 1 + total) % total);
-  const next = () => setActive((value) => (value + 1) % total);
+  const prev = () => setActive((i) => (i - 1 + total) % total);
+  const next = () => setActive((i) => (i + 1) % total);
 
   useEffect(() => {
-    const onKeyDown = (event) => {
-      if (event.key === 'Escape') onClose();
-      if (event.key === 'ArrowLeft') previous();
-      if (event.key === 'ArrowRight') next();
+    const onKey = (e) => {
+      if (e.key === 'Escape')      onClose();
+      if (e.key === 'ArrowLeft')   prev();
+      if (e.key === 'ArrowRight')  next();
     };
-    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
-    return () => { window.removeEventListener('keydown', onKeyDown); document.body.style.overflow = ''; };
-  }, [active, total, onClose]);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [active, total]);
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[60] flex items-center justify-center bg-mandal-green/90 p-3 backdrop-blur-xl sm:p-6" role="dialog" aria-modal="true" aria-label={`${item.title} gallery`} onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
-      <div className="flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-[1.75rem] border border-white/15 bg-black/25 shadow-2xl">
-        <header className="flex items-center justify-between gap-4 px-4 py-3 text-white sm:px-6 sm:py-4">
-          <div className="min-w-0"><p className="truncate font-display text-lg font-bold sm:text-xl">{item.title}</p><p className="text-xs text-white/65">{item.media} · {active + 1} of {total}</p></div>
-          <button type="button" onClick={onClose} className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/10 transition hover:bg-white/20" aria-label="Close gallery"><X className="h-5 w-5" /></button>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[60] flex items-center justify-center bg-black/92 p-3 sm:p-6"
+      role="dialog"
+      aria-modal="true"
+      onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}
+    >
+      <div className="flex h-full w-full max-w-5xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
+
+        <header className="flex shrink-0 items-center gap-4 border-b border-mandal-green/10 px-5 py-4">
+          <div className="min-w-0 flex-1">
+            <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-mandal-gold">
+              {item.media} · {item.year}
+            </p>
+            <h3 className="mt-0.5 truncate font-display text-lg font-bold text-mandal-green">
+              {item.title}
+            </h3>
+          </div>
+          <span className="shrink-0 rounded-full bg-mandal-mint px-3 py-1 text-xs font-bold text-mandal-green">
+            {active + 1} / {total}
+          </span>
+          <button
+            type="button"
+            onClick={onClose}
+            className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-mandal-green/15 text-mandal-green transition hover:bg-mandal-mint"
+            aria-label="Close"
+          >
+            <X size={16} />
+          </button>
         </header>
-        <div className="relative flex min-h-0 flex-1 items-center justify-center px-3 pb-3 sm:px-8" onTouchStart={(event) => setTouchStart(event.touches[0].clientX)} onTouchEnd={(event) => { const end = event.changedTouches[0].clientX; if (touchStart && Math.abs(end - touchStart) > 45) end < touchStart ? next() : previous(); setTouchStart(null); }}>
-          <AnimatePresence mode="wait"><motion.img key={active} src={item.gallery[active]} alt={`${item.title}, image ${active + 1}`} initial={{ opacity: 0, scale: 0.985 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.01 }} transition={{ duration: 0.22 }} className="h-full max-h-[62vh] w-full select-none rounded-xl object-contain" /></AnimatePresence>
-          <button type="button" onClick={previous} className="absolute left-4 grid h-10 w-10 place-items-center rounded-full bg-black/45 text-white transition hover:bg-mandal-gold hover:text-mandal-green sm:left-8 sm:h-12 sm:w-12" aria-label="Previous image"><ChevronLeft /></button>
-          <button type="button" onClick={next} className="absolute right-4 grid h-10 w-10 place-items-center rounded-full bg-black/45 text-white transition hover:bg-mandal-gold hover:text-mandal-green sm:right-8 sm:h-12 sm:w-12" aria-label="Next image"><ChevronRight /></button>
+
+        <div
+          className="relative flex min-h-0 flex-1 items-center justify-center bg-[#f5f0e8] px-12 py-6"
+          onTouchStart={(e) => setTouchStart(e.touches[0].clientX)}
+          onTouchEnd={(e) => {
+            const dx = e.changedTouches[0].clientX - touchStart;
+            if (Math.abs(dx) > 45) dx < 0 ? next() : prev();
+            setTouchStart(null);
+          }}
+        >
+          <div className="pointer-events-none absolute inset-0 opacity-20"
+            style={{ backgroundImage: 'repeating-linear-gradient(0deg,transparent,transparent 24px,#00000008 24px,#00000008 25px)' }}
+          />
+
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={active}
+              src={item.gallery[active]}
+              alt={`${item.title} — clipping ${active + 1}`}
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="relative max-h-[58vh] w-auto select-none rounded object-contain shadow-xl"
+              style={{ filter: 'contrast(1.04) brightness(0.98)' }}
+            />
+          </AnimatePresence>
+
+          {total > 1 && (
+            <>
+              <button
+                type="button"
+                onClick={prev}
+                className="absolute left-3 top-1/2 -translate-y-1/2 grid h-10 w-10 place-items-center rounded-full bg-white text-mandal-green shadow-md transition hover:bg-mandal-mint"
+                aria-label="Previous"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                type="button"
+                onClick={next}
+                className="absolute right-3 top-1/2 -translate-y-1/2 grid h-10 w-10 place-items-center rounded-full bg-white text-mandal-green shadow-md transition hover:bg-mandal-mint"
+                aria-label="Next"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </>
+          )}
         </div>
-        <div className="flex gap-2 overflow-x-auto px-4 pb-4 sm:justify-center"><div className="flex gap-2">{item.gallery.map((image, index) => <button type="button" key={`${image}-${index}`} onClick={() => setActive(index)} className={`h-12 w-16 shrink-0 overflow-hidden rounded-lg border-2 transition sm:h-14 sm:w-20 ${active === index ? 'border-mandal-gold opacity-100' : 'border-transparent opacity-50 hover:opacity-80'}`} aria-label={`View image ${index + 1}`}><img src={image} alt="" className="h-full w-full object-cover" /></button>)}</div></div>
+
+        {total > 1 && (
+          <div className="shrink-0 border-t border-mandal-green/10 bg-white px-5 py-3">
+            <div className="flex justify-center gap-2 overflow-x-auto [scrollbar-width:none]">
+              {item.gallery.map((src, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => setActive(i)}
+                  className="shrink-0 overflow-hidden rounded-lg transition-all duration-200"
+                  style={{
+                    width: 72,
+                    height: 52,
+                    outline: i === active ? '2.5px solid #1B5E3B' : '2px solid transparent',
+                    outlineOffset: 2,
+                    opacity: i === active ? 1 : 0.45,
+                  }}
+                >
+                  <img src={src} alt="" className="h-full w-full object-cover" loading="lazy" />
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
       </div>
     </motion.div>
   );
 }
 
+// ─── Main page ────────────────────────────────────────────────────────────────
 export default function News() {
   const [query, setQuery] = useState('');
   const [year, setYear] = useState('All');
-  const [galleryItem, setGalleryItem] = useState(null);
+  const [typeFilter, setTypeFilter] = useState('All');
+  const [modalItem, setModalItem] = useState(null);
+
   const { items: uploadedNews, loading } = useFirestoreItems(contentCollections.news);
-  const allNewsItems = useMemo(() => {
+
+  const allItems = useMemo(() => {
     const dynamic = uploadedNews.map((item) => ({
-      title: item.title || 'News Update',
-      media: item.media || 'Panchganga',
-      year: item.year || '2026',
-      description: item.description || '',
+      title:       item.title       || 'News Update',
+      media:       item.media       || 'Panchganga',
+      year:        item.year        || '2026',
+      type:        item.type        || 'newspaper',
       youtubeLink: item.youtubeLink || '',
-      coverImage: item.coverImage || item.gallery?.[0],
-      gallery: item.gallery?.length ? item.gallery : [item.coverImage].filter(Boolean),
+      coverImage:  item.coverImage  || item.gallery?.[0],
+      gallery:     item.gallery?.length ? item.gallery : [item.coverImage].filter(Boolean),
     }));
     return [...dynamic, ...newsItems];
   }, [uploadedNews]);
-  const availableYears = useMemo(() => ['All', ...new Set(allNewsItems.map((item) => item.year).filter(Boolean))], [allNewsItems]);
-  const filteredItems = useMemo(() => allNewsItems.filter((item) => {
-    const matchesYear = year === 'All' || item.year === year;
-    const text = `${item.title} ${item.media} ${item.year}`.toLowerCase();
-    return matchesYear && text.includes(query.toLowerCase().trim());
-  }), [allNewsItems, query, year]);
 
-  return <>
-    <Seo titleKey="seo.homeTitle" descriptionKey="seo.homeDescription" />
-    <section className="relative isolate overflow-hidden devotional-gradient">
-      <motion.div animate={{ y: [0, -18, 0], rotate: [0, 8, 0] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }} className="absolute -right-16 top-6 h-64 w-64 rounded-full border border-mandal-gold/25 bg-mandal-gold/10 blur-[1px]" />
-      <motion.div animate={{ x: [0, 22, 0], y: [0, 14, 0] }} transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }} className="absolute -bottom-20 -left-14 h-72 w-72 rounded-full bg-mandal-mint/70 blur-3xl" />
-      <div className="gold-divider absolute inset-x-0 top-0" />
-      <div className="container-pad relative section-pad pb-14 text-center sm:pb-20"><motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.55 }} className="mx-auto max-w-3xl"><p className="eyebrow">Panchganga in the media</p><h1 className="headline mt-4">📰 News &amp; Media Gallery</h1><p className="body-copy mt-5">Explore memorable television coverage, newspaper articles and media highlights featuring Panchganga Sarvajanik Utsav Mandal throughout the years.</p></motion.div></div>
-    </section>
-    <section className="section-pad bg-white/65 pt-10 sm:pt-14"><div className="container-pad">
-      <div className="soft-panel mx-auto max-w-3xl p-2"><label className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3.5 text-mandal-ink/55"><Search className="h-5 w-5 shrink-0 text-mandal-gold" /><input value={query} onChange={(event) => setQuery(event.target.value)} className="w-full bg-transparent text-sm font-medium text-mandal-ink outline-none placeholder:text-mandal-ink/45 sm:text-base" placeholder="Search by news title, channel, newspaper or year…" aria-label="Search media coverage" /></label></div>
-      <div className="mt-8 flex flex-wrap justify-center gap-2 sm:gap-3">{availableYears.map((option) => <button type="button" key={option} onClick={() => setYear(option)} className={`rounded-full px-4 py-2 text-sm font-bold transition sm:px-5 ${year === option ? 'bg-mandal-green text-white shadow-soft' : 'border border-mandal-green/10 bg-white text-mandal-green hover:border-mandal-gold hover:text-mandal-leaf'}`}>{option}</button>)}</div>
-      <AnimatePresence mode="wait"><motion.div key={`${year}-${query}`} initial="hidden" animate="visible" exit="hidden" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.07 } } }} className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {loading ? Array.from({ length: 3 }).map((_, index) => <CardSkeleton key={index} />) : null}
-        {filteredItems.map((item) => <motion.article key={item.title} variants={fadeUp} transition={{ duration: 0.4 }} whileHover={{ y: -7 }} className="group flex overflow-hidden rounded-[1.5rem] border border-mandal-green/10 bg-white shadow-soft transition hover:border-mandal-gold/80 hover:shadow-[0_20px_45px_rgba(13,63,35,0.17)]"><div className="flex w-full flex-col"><div className="relative aspect-[16/10] overflow-hidden"><img src={item.coverImage} alt="" className="h-full w-full object-cover transition duration-700 group-hover:scale-110" loading="lazy" /><div className="absolute inset-0 bg-gradient-to-t from-mandal-green/45 to-transparent" /><span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-mandal-green/85 px-3 py-1.5 text-xs font-bold text-white backdrop-blur"><Camera className="h-3.5 w-3.5 text-mandal-gold" />{item.gallery.length} Photos</span></div><div className="flex flex-1 flex-col p-5 sm:p-6"><div className="flex items-center justify-between gap-3 text-xs font-bold"><span className="truncate text-mandal-leaf">{item.media}</span><span className="inline-flex shrink-0 items-center gap-1 text-mandal-ink/50"><Calendar className="h-3.5 w-3.5 text-mandal-gold" />{item.year}</span></div><h2 className="mt-3 font-display text-2xl font-bold leading-tight text-mandal-green">{item.title}</h2><p className="mt-3 text-sm leading-6 text-mandal-ink/65">{item.description}</p><div className="mt-5 flex flex-wrap gap-2 pt-1">{item.youtubeLink && <a href={item.youtubeLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-full bg-mandal-green px-4 py-2.5 text-sm font-bold text-white transition hover:bg-mandal-leaf"><Play className="h-3.5 w-3.5 fill-mandal-gold text-mandal-gold" />Watch Video</a>}<button type="button" onClick={() => setGalleryItem(item)} className="inline-flex items-center gap-1.5 rounded-full border border-mandal-green/15 bg-mandal-mint/55 px-4 py-2.5 text-sm font-bold text-mandal-green transition hover:border-mandal-gold hover:bg-mandal-gold/15"><Camera className="h-4 w-4 text-mandal-gold" />View Gallery</button></div></div></div></motion.article>)}
-      </motion.div></AnimatePresence>
-      {filteredItems.length === 0 && <div className="soft-panel mx-auto mt-10 max-w-xl p-10 text-center"><p className="font-display text-2xl font-bold text-mandal-green">No media coverage found</p><p className="mt-2 text-sm text-mandal-ink/65">Try another year or a different search phrase.</p></div>}
-    </div></section>
-    <AnimatePresence>{galleryItem && <GalleryModal item={galleryItem} onClose={() => setGalleryItem(null)} />}</AnimatePresence>
-  </>;
+  const resolvedItems = useMemo(() => allItems.map((item) => {
+    if (item.type === 'yt') {
+      const ytThumb = getYouTubeThumbnail(item.youtubeLink);
+      return { ...item, coverImage: item.coverImage || ytThumb };
+    }
+    return item;
+  }), [allItems]);
+
+  const availableYears = useMemo(
+    () => ['All', ...new Set(resolvedItems.map((i) => i.year).filter(Boolean)).values()].sort((a, b) => a === 'All' ? -1 : b - a),
+    [resolvedItems]
+  );
+
+  const filtered = useMemo(() => resolvedItems.filter((item) => {
+    const matchYear = year === 'All' || item.year === year;
+    const matchType = typeFilter === 'All' || item.type === typeFilter;
+    const text = `${item.title} ${item.media} ${item.year}`.toLowerCase();
+    return matchYear && matchType && text.includes(query.toLowerCase().trim());
+  }), [resolvedItems, query, year, typeFilter]);
+
+  const handleCardClick = (item) => {
+    if (item.type === 'yt' && item.youtubeLink) {
+      window.open(item.youtubeLink, '_blank', 'noopener,noreferrer');
+    } else {
+      setModalItem(item);
+    }
+  };
+
+  return (
+    <>
+      <Seo titleKey="seo.homeTitle" descriptionKey="seo.homeDescription" />
+
+      {/* ── HERO ──────────────────────────────────────────────── */}
+      <section className="section-pad devotional-gradient">
+        <div className="container-pad text-center">
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-mandal-gold">
+            Panchganga in the Media
+          </p>
+          <h1 className="mt-4 font-display text-4xl font-bold leading-tight text-mandal-green sm:text-5xl">
+            News &amp; Media Coverage
+          </h1>
+        </div>
+      </section>
+
+      <MediaLogos />
+
+      {/* ── FILTERS ───────────────────────────────────────────── */}
+      <section className="border-b border-mandal-green/10 bg-white py-6">
+        <div className="container-pad flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+
+          <div className="flex gap-2">
+            {['All', 'newspaper', 'yt'].map((t) => (
+              <button
+                key={t}
+                type="button"
+                onClick={() => setTypeFilter(t)}
+                className={`rounded-full px-4 py-1.5 text-xs font-bold transition ${
+                  typeFilter === t
+                    ? 'bg-mandal-gold text-mandal-green'
+                    : 'border border-mandal-green/15 bg-white text-mandal-ink/60 hover:border-mandal-gold'
+                }`}
+              >
+                {t === 'All' ? 'All Types' : TYPE_LABELS[t]}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── GRID ──────────────────────────────────────────────── */}
+      <section className="section-pad bg-white/60">
+        <div className="container-pad">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`${year}-${typeFilter}-${query}`}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.06 } } }}
+              className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3"
+            >
+              {loading && Array.from({ length: 6 }).map((_, i) => <CardSkeleton key={i} />)}
+
+              {filtered.map((item) => {
+                const isYoutube = item.type === 'yt' && item.youtubeLink;
+                return (
+                  <motion.article
+                    key={`${item.title}-${item.year}`}
+                    variants={fadeUp}
+                    transition={{ duration: 0.35 }}
+                    className="group flex flex-col overflow-hidden rounded-2xl border border-mandal-green/10 bg-white shadow-soft transition hover:-translate-y-1 hover:border-mandal-gold/60 hover:shadow-[0_18px_40px_rgba(13,63,35,0.14)]"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => handleCardClick(item)}
+                      className="relative block overflow-hidden bg-[#f5f0e8]"
+                      style={{ aspectRatio: '4/3' }}
+                      aria-label={isYoutube ? `Watch ${item.media} video` : `Open clippings for ${item.title}`}
+                    >
+                      {!isYoutube && (
+                        <div
+                          className="pointer-events-none absolute inset-0 opacity-30"
+                          style={{
+                            backgroundImage: 'repeating-linear-gradient(0deg,transparent,transparent 20px,#00000008 20px,#00000008 21px)',
+                          }}
+                        />
+                      )}
+
+                      {item.coverImage ? (
+                        <img
+                          src={item.coverImage}
+                          alt={item.title}
+                          loading="lazy"
+                          className={`h-full w-full transition duration-500 group-hover:scale-[1.03] ${
+                            isYoutube ? 'object-cover' : 'object-contain p-3'
+                          }`}
+                          style={isYoutube ? undefined : { filter: 'contrast(1.05) brightness(0.97)' }}
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                            e.currentTarget.nextSibling.style.display = 'flex';
+                          }}
+                        />
+                      ) : null}
+
+                      <div
+                        className="absolute inset-0 flex-col items-center justify-center gap-2 text-mandal-green/30"
+                        style={{ display: item.coverImage ? 'none' : 'flex' }}
+                      >
+                        {isYoutube ? <Play size={40} strokeWidth={1.2} /> : <Newspaper size={40} strokeWidth={1.2} />}
+                        <p className="text-xs font-medium">
+                          {isYoutube ? 'Video link not added yet' : 'Clipping not added yet'}
+                        </p>
+                      </div>
+
+                      {isYoutube && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/10 transition group-hover:bg-black/25">
+                          <span className="grid h-14 w-14 place-items-center rounded-full bg-white/90 shadow-lg transition group-hover:scale-110">
+                            <Play size={22} className="translate-x-0.5 fill-mandal-green text-mandal-green" />
+                          </span>
+                        </div>
+                      )}
+
+                      <span className="absolute left-2.5 top-2.5 rounded-full bg-mandal-green px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white">
+                        {TYPE_LABELS[item.type] || 'Press'}
+                      </span>
+                    </button>
+
+                    <div className="flex flex-1 flex-col p-5">
+                      <div className="flex items-center justify-between gap-2 text-[11px] font-bold">
+                        <span className="truncate text-mandal-leaf">{item.media}</span>
+                        <span className="flex shrink-0 items-center gap-1 text-mandal-ink/45">
+                          <Calendar size={11} />
+                          {item.year}
+                        </span>
+                      </div>
+
+                      {isYoutube && (
+                          <a
+                          href={item.youtubeLink}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-mandal-green px-4 py-2 text-xs font-bold text-white transition hover:bg-mandal-leaf"
+                        >
+                          <Play size={12} className="fill-mandal-gold text-mandal-gold" />
+                          Watch Video
+                        </a>
+                      )}
+                    </div>
+                  </motion.article>
+                );
+              })}
+            </motion.div>
+          </AnimatePresence>
+
+          {!loading && filtered.length === 0 && (
+            <div className="mx-auto mt-16 max-w-sm text-center">
+              <Newspaper size={40} strokeWidth={1} className="mx-auto text-mandal-green/20" />
+              <p className="mt-4 font-display text-xl font-bold text-mandal-green">No coverage found</p>
+              <p className="mt-2 text-sm text-mandal-ink/50">Try a different year, type, or search term.</p>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <AnimatePresence>
+        {modalItem && <ClippingModal item={modalItem} onClose={() => setModalItem(null)} />}
+      </AnimatePresence>
+    </>
+  );
 }
