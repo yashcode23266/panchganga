@@ -25,8 +25,9 @@ export default function Home() {
     <>
       <Seo titleKey="seo.homeTitle" descriptionKey="seo.homeDescription" />
 
-      <div className="overflow-hidden border-y border-mandal-gold/30 bg-[#ffffff] py-3 text-green-1100">
-        <div className="marquee-track flex w-max gap-10 whitespace-nowrap text-sm font-semibold">
+      {/* <div className="overflow-hidden border-y border-mandal-gold/30 bg-[#ffffff] py-3 text-green-1100">
+        <div className="marquee-track flex w-max gap-10 whitespace-nowrap text-sm font-semibold ">{}
+          
           {[...Array(3)].map((_, index) => (
             <span key={index} className="flex items-center gap-10">
               <span>{t('home.announcement')}</span>
@@ -34,7 +35,33 @@ export default function Home() {
             </span>
           ))}
         </div>
+      </div> */}
+
+
+      <div className="overflow-hidden border-y border-mandal-gold/30 bg-[#ffffff] py-3 text-green-1100">
+  <div className="marquee-track flex w-max gap-20 whitespace-nowrap text-sm font-semibold">
+    
+    {[...Array(2)].map((_, i) => (
+      <div key={i} className="flex items-center gap-20">
+        {[...Array(3)].map((_, index) => (
+          <span key={index} className="flex items-center gap-20">
+            <span>{t('home.announcement')}</span>
+            <span className="text-mandal-gold">&bull;</span>
+          </span>
+        ))}
       </div>
+    ))}
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
 
       <section className="relative min-h-[calc(100vh-5rem)] overflow-hidden bg-white">
         <div className="gold-divider absolute inset-x-0 top-0" />

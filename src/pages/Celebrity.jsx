@@ -25,7 +25,7 @@ import * as THREE from 'three';
 // ╚══════════════════════════════════════════════════════════╝
 const GALLERY_IMAGES = [
   {
-    src: 'public/images/cp.png',
+    src: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&auto=format&fit=crop&q=80',
     alt: 'Celebrity Guest 1',
   },
   {
