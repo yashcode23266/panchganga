@@ -77,7 +77,8 @@ function LogoMarquee({ logos, direction = 'left', speed = 45 }) {
               src={logo.src}
               alt={logo.name}
               draggable={false}
-              className="max-h-14 max-w-[130px] object-contain opacity-80 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+              // className="max-h-14 max-w-[130px] object-contain opacity-80 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+              className="max-h-14 max-w-[130px] object-contain transition duration-300 hover:scale-105"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
                 e.currentTarget.nextSibling.style.display = 'block';
