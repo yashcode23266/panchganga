@@ -12,19 +12,19 @@ import { contentCollections } from '../utils/contentStore.js';
 // Then reference them as: '/images/logos/electronic/your-logo.png'
 // ═════════════════════════════════════════════════════════════════════════════
 const electronicMediaLogos = [
-  { name: 'Zee 24 Taas', src: '/images/logos/electronic/zee-24-taas.png' },
-  { name: 'ABP Majha', src: '/images/logos/electronic/abp-majha.png' },
-  { name: 'tv9 Marathi', src: '/images/logos/electronic/tv9-marathi.png' },
-  { name: 'News18 Lokmat', src: '/images/logos/electronic/news18-lokmat.png' },
-  { name: 'Saam TV', src: '/images/logos/electronic/saam-tv.png' },
+  { name: 'Zee 24 Taas', src: '/images/zee24 taas.png' },
+  { name: 'ABP Majha', src: '/images/abp majha.png' },
+  { name: 'tv9 Marathi', src: '/images/tv9 Marathi.png' },
+  { name: 'News18 Lokmat', src: '/images/lokmat.png' },
+  { name: 'Saam TV', src: '/images/samTV.png' },
 ];
 
 const printMediaLogos = [
-  { name: 'Maharashtra Times', src: '/images/logos/print/maharashtra-times.png' },
-  { name: 'Lokmat', src: '/images/logos/print/lokmat.png' },
-  { name: 'Sakal', src: '/images/logos/print/sakal.png' },
-  { name: 'Mumbai Mirror', src: '/images/logos/print/mumbai-mirror.png' },
-  { name: 'Loksatta', src: '/images/logos/print/loksatta.png' },
+  { name: 'Maharashtra Times', src: '/images/maharashtra times.png' },
+  { name: 'Lokmat', src: '/images/lokmat.png' },
+  { name: 'Sakal', src: '/images/sakal.png' },
+  { name: 'Mumbai Mirror', src: '/images/mumbai mirror.png' },
+  { name: 'Loksatta', src: '/images/loksatta.png' },
 ];
 
 function LogoMarquee({ logos, direction = 'left', speed = 45 }) {
