@@ -1,8 +1,4 @@
-import { httpsCallable } from 'firebase/functions';
-import { functions } from '../firebase.js';
-
 const DIRECT_UPLOAD_MAX_BYTES = 5 * 1024 * 1024;
-const SERVER_UPLOAD_MAX_BYTES = 10 * 1024 * 1024;
 const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/avif'];
 
 export function validateImageFile(file) {
@@ -10,36 +6,9 @@ export function validateImageFile(file) {
   if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
     throw new Error('Only JPG, PNG, WebP, and AVIF images are allowed.');
   }
-  const maxBytes = import.meta.env.VITE_USE_SERVER_UPLOAD === 'true' ? SERVER_UPLOAD_MAX_BYTES : DIRECT_UPLOAD_MAX_BYTES;
-  if (file.size > maxBytes) {
-    throw new Error(`Image must be ${Math.round(maxBytes / 1024 / 1024)}MB or smaller.`);
+  if (file.size > DIRECT_UPLOAD_MAX_BYTES) {
+    throw new Error(`Image must be ${Math.round(DIRECT_UPLOAD_MAX_BYTES / 1024 / 1024)}MB or smaller.`);
   }
-}
-
-function fileToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      const result = String(reader.result || '');
-      resolve(result.split(',')[1] || '');
-    };
-    reader.onerror = () => reject(new Error('Could not read image file.'));
-    reader.readAsDataURL(file);
-  });
-}
-
-async function uploadViaServer(file) {
-  const uploadOptimizedImage = httpsCallable(functions, 'uploadOptimizedImage');
-  const fileBase64 = await fileToBase64(file);
-  const folder = import.meta.env.VITE_CLOUDINARY_FOLDER || 'panchganga';
-  const result = await uploadOptimizedImage({
-    fileBase64,
-    mimeType: file.type,
-    folder,
-  });
-  const secureUrl = result.data?.secureUrl;
-  if (!secureUrl) throw new Error('Server upload did not return an image URL.');
-  return secureUrl;
 }
 
 async function uploadDirectToCloudinary(file) {
@@ -76,10 +45,5 @@ async function uploadDirectToCloudinary(file) {
 
 export const uploadToCloudinary = async (file) => {
   validateImageFile(file);
-
-  if (import.meta.env.VITE_USE_SERVER_UPLOAD === 'true') {
-    return uploadViaServer(file);
-  }
-
   return uploadDirectToCloudinary(file);
 };

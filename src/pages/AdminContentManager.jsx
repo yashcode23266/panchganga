@@ -1,5 +1,5 @@
-import { addDoc, collection, deleteDoc, doc, serverTimestamp } from 'firebase/firestore';
 import { ArrowLeft, ImagePlus, Loader2, Plus, Save, Trash2 } from 'lucide-react';
+import { addDoc, collection, deleteDoc, doc, serverTimestamp } from 'firebase/firestore';
 import { useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { db } from '../firebase.js';
@@ -79,7 +79,7 @@ function cleanRecord(record) {
 
 function getAdminErrorMessage(error) {
   if (error?.code === 'permission-denied') {
-    return 'Could not save because Firestore permissions denied this section. Deploy firestore.rules and confirm your adminUsers UID is active.';
+    return 'Could not save because Firestore rules denied the write. Deploy the frontend-password firestore.rules.';
   }
 
   if (error?.code === 'unauthenticated') {
@@ -124,51 +124,52 @@ export default function AdminContentManager() {
 
       const primaryUrl = primaryFile ? await uploadToCloudinary(primaryFile) : '';
       const galleryUrls = galleryFiles.length ? await uploadFiles(galleryFiles) : [];
-      const payload = {
-        ...values,
-        createdAt: serverTimestamp(),
-      };
+      const payload = { ...values };
+      let records = [];
 
       if (section === 'gallery') {
         const allPhotos = [primaryUrl, ...galleryUrls].filter(Boolean);
-        await Promise.all(
-          allPhotos.map((src, index) =>
-            addDoc(collection(db, config.collection), cleanRecord({
-              year: values.year,
-              src,
-              caption: index === 0 ? values.caption : `${values.caption} ${index + 1}`,
-              alt: values.caption,
-              createdAt: serverTimestamp(),
-            })),
-          ),
-        );
+        records = allPhotos.map((src, index) => cleanRecord({
+          year: values.year,
+          src,
+          caption: index === 0 ? values.caption : `${values.caption} ${index + 1}`,
+          alt: values.caption,
+        }));
       } else if (section === 'sponsors') {
-        await addDoc(collection(db, config.collection), cleanRecord({
+        records = [cleanRecord({
           name: values.name,
           logo: primaryUrl,
           images: [primaryUrl, ...galleryUrls].filter(Boolean),
           message: values.message || 'Thank you for supporting Hukmill Lane Cha Raja.',
-          createdAt: serverTimestamp(),
-        }));
+        })];
       } else if (section === 'news') {
-        await addDoc(collection(db, config.collection), cleanRecord({
+        records = [cleanRecord({
           ...payload,
           coverImage: primaryUrl,
           gallery: [primaryUrl, ...galleryUrls].filter(Boolean),
-        }));
+        })];
       } else if (section === 'social-work') {
-        await addDoc(collection(db, config.collection), cleanRecord({
+        records = [cleanRecord({
           ...payload,
           image: primaryUrl,
           images: [primaryUrl, ...galleryUrls].filter(Boolean),
-        }));
+        })];
       } else if (section === 'awards') {
-        await addDoc(collection(db, config.collection), cleanRecord({
+        records = [cleanRecord({
           ...payload,
           image: primaryUrl,
           images: [primaryUrl, ...galleryUrls].filter(Boolean),
-        }));
+        })];
       }
+
+      await Promise.all(
+        records.map((record) =>
+          addDoc(collection(db, config.collection), {
+            ...record,
+            createdAt: serverTimestamp(),
+          }),
+        ),
+      );
 
       setMessage('Saved successfully.');
       setValues({});

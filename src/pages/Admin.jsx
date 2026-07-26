@@ -1,6 +1,5 @@
-import { signOut } from "firebase/auth";
-import { auth } from "../firebase";
 import { useNavigate } from 'react-router-dom';
+import { endAdminSession } from '../utils/adminSession.js';
 import {
     Image as ImageIcon,
     Newspaper,
@@ -18,8 +17,8 @@ export default function Admin() {
 
     const navigate = useNavigate();
 
-    const logout = async () => {
-        await signOut(auth);
+    const logout = () => {
+        endAdminSession();
         navigate("/");
     };
 

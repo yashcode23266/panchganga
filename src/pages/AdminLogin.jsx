@@ -1,7 +1,6 @@
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { auth } from '../firebase.js';
+import { getAdminCredentials, startAdminSession } from '../utils/adminSession.js';
 
 export default function AdminLogin() {
   const navigate = useNavigate();
@@ -18,7 +17,15 @@ export default function AdminLogin() {
     setLoading(true);
 
     try {
-      await signInWithEmailAndPassword(auth, email.trim(), password);
+      const credentials = getAdminCredentials();
+      const emailMatches = email.trim().toLowerCase() === credentials.email.toLowerCase();
+      const passwordMatches = password === credentials.password;
+
+      if (!emailMatches || !passwordMatches) {
+        throw new Error('Invalid email or password.');
+      }
+
+      startAdminSession();
       navigate(redirectTo, { replace: true });
     } catch {
       setError('Invalid email or password.');
@@ -31,7 +38,7 @@ export default function AdminLogin() {
     <div className="grid min-h-screen place-items-center bg-gray-100 px-4">
       <form onSubmit={handleLogin} className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
         <h1 className="text-center text-3xl font-black text-emerald-900">Admin Login</h1>
-        <p className="mt-2 text-center text-sm text-gray-500">Use your Firebase admin email account.</p>
+        <p className="mt-2 text-center text-sm text-gray-500">Use the admin email and password configured in the frontend environment.</p>
 
         <label className="mt-8 block">
           <span className="text-sm font-bold text-gray-700">Email</span>

@@ -1,102 +1,53 @@
 # Production Setup
 
-This app is ready to run with Firebase Auth, Firestore rules, and Cloudinary uploads after the steps below are completed.
+This version uses a frontend-only admin password, Firestore for content, and Cloudinary for image uploads.
 
 ## 1. Environment Variables
 
 Create `.env` from `.env.example` and fill all Firebase and Cloudinary values.
 
-Do not commit `.env`.
-
-## 2. Firebase Auth Admin User
-
-In Firebase Console:
-
-1. Enable Authentication -> Email/Password.
-2. Create the admin user email/password.
-3. Copy the user's UID.
-4. In Firestore, create:
+Admin login is controlled by:
 
 ```text
-adminUsers/{uid}
+VITE_ADMIN_EMAIL=panchgangawebsite@gmail.com
+VITE_ADMIN_PASSWORD=panchganga@1990
 ```
 
-With:
+To change the admin login, edit these two values in `.env`, then rebuild and redeploy.
 
-```json
-{
-  "active": true,
-  "role": "admin"
-}
-```
+Important: `VITE_` variables are included in the frontend build. This is simple, but not secure against someone inspecting the website code.
 
-Only users listed in `adminUsers` can access protected admin pages and write/delete content.
+## 2. Firestore Rules
 
-## 3. Firestore Rules
+This frontend-only setup needs direct browser writes, so `firestore.rules` allows public read/write for:
 
-Deploy `firestore.rules`.
+- `gallery`
+- `sponsors`
+- `socialWork`
+- `news`
+- `awards`
 
-Rules allow:
-
-- public read for `gallery`, `sponsors`, `socialWork`, `news`, `awards`
-- create/update/delete only for authenticated users listed in `adminUsers`
-- no public writes
-
-## 4. Firebase App Check
-
-For stronger abuse protection:
-
-1. Enable App Check in Firebase.
-2. Register your production domain.
-3. Add the reCAPTCHA v3 site key to:
-
-```text
-VITE_FIREBASE_APPCHECK_SITE_KEY
-```
-
-4. Enforce App Check for Firestore after testing.
-
-## 5. Cloudinary
-
-The current frontend uses an unsigned Cloudinary upload preset. For production:
-
-- Restrict allowed formats to image types.
-- Restrict max file size.
-- Restrict upload folder to `VITE_CLOUDINARY_FOLDER`.
-- Disable transformations that are not needed.
-
-For the strongest setup, use the included Firebase Function:
-
-```text
-VITE_USE_SERVER_UPLOAD=true
-```
-
-The callable function `uploadOptimizedImage`:
-
-- requires Firebase Auth
-- checks `adminUsers/{uid}`
-- requires App Check
-- resizes images to fit within 1800x1800
-- converts uploads to WebP
-- uploads to Cloudinary using server-side credentials
-
-Set Cloudinary secrets for Functions:
+Deploy rules after changes:
 
 ```powershell
-firebase functions:secrets:set CLOUDINARY_CLOUD_NAME
-firebase functions:secrets:set CLOUDINARY_API_KEY
-firebase functions:secrets:set CLOUDINARY_API_SECRET
+npx firebase-tools deploy --only firestore:rules --project panchganga-93782
 ```
 
-Then deploy functions:
+## 3. Cloudinary
 
-```powershell
-firebase deploy --only functions
+Uploads use the unsigned Cloudinary preset from the browser:
+
+```text
+VITE_USE_SERVER_UPLOAD=false
 ```
 
-Cloudinary asset deletion still needs a server-side delete endpoint if you want to delete the physical asset as well as the Firestore record.
+Keep the Cloudinary preset restricted as much as possible:
 
-## 6. Deploy
+- image formats only
+- max file size
+- expected folder only
+
+## 4. Build And Deploy
 
 Build:
 
@@ -104,22 +55,13 @@ Build:
 npm.cmd run build
 ```
 
-Deploy Firestore rules and hosting:
+Deploy hosting and rules:
 
 ```powershell
-firebase deploy
+npx firebase-tools deploy --only firestore,hosting --project panchganga-93782
 ```
 
-If using server-side optimized upload, install function dependencies before deployment:
-
-```powershell
-cd functions
-npm install
-cd ..
-firebase deploy --only functions,firestore,hosting
-```
-
-## 7. Admin Content
+## 5. Admin Content
 
 Admin routes:
 
@@ -129,4 +71,4 @@ Admin routes:
 - `/admin/news/add`
 - `/admin/awards/add`
 
-Deleting in admin removes the Firestore record from the website. Cloudinary file deletion requires a signed server-side delete endpoint.
+Deleting in admin removes the Firestore record from the website. It does not delete the physical image from Cloudinary.
