@@ -88,8 +88,11 @@ export const translations = {
         'A quiet archive of devotion, togetherness, and festival moments. Replace these images from the gallery array whenever new memories are added.',
       allYears: 'All Years',
     },
+    footer1: {
+      text: 'About Us',
+    },
     footer: {
-      text: 'A calm premium digital home for devotion, tradition, and community.',
+      text: 'Established in 1990, Panchganga Sarvajanik Utsav Mandal is a respected Ganesh mandal in Mumbai known for devotion and social values.For 35+ years, it has raised awareness through meaningful themes highlighting various sections of society.Blending tradition with innovation, the mandal promotes responsible and purposeful Ganeshotsav celebrations.',
       rights: 'All rights reserved.',
     },
   },

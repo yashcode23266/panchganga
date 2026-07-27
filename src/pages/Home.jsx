@@ -7,6 +7,8 @@ import SponsorsSection from '../components/SponsorsSection.jsx';
 import { useLanguage } from '../context/LanguageContext.jsx';
 import { fixedimages, homeImages } from '../data/images.js';
 import Countdown from '../components/countdown.jsx';
+import FeaturedVideo from '../components/FeaturedVideo.jsx';
+
 
 const homeMapEmbedUrl =
   'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4208.161080209635!2d72.83050811781206!3d18.992237429270908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cf000b144179%3A0x5be27ecc4f695b0e!2sPanchganga%20sarvjanik%20utsav%20mandal!5e1!3m2!1sen!2sin!4v1784186813782!5m2!1sen!2sin';
@@ -106,6 +108,9 @@ export default function Home() {
         </div>
       </div>
 
+            <FeaturedVideo />
+
+
       <section className="section-pad green-wash">
         <div className="container-pad grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <motion.div {...fadeIn}>
@@ -160,7 +165,8 @@ export default function Home() {
         </div>
       </section>
 
-      
+
+
 
       <section className="section-pad devotional-gradient">
         <div className="container-pad">
