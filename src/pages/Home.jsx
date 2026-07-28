@@ -65,25 +65,26 @@ export default function Home() {
 
 
 
-      <section className="relative min-h-[calc(100vh-5rem)] overflow-hidden bg-white">
-        <div className="gold-divider absolute inset-x-0 top-0" />
-        <div className="container-pad flex min-h-[calc(100vh-5rem)] items-center justify-center py-8 sm:py-10">
-          <motion.div
-            className="relative mx-auto w-full max-w-3xl"
-            initial={{ opacity: 0, scale: 0.97 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.08 }}
-          >
-            <div className="absolute -inset-4 rounded-[3rem] border border-mandal-gold/25 bg-white shadow-soft" />
-            <img
-              className="relative max-h-[78vh] w-full object-contain p-2 sm:p-4 bg-white"
-              src={homeImages.hero.src}
-              alt={pick(homeImages.hero.alt)}
-              fetchPriority="high"
-            />
-          </motion.div>
+
+    {/*HERO SECTION */} 
+      <section className="relative h-[calc(100vh-64px)] min-h-130 overflow-hidden bg-[#fffdf9]">
+        <div className="relative h-full w-full">
+          <img
+            src="/images/hero.png"
+            alt="Ganpati Bappa"
+            width="1122"
+            height="1402"
+            fetchPriority="high"
+            decoding="async"
+            className="hero-image-fade absolute inset-0 h-full w-full scale-125 object-contain sm:scale-100 object-[center_40%]"
+          />
         </div>
       </section>
+
+
+
+
+
 
       {/* COUNTDOWN */}
       <section className="px-4 py-8 sm:px-6 sm:py-14">
