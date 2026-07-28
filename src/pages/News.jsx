@@ -148,8 +148,10 @@ const newsItems = [
     type: 'newspaper',
     coverImage: '/images/news/clipping-maha-times-2024.jpg',
     gallery: [
-      '/images/news/clipping-maha-times-2024.jpg',
+      '/',
       '/images/news/clipping-maha-times-2024-2.jpg',
+      '/images/news/news2.jpeg',
+      'public/images/news2.jpeg',
     ],
   },
   {
@@ -181,16 +183,17 @@ const newsItems = [
     ],
   },
   {
-    media: 'Zee 24 Taas',
-    year: '2022',
+    media: 'Sanjeevani',
+    
     type: 'yt',
-    youtubeLink: 'https://youtu.be/jez2CUTYrUQ?si=kGcGiLteTk80qWHD',
+    youtubeLink: 'https://youtu.be/yd9yf8v1sYc?si=b-_DM8wS2TmRVhrZ',
   },
+  
   {
-    media: 'tv9 Marathi',
-    year: '2022',
+    media: 'vastra',
+    
     type: 'yt',
-    youtubeLink: '', // add the real YouTube URL here to enable this card
+    youtubeLink: 'https://youtu.be/ls_f2VOrefE?si=_lrET_7if7_LK-hg', // add the real YouTube URL here to enable this card
   },
   {
     media: 'Mumbai Mirror',
@@ -202,10 +205,16 @@ const newsItems = [
     ],
   },
   {
-    media: 'ABP Majha',
-    year: '2019',
+    media: 'Mumbai cha Raja',
+    year: '2015',
     type: 'yt',
-    youtubeLink: '', // add the real YouTube URL here to enable this card
+    youtubeLink: 'https://youtu.be/jez2CUTYrUQ?si=kwPOrX-U0wBxOZUZ', // add the real YouTube URL here to enable this card
+  },
+  {
+    media: 'offical song',
+  
+    type: 'yt',
+    youtubeLink: 'https://youtu.be/AqBPU1IclLo?si=4LRMke8GhABH9pFI', // add the real YouTube URL here to enable this card
   },
 ];
 
