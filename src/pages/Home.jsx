@@ -155,9 +155,11 @@ export default function Home() {
           <p className="mt-4 max-w-2xl leading-8 text-mandal-ink/70">{t('home.galleryText')}</p>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {fixedimages.slice(0, 3).map((item) => (
-              <figure key={`${item.year}-${pick(item.caption)}`} className="overflow-hidden rounded-[1.5rem] bg-white shadow-soft">
-                <img className="h-64 w-full object-contain" src={item.src} alt={pick(item.alt)} loading="lazy" />
-                <figcaption className="border-t border-mandal-green/10 px-5 py-4 font-bold text-mandal-green">
+              <figure key={`${item.year}-${pick(item.caption)}`} className="overflow-hidden rounded-[1.5rem] bg-white p-2 shadow-soft">
+                <div className="overflow-hidden rounded-[1.15rem] bg-mandal-mint/30">
+                  <img className="h-72 w-full object-cover object-center" src={item.src} alt={pick(item.alt)} loading="lazy" />
+                </div>
+                <figcaption className="px-4 py-4 font-bold text-mandal-green">
                   {pick(item.caption)}
                 </figcaption>
               </figure>

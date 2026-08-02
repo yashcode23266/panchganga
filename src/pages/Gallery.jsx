@@ -78,7 +78,7 @@ export default function Gallery() {
                 <img className="h-72 w-full object-contain transition duration-700 group-hover:scale-105" src={cover.src} alt={pick(cover.alt)} loading="lazy" />
                 <span className="absolute left-5 top-5 rounded-full bg-mandal-green px-4 py-2 text-sm font-bold text-white shadow-soft">{year}</span>
               </div>
-              <div className="border-t border-mandal-green/10 p-5">
+              <div className="p-5">
                 <p className="font-display text-2xl font-bold text-mandal-green">{pick(cover.caption)}</p>
                 <p className="mt-1 text-sm font-semibold text-mandal-ink/55">{images.length} {images.length === 1 ? 'photo' : 'photos'}</p>
               </div>
