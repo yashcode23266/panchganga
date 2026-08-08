@@ -61,8 +61,14 @@ export const aboutImages = [
 export const eventImages = [
   {
     key: 'ganeshUtsav',
-    image: '/ganpati.png',
-    title: { en: 'Ganesh Utsav', mr: 'à¤—à¤£à¥‡à¤¶à¥‹à¤¤à¥à¤¸à¤µ' },
+    image: '/images/book3.jpg',
+    images: [
+      '/images/book3.jpg',
+    '/images/book1.jpg',
+    '/images/book2.jpg',
+    '/images/book4.jpg',
+  ],
+    title: { en: 'A helping hand for flood victims', mr: 'à¤—à¤£à¥‡à¤¶à¥‹à¤¤à¥à¤¸à¤µ' },
     text: {
       en: 'The heart of the mandal, celebrated with peaceful darshan, traditional decor, and collective seva.',
       mr: 'à¤¶à¤¾à¤‚à¤¤ à¤¦à¤°à¥à¤¶à¤¨, à¤ªà¤¾à¤°à¤‚à¤ªà¤°à¤¿à¤• à¤¸à¤œà¤¾à¤µà¤Ÿ à¤†à¤£à¤¿ à¤¸à¤¾à¤®à¥‚à¤¹à¤¿à¤• à¤¸à¥‡à¤µà¥‡à¤¸à¤¹ à¤®à¤‚à¤¡à¤³à¤¾à¤šà¤¾ à¤®à¥à¤–à¥à¤¯ à¤‰à¤¤à¥à¤¸à¤µ.',
@@ -70,17 +76,26 @@ export const eventImages = [
   },
   {
     key: 'aartiDarshan',
-    image: '/ganpati.png',
-    title: { en: 'Aarti & Darshan', mr: 'à¤†à¤°à¤¤à¥€ à¤†à¤£à¤¿ à¤¦à¤°à¥à¤¶à¤¨' },
+    image: '/images/assam3.jpg',
+    images: [
+      '/images/assam3.jpg',
+      '/images/assam1.jpg',
+      '/images/assam2.jpg',
+    ],
+    title: { en: 'Assam Flood Donation', mr: 'à¤†à¤°à¤¤à¥€ à¤†à¤£à¤¿ à¤¦à¤°à¥à¤¶à¤¨' },
     text: {
       en: 'Morning and evening aarti bring the community together in a calm devotional rhythm.',
-      mr: 'à¤¸à¤•à¤¾à¤³-à¤¸à¤‚à¤§à¥à¤¯à¤¾à¤•à¤¾à¤³à¤šà¥€ à¤†à¤°à¤¤à¥€ à¤¸à¤®à¤¾à¤œà¤¾à¤²à¤¾ à¤¶à¤¾à¤‚à¤¤ à¤­à¤•à¥à¤¤à¤¿à¤®à¤¯ à¤²à¤¯à¥€à¤¤ à¤à¤•à¤¤à¥à¤° à¤†à¤£à¤¤à¥‡.',
+      mr: 'à¤¸à¤•à¤¾à¤³-à¤¸à¤‚à¤§à¥à¤¯à¤¾à¤•à¤¾à¤³à¤šà¥€ à†à¤°à¤ à¤¸àžà¤œà¤¾à¤²à¤¾ à¾à¤‚à¤š à•à¥ à¤­à¤•à¥ à¤¤ à¤® à¤¯ à² à¯ à¤— à¤¨ à¤• à¤° à¤¹ à¥‡.',
     },
   },
   {
     key: 'culturalPrograms',
-    image: '/ganpati.png',
-    title: { en: 'Cultural Programs', mr: 'à¤¸à¤¾à¤‚à¤¸à¥à¤•à¥ƒà¤¤à¤¿à¤• à¤•à¤¾à¤°à¥à¤¯à¤•à¥à¤°à¤®' },
+    image: '/images/food2.jpg',
+    images: [
+      '/images/food2.jpg',
+      '/images/food1.jpg',
+    ],
+    title: { en: 'Donation of food', mr: 'à¤¸à¤¾à¤‚à¤¸à¥à¤•à¥ƒà¤¤à¤¿à¤• à¤•à¤¾à¤°à¥à¤¯à¤•à¥à¤°à¤®' },
     text: {
       en: 'Music, performance, and local talent keep Marathi culture alive for children and elders alike.',
       mr: 'à¤¸à¤‚à¤—à¥€à¤¤, à¤•à¤²à¤¾ à¤†à¤£à¤¿ à¤¸à¥à¤¥à¤¾à¤¨à¤¿à¤• à¤ªà¥à¤°à¤¤à¤¿à¤­à¥‡à¤®à¥à¤³à¥‡ à¤®à¤°à¤¾à¤ à¥€ à¤¸à¤‚à¤¸à¥à¤•à¥ƒà¤¤à¥€ à¤¸à¤°à¥à¤µ à¤ªà¤¿à¤¢à¥à¤¯à¤¾à¤‚à¤¤ à¤œà¤¿à¤µà¤‚à¤¤ à¤°à¤¾à¤¹à¤¤à¥‡.',
@@ -88,31 +103,31 @@ export const eventImages = [
   },
   {
     key: 'deepotsav',
-    image: '/ganpati.png',
-    title: { en: 'Diwali Deepotsav', mr: 'à¤¦à¤¿à¤µà¤¾à¤³à¥€ à¤¦à¥€à¤ªà¥‹à¤¤à¥à¤¸à¤µ' },
+    image: '/images/h1.jpg',
+    images: [
+      '/images/h1.jpg',
+      '/images/h2.jpg',
+      '/images/h3.jpg',
+      '/images/h4.jpg',
+      '/images/h5.jpg',
+      '/images/h6.jpg',
+      '/images/h7.jpg',
+      '/images/h8.jpg',
+      '/images/h9.jpg',
+      '/images/h10.jpg',
+      '/images/h11.jpg',
+      '/images/h12.jpg',
+      '/images/h13.jpg',
+      '/images/h14.jpg',
+      '/images/h15.jpg',
+    ],
+    title: { en: 'Health CheckUp Camp', mr: 'à¤¦à¤¿à¤µà¤¾à¤³à¥€ à¤¦à¥€à¤ªà¥‹à¤¤à¥à¤¸à¤µ' },
     text: {
       en: 'A gentle evening of lamps, prayers, and shared joy after the festival season.',
       mr: 'à¤¦à¤¿à¤µà¥‡, à¤ªà¥à¤°à¤¾à¤°à¥à¤¥à¤¨à¤¾ à¤†à¤£à¤¿ à¤†à¤¨à¤‚à¤¦à¤¾à¤¨à¥‡ à¤­à¤°à¤²à¥‡à¤²à¥€ à¤‰à¤¤à¥à¤¸à¤µà¤¾à¤¨à¤‚à¤¤à¤°à¤šà¥€ à¤¸à¥à¤‚à¤¦à¤° à¤¸à¤‚à¤§à¥à¤¯à¤¾à¤•à¤¾à¤³.',
     },
   },
-  {
-    key: 'sports',
-    image: '/ganpati.png',
-    title: { en: 'Sports Activities', mr: 'à¤•à¥à¤°à¥€à¤¡à¤¾ à¤‰à¤ªà¤•à¥à¤°à¤®' },
-    text: {
-      en: 'Friendly activities encourage health, discipline, and participation among local youth.',
-      mr: 'à¤®à¥ˆà¤¤à¥à¤°à¥€à¤ªà¥‚à¤°à¥à¤£ à¤‰à¤ªà¤•à¥à¤°à¤® à¤¸à¥à¤¥à¤¾à¤¨à¤¿à¤• à¤¯à¥à¤µà¤•à¤¾à¤‚à¤®à¤§à¥à¤¯à¥‡ à¤†à¤°à¥‹à¤—à¥à¤¯, à¤¶à¤¿à¤¸à¥à¤¤ à¤†à¤£à¤¿ à¤¸à¤¹à¤­à¤¾à¤— à¤µà¤¾à¤¢à¤µà¤¤à¤¾à¤¤.',
-    },
-  },
-  {
-    key: 'nationalCelebrations',
-    image: '/ganpati.png',
-    title: { en: 'National Celebrations', mr: 'à¤°à¤¾à¤·à¥à¤Ÿà¥à¤°à¥€à¤¯ à¤‰à¤¤à¥à¤¸à¤µ' },
-    text: {
-      en: 'Flag hoisting and civic gatherings remind us that devotion and responsibility walk together.',
-      mr: 'à¤§à¥à¤µà¤œà¤¾à¤°à¥‹à¤¹à¤£ à¤†à¤£à¤¿ à¤¨à¤¾à¤—à¤°à¤¿à¤• à¤‰à¤ªà¤•à¥à¤°à¤® à¤­à¤•à¥à¤¤à¥€ à¤†à¤£à¤¿ à¤œà¤¬à¤¾à¤¬à¤¦à¤¾à¤°à¥€à¤šà¥€ à¤œà¤¾à¤£à¥€à¤µ à¤•à¤°à¥‚à¤¨ à¤¦à¥‡à¤¤à¤¾à¤¤.',
-    },
-  },
+  
 ];
 
 export const galleryImages = [
