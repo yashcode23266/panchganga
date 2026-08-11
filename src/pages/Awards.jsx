@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ArrowRight, Award, Calendar, Medal, Sparkles, Star, Trophy } from 'lucide-react';
+import { ArrowRight, Award, Calendar, ChevronLeft, ChevronRight, Medal, Sparkles, Star, Trophy, X } from 'lucide-react';
 import Seo from '../components/Seo.jsx';
 import { CardSkeleton } from '../components/Skeleton.jsx';
 import useFirestoreItems from '../hooks/useFirestoreItems.js';
 import { contentCollections } from '../utils/contentStore.js';
 
 const imageUrls = {
-  trophy: 'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=1200&q=85',
+  trophy: '/images/limca-book-of-records.jpeg',
   medal: 'https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=900&q=85',
   certificate: 'https://images.unsplash.com/photo-1589330694653-ded6df03f754?auto=format&fit=crop&w=900&q=85',
   ceremony: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1100&q=85',
@@ -29,8 +29,8 @@ const timelineAwards = [
 ];
 
 const otherAwards = [
-  { name: 'Cultural Heritage Honour', organization: 'Maharashtra Cultural Forum', year: '2024', description: 'For safeguarding local traditions and welcoming new generations into the celebration.', image: imageUrls.medal },
-  { name: 'Community Service Award', organization: 'Mumbai Social Foundation', year: '2023', description: 'In recognition of meaningful year-round initiatives that serve the local community.', image: imageUrls.ceremony },
+  { name: 'Shri Ganesh Gaurav Award', organization: 'brihanmumbai municipal corporation', year: '2012 , 2015 , 2016 , 2017 , 2018 , 2019 , 2022 , 2023 , 2024', description: 'For safeguarding local traditions and welcoming new generations into the celebration.', image: imageUrls.medal },
+  { name: 'Sarvajanik Ganeshotsav', organization: 'N.M Joshi Marg Police Station', year: '2016 , 2018', description: 'In recognition of meaningful year-round initiatives that serve the local community.', image: '/images/2018 n m joshi polistation 1st.jpeg', images: ['/images/2018 n m joshi polistation 1st.jpeg', '/images/n m joshi marg police station 2016 1st.jpeg'] },
   { name: 'Best Public Festival', organization: 'Mumbai Festival Council', year: '2022', description: 'For an inclusive festival experience shaped by devotion, creativity and care.', image: imageUrls.trophy },
   { name: 'Green Mandal Recognition', organization: 'Clean Mumbai Initiative', year: '2021', description: 'Acknowledging responsible celebrations, waste management and environmental awareness.', image: imageUrls.certificate },
   { name: 'Civic Partnership Honour', organization: 'Ward Cultural Committee', year: '2020', description: 'Presented for sustained support of civic awareness and neighbourhood unity.', image: imageUrls.group },
@@ -71,14 +71,21 @@ function AnimatedCount({ value, suffix }) {
 
 export default function Awards() {
   const { items: uploadedAwards, loading } = useFirestoreItems(contentCollections.awards);
+  const [activeAward, setActiveAward] = useState(null);
+  const [activePhoto, setActivePhoto] = useState(0);
+
   const dynamicAwards = uploadedAwards.map((award) => ({
     name: award.name || 'Award',
     organization: award.organization || 'Panchganga',
     year: award.year || '2026',
     description: award.description || '',
     image: award.image || award.images?.[0] || imageUrls.trophy,
+    images: award.images?.length ? award.images : [award.image].filter(Boolean),
   }));
-  const allOtherAwards = [...dynamicAwards, ...otherAwards];
+  const allOtherAwards = [...dynamicAwards, ...otherAwards].map((award) => ({
+    ...award,
+    images: award.images?.length ? award.images : [award.image].filter(Boolean),
+  }));
   const allGalleryItems = [
     ...uploadedAwards.flatMap((award) =>
       (award.images?.length ? award.images : [award.image].filter(Boolean)).map((image, index) => ({
@@ -88,6 +95,22 @@ export default function Awards() {
     ),
     ...galleryItems,
   ];
+  const modalImages = activeAward?.images?.length ? activeAward.images : [activeAward?.image].filter(Boolean);
+
+  const openPhotos = (award) => {
+    setActiveAward(award);
+    setActivePhoto(0);
+  };
+
+  const closePhotos = () => {
+    setActiveAward(null);
+    setActivePhoto(0);
+  };
+
+  const changePhoto = (direction) => {
+    if (!modalImages.length) return;
+    setActivePhoto((index) => (index + direction + modalImages.length) % modalImages.length);
+  };
 
   return (
     <>
@@ -112,7 +135,7 @@ export default function Awards() {
 
       <section className="section-pad bg-white/75">
         <div className="container-pad">
-          <motion.article initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={fadeUp} transition={{ duration: 0.55, ease: 'easeOut' }} className="relative overflow-hidden rounded-[2rem] border border-mandal-gold/35 bg-white shadow-soft lg:grid lg:grid-cols-[1fr_0.9fr]">
+          <motion.article initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={fadeUp} transition={{ duration: 0.55, ease: 'easeOut' }} className="relative overflow-hidden rounded-[2rem] border border-mandal-gold/35 bg-white shadow-soft lg:grid lg:grid-cols-[0.85fr_1.15fr]">
             <div className="absolute left-0 top-0 h-full w-1.5 bg-mandal-gold" />
             <div className="p-7 sm:p-10 lg:p-12">
               <div className="inline-flex items-center gap-2 rounded-full bg-mandal-mint px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-mandal-green"><Sparkles className="h-3.5 w-3.5 text-mandal-gold" />Featured achievement</div>
@@ -121,8 +144,8 @@ export default function Awards() {
               <p className="mt-5 max-w-xl leading-8 text-mandal-ink/70">A defining moment in the Panchganga story. This recognition celebrates the mandal’s exceptional scale of devotion, meticulous organisation and enduring contribution to Mumbai’s cultural fabric.</p>
               <a href="#timeline" className="mt-8 inline-flex items-center gap-2 rounded-full bg-mandal-green px-6 py-3 text-sm font-bold text-white transition hover:bg-mandal-leaf focus:outline-none focus:ring-2 focus:ring-mandal-gold focus:ring-offset-2">Explore our journey <ArrowRight className="h-4 w-4" /></a>
             </div>
-            <div className="relative min-h-[19rem] overflow-hidden bg-mandal-green p-5 sm:p-7 lg:min-h-full">
-              <motion.img whileHover={{ scale: 1.045 }} transition={{ duration: 0.55, ease: 'easeOut' }} src={imageUrls.trophy} alt="Golden trophy representing the Limca Book of Records Award" className="h-full min-h-[18rem] w-full rounded-[1.5rem] border-2 border-mandal-gold/75 object-cover shadow-soft" />
+            <div className="relative min-h-[19rem] overflow-hidden bg-mandal-green p-5 sm:p-7 lg:h-[32rem]">
+              <motion.img whileHover={{ scale: 1.045 }} transition={{ duration: 0.55, ease: 'easeOut' }} src={imageUrls.trophy} alt="Golden trophy representing the Limca Book of Records Award" className="h-full w-full rounded-[1.5rem] border-2 border-mandal-gold/75 object-cover shadow-soft" />
               <div className="absolute bottom-10 left-10 rounded-full bg-white/90 px-4 py-2 text-sm font-bold text-mandal-green backdrop-blur"><Trophy className="mr-2 inline h-4 w-4 text-mandal-gold" />A landmark honour</div>
             </div>
           </motion.article>
@@ -166,7 +189,7 @@ export default function Awards() {
         <div className="container-pad">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={fadeUp} transition={{ duration: 0.45 }} className="soft-panel p-6 sm:p-8">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><div><p className="eyebrow">A record of consistency</p><h2 className="mt-2 font-display text-3xl font-bold text-mandal-green sm:text-4xl">Repeated honours</h2></div><Trophy className="h-8 w-8 text-mandal-gold" /></div>
-            <div className="mt-7 grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center"><div><h3 className="font-display text-3xl font-bold text-mandal-green">BMC Excellence Award</h3><p className="mt-2 text-sm font-bold text-mandal-leaf">Won 5 Times</p><p className="mt-3 leading-7 text-mandal-ink/68">A lasting recognition of the mandal’s dependable standards in festival operations and public service.</p></div><div className="flex flex-wrap gap-2.5">{['2015', '2017', '2019', '2022', '2025'].map((year) => <span key={year} className="rounded-full border border-mandal-gold/45 bg-mandal-gold/10 px-4 py-2 text-sm font-bold text-mandal-green">{year}</span>)}</div></div>
+            <div className="mt-7 grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center"><div><h3 className="font-display text-3xl font-bold text-mandal-green">BMC Excellence Award</h3><p className="mt-2 text-sm font-bold text-mandal-leaf">Won 9 Times</p><p className="mt-3 leading-7 text-mandal-ink/68">A lasting recognition of the mandal’s dependable standards in festival operations and public service.</p></div><div className="flex flex-wrap gap-2.5">{['2012', '2015', '2016', '2017', '2018', '2019', '2022', '2023', '2024'].map((year) => <span key={year} className="rounded-full border border-mandal-gold/45 bg-mandal-gold/10 px-4 py-2 text-sm font-bold text-mandal-green">{year}</span>)}</div></div>
           </motion.div>
         </div>
       </section>
@@ -175,10 +198,85 @@ export default function Awards() {
         <div className="container-pad"><motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={fadeUp} transition={{ duration: 0.45 }}><p className="eyebrow">Honours we cherish</p><h2 className="mt-3 font-display text-4xl font-bold text-mandal-green sm:text-5xl">Other awards</h2></motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={stagger} className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {loading ? Array.from({ length: 3 }).map((_, index) => <CardSkeleton key={index} />) : null}
-            {allOtherAwards.map((award) => <motion.article key={`${award.name}-${award.year}`} variants={fadeUp} transition={{ duration: 0.42 }} whileHover={{ y: -7 }} className="group overflow-hidden rounded-[1.5rem] border border-mandal-green/10 bg-white shadow-soft transition-shadow hover:shadow-[0_20px_46px_rgba(13,63,35,0.17)]"><div className="relative aspect-[16/9] overflow-hidden"><img src={award.image} alt={award.name} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" /><span className="absolute bottom-4 left-4 grid h-10 w-10 place-items-center rounded-full border border-mandal-gold/50 bg-white/95 text-mandal-gold"><Trophy className="h-5 w-5" /></span></div><div className="p-5 sm:p-6"><p className="text-xs font-bold uppercase tracking-[0.12em] text-mandal-leaf">{award.organization}</p><h3 className="mt-2 font-display text-2xl font-bold leading-tight text-mandal-green">{award.name}</h3><p className="mt-3 text-sm leading-6 text-mandal-ink/68">{award.description}</p><p className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-mandal-green"><Calendar className="h-4 w-4 text-mandal-gold" />{award.year}</p></div></motion.article>)}
+            {allOtherAwards.map((award) => <motion.article key={`${award.name}-${award.year}`} variants={fadeUp} transition={{ duration: 0.42 }} whileHover={{ y: -7 }} className="group overflow-hidden rounded-[1.5rem] border border-mandal-green/10 bg-white shadow-soft transition-shadow hover:shadow-[0_20px_46px_rgba(13,63,35,0.17)]"><button type="button" onClick={() => openPhotos(award)} className="block w-full overflow-hidden rounded-[1.25rem] text-left outline-none transition focus:ring-4 focus:ring-mandal-gold/40" aria-label={`Open photos for ${award.name}`}><div className="relative aspect-[16/9] overflow-hidden"><img src={award.image} alt={award.name} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" /><span className="absolute bottom-4 left-4 grid h-10 w-10 place-items-center rounded-full border border-mandal-gold/50 bg-white/95 text-mandal-gold"><Trophy className="h-5 w-5" /></span></div></button><div className="p-5 sm:p-6"><p className="text-xs font-bold uppercase tracking-[0.12em] text-mandal-leaf">{award.organization}</p><h3 className="mt-2 font-display text-2xl font-bold leading-tight text-mandal-green">{award.name}</h3><p className="mt-3 text-sm leading-6 text-mandal-ink/68">{award.description}</p><p className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-mandal-green"><Calendar className="h-4 w-4 text-mandal-gold" />{award.year}</p></div></motion.article>)}
           </motion.div>
         </div>
       </section>
+
+      {activeAward ? (
+        <div
+          className="fixed inset-0 z-[80] grid place-items-center bg-[#0B3D1F]/88 p-4 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) closePhotos();
+          }}
+        >
+          <div className="relative w-full max-w-5xl overflow-hidden rounded-[2rem] bg-white shadow-2xl">
+            <div className="flex items-center justify-between gap-4 border-b border-[#1F7A3D]/15 px-5 py-4">
+              <div className="min-w-0">
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-[#1F7A3D]">Award Photos</p>
+                <h3 className="truncate font-display text-2xl font-bold text-[#0B3D1F]">{activeAward.name}</h3>
+              </div>
+              <button
+                type="button"
+                onClick={closePhotos}
+                className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#0B3D1F] text-white transition hover:bg-[#16632F]"
+                aria-label="Close award photos"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            <div className="relative bg-[#F6FAEF] p-4 sm:p-6">
+              <img
+                src={modalImages[activePhoto]}
+                alt={`${activeAward.name} ${activePhoto + 1}`}
+                className="mx-auto h-[62vh] max-h-[680px] w-full rounded-2xl object-contain"
+              />
+
+              {modalImages.length > 1 ? (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => changePhoto(-1)}
+                    className="absolute left-5 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white text-[#0B3D1F] shadow-md transition hover:bg-[#A3C73A]"
+                    aria-label="Previous photo"
+                  >
+                    <ChevronLeft size={22} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => changePhoto(1)}
+                    className="absolute right-5 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white text-[#0B3D1F] shadow-md transition hover:bg-[#A3C73A]"
+                    aria-label="Next photo"
+                  >
+                    <ChevronRight size={22} />
+                  </button>
+                </>
+              ) : null}
+            </div>
+
+            {modalImages.length > 1 ? (
+              <div className="flex gap-2 overflow-x-auto px-5 pb-5">
+                {modalImages.map((image, index) => (
+                  <button
+                    key={`${image}-${index}`}
+                    type="button"
+                    onClick={() => setActivePhoto(index)}
+                    className={`h-16 w-20 shrink-0 overflow-hidden rounded-xl border-2 transition ${
+                      activePhoto === index ? 'border-[#1F7A3D]' : 'border-transparent opacity-65 hover:opacity-100'
+                    }`}
+                    aria-label={`View photo ${index + 1}`}
+                  >
+                    <img src={image} alt="" className="h-full w-full object-cover" loading="lazy" />
+                  </button>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
 
       <section className="section-pad bg-white/75"><div className="container-pad"><motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={fadeUp} transition={{ duration: 0.45 }} className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"><div><p className="eyebrow">Moments of pride</p><h2 className="mt-3 font-display text-4xl font-bold text-mandal-green sm:text-5xl">Award gallery</h2></div><p className="max-w-sm text-sm leading-6 text-mandal-ink/65">Snapshots that honour the people and moments behind every recognition.</p></motion.div><motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={stagger} className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{allGalleryItems.map((item) => <motion.figure key={`${item.label}-${item.image}`} variants={fadeUp} transition={{ duration: 0.4 }} whileHover={{ y: -5 }} className="group overflow-hidden rounded-2xl border border-mandal-green/10 bg-white shadow-soft"><div className="aspect-square overflow-hidden"><img src={item.image} alt={item.label} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" /></div><figcaption className="px-4 py-3 text-sm font-bold text-mandal-green">{item.label}</figcaption></motion.figure>)}</motion.div></div></section>
     </>

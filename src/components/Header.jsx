@@ -1,6 +1,6 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext.jsx';
 
 const colors = {
@@ -18,12 +18,13 @@ const navItems = [
   ['/awards', 'nav.awards'],
   ['/news', 'nav.news'],
   ['/celebrity', 'nav.celebrity'],
-  ['/admin-login', 'Admin'],
 ];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [logoClicks, setLogoClicks] = useState(0);
   const { language, setLanguage, t } = useLanguage();
+  const navigate = useNavigate();
   const nextLanguage = language === 'en' ? 'mr' : 'en';
 
   const navClass = ({ isActive }) =>
@@ -35,7 +36,26 @@ export default function Header() {
     <header className={`sticky top-0 z-40 overflow-hidden bg-[#A3C73A] ${colors.text} shadow-md`}>
       <div className="absolute inset-x-0 bottom-0 h-px bg-[#1F7A3D]/25" />
       <div className="relative z-10 container-pad flex h-20 items-center justify-between">
-        <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
+        <button
+          type="button"
+          onClick={() => {
+            setOpen(false);
+            const newClickCount = logoClicks + 1;
+            setLogoClicks(newClickCount);
+            
+            if (newClickCount === 5) {
+              navigate('/admin-login');
+              setLogoClicks(0);
+            } else {
+              navigate('/');
+              // Reset counter after 3 seconds of inactivity
+              setTimeout(() => {
+                setLogoClicks(0);
+              }, 3000);
+            }
+          }}
+          className="flex items-center gap-3"
+        >
           <img
             src="/images/panlogo.png"
             alt={t('brand.name')}
@@ -44,7 +64,7 @@ export default function Header() {
           <span className={`max-w-[190px] font-display text-xl font-bold leading-tight ${colors.text} sm:text-2xl`}>
             {t('brand.shortName')}
           </span>
-        </Link>
+        </button>
 
         <nav className="hidden items-center gap-8 md:flex">
           {navItems.map(([to, key]) => (
