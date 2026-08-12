@@ -50,6 +50,20 @@ const TIMELINE = [
   { year: '2024', title: 'Continuing the Legacy', text: 'With fresh themes, deeper community roots, and youth leadership, the mandal continues inspiring the next generation to celebrate responsibly.' },
 ];
 
+// ── Small reusable decorative dot-pattern layer ─────────────────
+function DotPattern({ opacity = 0.05, color = '#0F4D2F', size = 24 }) {
+  return (
+    <div
+      className="pointer-events-none absolute inset-0"
+      style={{
+        opacity,
+        backgroundImage: `radial-gradient(${color} 1px, transparent 1px)`,
+        backgroundSize: `${size}px ${size}px`,
+      }}
+    />
+  );
+}
+
 // ── Component ─────────────────────────────────────────────────
 
 export default function About() {
@@ -59,36 +73,82 @@ export default function About() {
     <>
       <Seo titleKey="seo.aboutTitle" descriptionKey="seo.aboutDescription" />
 
-      {/* ══════════════════════════════════════════════
-          HERO — devotional gradient, name, tagline
-      ══════════════════════════════════════════════ */}
-      <section className="section-pad devotional-gradient">
-        <div className="container-pad text-center">
-          
+  {/* ══════════════════════════════════════════════
+    HERO — dark glow + rings + particles, mandal theme
+════════════════════════════════════════════════ */}
+<section className="relative overflow-hidden bg-[#A3C73A] section-pad">
 
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-mandal-gold">
-            Est. 1990 · Mumbai
-          </p>
+  {/* Decorative background layer */}
+  <div className="pointer-events-none absolute inset-0">
 
-          <h1 className="font-display text-4xl font-bold leading-tight text-mandal-green sm:text-5xl lg:text-6xl">
-            Panchganga Sarvajanik<br className="hidden sm:block" /> Utsav Mandal
-          </h1>
+    {/* Radial glow, centered behind logo/title */}
+    <div
+      className="absolute left-1/2 top-1/2 h-[140%] w-[140%] -translate-x-1/2 -translate-y-1/2"
+      style={{
+        background:
+          'radial-gradient(circle, rgba(212,175,55,0.35) 15%, rgba(15,77,47,0.55) 55%, rgba(11,46,29,0.95) 65%, #0B2E1D 100%)',
+      }}
+    />
 
-          {/* Marathi tagline */}
-          <p className="mt-5 font-display text-lg italic text-mandal-green/70 sm:text-xl">
-            संस्कृती • पर्यावरण • प्रबोधन • परिवर्तन
-          </p>
-          <p className="mt-1 text-sm font-semibold tracking-wide text-mandal-ink/60">
-            Culture • Environment • Awareness • Transformation
-          </p>
+    {/* Concentric rings */}
+    <svg
+      className="absolute left-1/2 top-1/2 h-[900px] w-[900px] -translate-x-1/2 -translate-y-1/2 opacity-[0.18]"
+      viewBox="0 0 900 900"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {[90, 150, 210, 270, 330, 390, 450].map((r) => (
+        <circle key={r} cx="450" cy="450" r={r} stroke="#D4AF37" strokeWidth="1" />
+      ))}
+    </svg>
 
-        </div>
-      </section>
+    {/* Scattered gold particles */}
+    <svg className="absolute inset-0 h-full w-full opacity-70" xmlns="http://www.w3.org/2000/svg">
+      {[
+        [10, 8], [92, 6], [6, 45], [96, 40], [16, 78],
+        [88, 82], [50, 4], [50, 96], [28, 20], [72, 20],
+        [22, 88], [80, 60], [4, 65], [97, 65],
+      ].map(([x, y], i) => (
+        <circle key={i} cx={`${x}%`} cy={`${y}%`} r={i % 3 === 0 ? 3 : 2} fill="#D4AF37" />
+      ))}
+    </svg>
+  </div>
+
+
+
+  <div className="container-pad relative z-10 text-center">
+   {/* Logo mark */}
+<div className="mx-auto mb-8 h-40 w-40">
+  <img
+    src="images/panlogo.png"
+    alt="Panchganga Sarvajanik Utsav Mandal Logo"
+    className="h-full w-full object-contain drop-shadow-[0_0_25px_rgba(212,175,55,0.5)]"
+  />
+</div>
+
+    <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-mandal-green">
+      Established 1990
+    </p>
+
+    <h1 className="font-display text-5xl font-bold leading-tight text-mandal-green sm:text-6xl lg:text-7xl">
+      Panchganga Sarvajanik Utsav Mandal
+    </h1>
+
+    <p className="mt-5 text-lg text-white/80 sm:text-xl">
+      Culture • Environment • Awareness • Transformation
+    </p>
+
+    <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+      
+    </div>
+  </div>
+</section>
 
 
       {/* ── INTRO + PHOTO ────────────────────────────────────── */}
-      <section className="section-pad bg-white">
-        <div className="container-pad grid gap-14 lg:grid-cols-2 lg:items-center">
+      <section className="section-pad bg-white relative overflow-hidden">
+        <DotPattern opacity={0.035} />
+        <div className="container-pad relative grid gap-14 lg:grid-cols-2 lg:items-center">
 
           {/* Text */}
           <div>
@@ -118,8 +178,9 @@ export default function About() {
             </p>
           </div>
 
-          {/* Photo */}
+          {/* Photo with offset gold frame */}
           <div className="relative">
+            <div className="absolute -inset-3 -z-10 rounded-[1.75rem] bg-mandal-gold/15" />
             {aboutImages?.[0] ? (
               <img
                 src={aboutImages[0].src}
@@ -129,7 +190,6 @@ export default function About() {
                 style={{ aspectRatio: '4/3' }}
               />
             ) : (
-              /* Placeholder if no aboutImages configured yet */
               <div
                 className="w-full rounded-[1.5rem] border border-mandal-green/10 bg-mandal-mint/30"
                 style={{ aspectRatio: '4/3' }}
@@ -147,8 +207,9 @@ export default function About() {
       </section>
 
       {/* ── THREE PILLARS ────────────────────────────────────── */}
-      <section className="section-pad green-wash">
-        <div className="container-pad">
+      <section className="section-pad green-wash relative overflow-hidden">
+        <DotPattern opacity={0.05} />
+        <div className="container-pad relative">
           <p className="text-xs font-bold uppercase tracking-[0.25em] text-mandal-gold">
             Our Foundation
           </p>
@@ -161,12 +222,14 @@ export default function About() {
             {PILLARS.map((p) => (
               <article
                 key={p.num}
-                className="bg-white px-7 py-8 shadow-soft"
+                className="group relative bg-white px-7 py-8 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
                 style={{ borderTop: '3px solid #D4AF37' }}
               >
-                <p className="font-display text-4xl font-bold text-mandal-green/10">{p.num}</p>
+                {/* soft gold halo behind the number */}
+                <div className="pointer-events-none absolute right-6 top-4 h-16 w-16 rounded-full bg-mandal-gold/10 blur-xl transition-opacity duration-300 group-hover:opacity-80" />
+                <p className="relative font-display text-4xl font-bold text-mandal-green/15">{p.num}</p>
                 <h3 className="mt-3 font-display text-xl font-bold text-mandal-green">{p.title}</h3>
-                <div className="mt-3 h-px w-8 bg-mandal-gold" />
+                <div className="mt-3 h-px w-8 bg-mandal-gold transition-all duration-300 group-hover:w-14" />
                 <p className="mt-4 text-sm leading-7 text-mandal-ink/65">{p.text}</p>
               </article>
             ))}
@@ -175,8 +238,9 @@ export default function About() {
       </section>
 
       {/* ── SOCIAL CAUSES + SECOND PHOTO ─────────────────────── */}
-      <section className="section-pad bg-white">
-        <div className="container-pad grid gap-14 lg:grid-cols-2 lg:items-start">
+      <section className="section-pad bg-white relative overflow-hidden">
+        <DotPattern opacity={0.035} />
+        <div className="container-pad relative grid gap-14 lg:grid-cols-2 lg:items-start">
 
           {/* Causes list */}
           <div>
@@ -196,10 +260,10 @@ export default function About() {
               {SOCIAL_CAUSES.map((cause, i) => (
                 <li
                   key={cause}
-                  className="flex items-center gap-4 border-b border-mandal-green/10 py-3.5 last:border-0"
+                  className="group flex items-center gap-4 border-b border-mandal-green/10 py-3.5 transition-colors last:border-0 hover:bg-mandal-mint/10"
                 >
                   <span
-                    className="shrink-0 font-display text-xs font-bold text-mandal-gold"
+                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-mandal-gold/10 font-display text-xs font-bold text-mandal-gold transition-colors group-hover:bg-mandal-gold group-hover:text-white"
                     aria-hidden="true"
                   >
                     {String(i + 1).padStart(2, '0')}
@@ -213,8 +277,9 @@ export default function About() {
             </ul>
           </div>
 
-          {/* Photo */}
-          <div className="lg:sticky lg:top-24">
+          {/* Photo with offset frame */}
+          <div className="relative lg:sticky lg:top-24">
+            <div className="absolute -inset-3 -z-10 rounded-[1.75rem] bg-mandal-green/10" />
             {aboutImages?.[1] ? (
               <img
                 src={aboutImages[1].src}
@@ -234,8 +299,9 @@ export default function About() {
       </section>
 
       {/* ── AWARDS ───────────────────────────────────────────── */}
-      <section className="section-pad green-wash">
-        <div className="container-pad">
+      <section className="section-pad green-wash relative overflow-hidden">
+        <DotPattern opacity={0.05} />
+        <div className="container-pad relative">
           <p className="text-xs font-bold uppercase tracking-[0.25em] text-mandal-gold">
             Recognition
           </p>
@@ -244,9 +310,13 @@ export default function About() {
           </h2>
           <div className="mt-4 h-px w-12 bg-mandal-gold" />
 
-          <div className="mt-10 grid gap-px border border-mandal-green/10 bg-mandal-green/10 sm:grid-cols-2">
+          <div className="mt-10 grid gap-px overflow-hidden rounded-xl border border-mandal-green/10 bg-mandal-green/10 shadow-soft sm:grid-cols-2">
             {AWARDS.map((a) => (
-              <div key={a.label} className="bg-white px-7 py-8">
+              <div
+                key={a.label}
+                className="group bg-white px-7 py-8 transition-colors duration-300 hover:bg-mandal-mint/10"
+              >
+                <div className="mb-3 h-1 w-8 bg-mandal-gold transition-all duration-300 group-hover:w-14" />
                 <h4 className="font-display text-lg font-bold text-mandal-green">{a.label}</h4>
                 <p className="mt-2 text-sm leading-6 text-mandal-ink/60">{a.desc}</p>
               </div>
@@ -254,31 +324,38 @@ export default function About() {
           </div>
 
           {/* Limca highlight bar */}
-          <div className="mt-10 grid gap-6 border-l-4 border-mandal-gold bg-white px-8 py-7 shadow-soft sm:grid-cols-[1fr_auto] sm:items-center">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.25em] text-mandal-gold">
-                National Recognition
-              </p>
-              <h3 className="mt-2 font-display text-2xl font-bold text-mandal-green">
-                Limca Book of Records
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-mandal-ink/65">
-                Nationally recognised for the unique display of{' '}
-                <strong className="font-semibold text-mandal-green">108 eco-friendly Lord Ganesha idols</strong>,
-                each carrying a powerful and distinct social message — a milestone in the history of
-                public Ganeshotsav celebrations in India.
-              </p>
-            </div>
-            <div className="shrink-0 text-right">
-              <p className="font-display text-5xl font-bold text-mandal-green/10">108</p>
+          <div className="relative mt-10 overflow-hidden border-l-4 border-mandal-gold bg-white px-8 py-7 shadow-soft">
+            <div
+              className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full opacity-70"
+              style={{ background: 'radial-gradient(circle, rgba(212,175,55,0.15), transparent 70%)' }}
+            />
+            <div className="relative grid gap-6 sm:grid-cols-[1fr_auto] sm:items-center">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.25em] text-mandal-gold">
+                  National Recognition
+                </p>
+                <h3 className="mt-2 font-display text-2xl font-bold text-mandal-green">
+                  Limca Book of Records
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-mandal-ink/65">
+                  Nationally recognised for the unique display of{' '}
+                  <strong className="font-semibold text-mandal-green">108 eco-friendly Lord Ganesha idols</strong>,
+                  each carrying a powerful and distinct social message — a milestone in the history of
+                  public Ganeshotsav celebrations in India.
+                </p>
+              </div>
+              <div className="shrink-0 text-right">
+                <p className="font-display text-5xl font-bold text-mandal-green/15">108</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── TIMELINE ─────────────────────────────────────────── */}
-      <section className="section-pad bg-white">
-        <div className="container-pad">
+      <section className="section-pad bg-white relative overflow-hidden">
+        <DotPattern opacity={0.035} />
+        <div className="container-pad relative">
           <p className="text-xs font-bold uppercase tracking-[0.25em] text-mandal-gold">
             Our Journey
           </p>
@@ -291,8 +368,11 @@ export default function About() {
             {TIMELINE.map((item, index) => (
               <div
                 key={item.year}
-                className="grid grid-cols-[6rem_1fr] gap-6 border-l border-mandal-green/15 pb-10 last:pb-0 sm:grid-cols-[8rem_1fr]"
+                className="relative grid grid-cols-[6rem_1fr] gap-6 border-l border-mandal-green/15 pb-10 last:pb-0 sm:grid-cols-[8rem_1fr]"
               >
+                {/* node dot on the line */}
+                <div className="absolute -left-[9px] top-1 h-4 w-4 rounded-full bg-mandal-gold ring-4 ring-white" />
+
                 <div className="-ml-px border-l-4 border-mandal-gold pl-5 font-display text-2xl font-bold text-mandal-green">
                   {item.year}
                 </div>
@@ -306,7 +386,6 @@ export default function About() {
         </div>
       </section>
 
-      
     </>
   );
 }
