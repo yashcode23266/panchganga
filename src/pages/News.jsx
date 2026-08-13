@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import Seo from '../components/Seo.jsx';
 import { CardSkeleton } from '../components/Skeleton.jsx';
 import useFirestoreItems from '../hooks/useFirestoreItems.js';
-import { contentCollections } from '../utils/contentStore.js';
+import { contentCollections, getOptimizedImageUrl } from '../utils/contentStore.js';
 
 // ═════════════════════════════════════════════════════════════════════════════
 // MEDIA LOGOS — auto-rotating + swipeable logo strip (Electronic & Print media)
@@ -57,7 +57,7 @@ function LogoMarquee({ logos, direction = 'left', speed = 45 }) {
       <motion.div
         ref={trackRef}
         className="flex w-max gap-10 py-2"
-        style={{ x }}
+        style={{ x, touchAction: 'pan-y' }}
         drag="x"
         dragConstraints={{ left: -loopWidth * 2, right: loopWidth * 2 }}
         dragElastic={0.06}
@@ -107,19 +107,17 @@ function LogoSection({ title, logos, direction }) {
 
 // Note: no "export default" here — News.jsx already has the default export below,
 // and a file can only have one default export.
+import { useLanguage } from '../context/LanguageContext.jsx';
+
 function MediaLogos() {
+  const { t } = useLanguage();
   return (
     <section className="section-pad bg-white">
       <div className="container-pad">
-        
-        
-
-          <LogoSection title="Electronic Media" logos={electronicMediaLogos} direction="left" />
-          <div className="mt-12 grid gap-12"></div>
-          <LogoSection title="Print Media" logos={printMediaLogos} direction="right" />
-        </div>
-
-        
+        <LogoSection title={t('newsPage.electronicMedia')} logos={electronicMediaLogos} direction="left" />
+        <div className="mt-12 grid gap-12"></div>
+        <LogoSection title={t('newsPage.printMedia')} logos={printMediaLogos} direction="right" />
+      </div>
     </section>
   );
 }
@@ -408,10 +406,16 @@ function ClippingModal({ item, onClose }) {
 
 // ─── Main page ────────────────────────────────────────────────────────────────
 export default function News() {
+  const { t } = useLanguage();
   const [query, setQuery] = useState('');
   const [year, setYear] = useState('All');
   const [typeFilter, setTypeFilter] = useState('All');
   const [modalItem, setModalItem] = useState(null);
+
+  const typeLabels = {
+    newspaper: t('newsPage.newspaper'),
+    yt: t('newsPage.youtube'),
+  };
 
   const { items: uploadedNews, loading } = useFirestoreItems(contentCollections.news);
 
@@ -458,16 +462,16 @@ export default function News() {
 
   return (
     <>
-      <Seo titleKey="seo.homeTitle" descriptionKey="seo.homeDescription" />
+      <Seo titleKey="seo.newsTitle" descriptionKey="seo.newsDescription" />
 
       {/* ── HERO ──────────────────────────────────────────────── */}
       <section className="section-pad devotional-gradient">
         <div className="container-pad text-center">
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-mandal-gold">
-            Panchganga in the Media
+            {t('newsPage.eyebrow')}
           </p>
           <h1 className="mt-4 font-display text-4xl font-bold leading-tight text-mandal-green sm:text-5xl">
-            News &amp; Media Coverage
+            {t('newsPage.title')}
           </h1>
         </div>
       </section>
@@ -478,19 +482,19 @@ export default function News() {
       <section className="border-b border-mandal-green/10 bg-white py-6">
         <div className="container-pad flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
 
-          <div className="flex gap-2">
-            {['All', 'newspaper', 'yt'].map((t) => (
+          <div className="flex flex-wrap gap-2.5">
+            {['All', 'newspaper', 'yt'].map((tKey) => (
               <button
-                key={t}
+                key={tKey}
                 type="button"
-                onClick={() => setTypeFilter(t)}
-                className={`rounded-full px-4 py-1.5 text-xs font-bold transition ${
-                  typeFilter === t
-                    ? 'bg-mandal-gold text-mandal-green'
-                    : 'border border-mandal-green/15 bg-white text-mandal-ink/60 hover:border-mandal-gold'
+                onClick={() => setTypeFilter(tKey)}
+                className={`flex min-h-[44px] items-center justify-center rounded-full px-5 py-2.5 text-xs font-bold transition ${
+                  typeFilter === tKey
+                    ? 'bg-mandal-gold text-mandal-green shadow-sm'
+                    : 'border border-mandal-green/15 bg-white text-mandal-ink/70 hover:border-mandal-gold'
                 }`}
               >
-                {t === 'All' ? 'All Types' : TYPE_LABELS[t]}
+                {tKey === 'All' ? t('newsPage.allTypes') : typeLabels[tKey]}
               </button>
             ))}
           </div>
@@ -592,7 +596,7 @@ export default function News() {
                           className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-mandal-green px-4 py-2 text-xs font-bold text-white transition hover:bg-mandal-leaf"
                         >
                           <Play size={12} className="fill-mandal-gold text-mandal-gold" />
-                          Watch Video
+                          {t('newsPage.watchVideo')}
                         </a>
                       )}
                     </div>
@@ -605,8 +609,8 @@ export default function News() {
           {!loading && filtered.length === 0 && (
             <div className="mx-auto mt-16 max-w-sm text-center">
               <Newspaper size={40} strokeWidth={1} className="mx-auto text-mandal-green/20" />
-              <p className="mt-4 font-display text-xl font-bold text-mandal-green">No coverage found</p>
-              <p className="mt-2 text-sm text-mandal-ink/50">Try a different year, type, or search term.</p>
+              <p className="mt-4 font-display text-xl font-bold text-mandal-green">{t('newsPage.noCoverage')}</p>
+              <p className="mt-2 text-sm text-mandal-ink/50">{t('newsPage.noCoverageDesc')}</p>
             </div>
           )}
         </div>

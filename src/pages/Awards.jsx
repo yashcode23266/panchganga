@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import { ArrowRight, Award, Calendar, ChevronLeft, ChevronRight, Medal, Sparkles, Star, Trophy, X } from 'lucide-react';
 import Seo from '../components/Seo.jsx';
 import { CardSkeleton } from '../components/Skeleton.jsx';
+import { useLanguage } from '../context/LanguageContext.jsx';
 import useFirestoreItems from '../hooks/useFirestoreItems.js';
 import { contentCollections } from '../utils/contentStore.js';
 
@@ -15,33 +16,86 @@ const imageUrls = {
 };
 
 const statistics = [
-  { value: 25, suffix: '+', label: 'Awards Received', icon: Trophy },
-  { value: 15, suffix: '+', label: 'Years of Recognition', icon: Star },
-  { value: 5, suffix: '+', label: 'Major Organizations', icon: Medal },
-  { value: 100, suffix: '+', label: 'Achievements', icon: Award },
+  { value: 25, suffix: '+', labelKey: 'awardsPage.awardsReceived', icon: Trophy },
+  { value: 15, suffix: '+', labelKey: 'awardsPage.yearsRecognition', icon: Star },
+  { value: 5, suffix: '+', labelKey: 'awardsPage.majorOrgs', icon: Medal },
+  { value: 100, suffix: '+', labelKey: 'awardsPage.achievements', icon: Award },
 ];
 
 const timelineAwards = [
-  { year: '2025', title: 'BMC Excellence Award', text: 'Honoured for thoughtful festival management, public safety and community participation.' },
-  { year: '2024', title: 'Mumbai Police Appreciation Award', text: 'Recognised for exemplary coordination and a peaceful, well-organised celebration.' },
-  { year: '2023', title: 'Best Cultural Festival Award', text: 'Celebrating the mandal’s commitment to preserving culture through a vibrant festival.' },
-  { year: '2022', title: 'Environmental Excellence Award', text: 'Awarded for sustainable practices and an eco-conscious approach to Ganeshotsav.' },
+  {
+    year: '2025',
+    title: { en: 'BMC Excellence Award', mr: 'महापालिका उत्कृष्टता पुरस्कार' },
+    text: { en: 'Honoured for thoughtful festival management, public safety and community participation.', mr: 'उत्कृष्ट उत्सव नियोजन, सार्वजनिक सुरक्षितता आणि लोकसहभागाबद्दल सन्मानित.' },
+  },
+  {
+    year: '2024',
+    title: { en: 'Mumbai Police Appreciation Award', mr: 'मुंबई पोलीस प्रशंसा सन्मान' },
+    text: { en: 'Recognised for exemplary coordination and a peaceful, well-organised celebration.', mr: 'आदर्श समन्वय आणि शांततापूर्ण, शिस्तबद्ध उत्सवासाठी सन्मानित.' },
+  },
+  {
+    year: '2023',
+    title: { en: 'Best Cultural Festival Award', mr: 'सर्वोत्कृष्ट सांस्कृतिक उत्सव पुरस्कार' },
+    text: { en: 'Celebrating the mandal’s commitment to preserving culture through a vibrant festival.', mr: 'भव्य उत्सवाच्या माध्यमातून संस्कृतीचे जतन करण्याच्या कटिबद्धतेचा गौरव.' },
+  },
+  {
+    year: '2022',
+    title: { en: 'Environmental Excellence Award', mr: 'पर्यावरण उत्कृष्टता पुरस्कार' },
+    text: { en: 'Awarded for sustainable practices and an eco-conscious approach to Ganeshotsav.', mr: 'पर्यावरणपूरक गणेशोत्सव पद्धती आणि शाश्वत उपक्रमांसाठी सन्मानित.' },
+  },
 ];
 
 const otherAwards = [
-  { name: 'Shri Ganesh Gaurav Award', organization: 'brihanmumbai municipal corporation', year: '2012 , 2015 , 2016 , 2017 , 2018 , 2019 , 2022 , 2023 , 2024', description: 'For safeguarding local traditions and welcoming new generations into the celebration.', image: imageUrls.medal },
-  { name: 'Sarvajanik Ganeshotsav', organization: 'N.M Joshi Marg Police Station', year: '2016 , 2018', description: 'In recognition of meaningful year-round initiatives that serve the local community.', image: '/images/2018 n m joshi polistation 1st.jpeg', images: ['/images/2018 n m joshi polistation 1st.jpeg', '/images/n m joshi marg police station 2016 1st.jpeg'] },
-  { name: 'Best Public Festival', organization: 'Mumbai Festival Council', year: '2022', description: 'For an inclusive festival experience shaped by devotion, creativity and care.', image: imageUrls.trophy },
-  { name: 'Green Mandal Recognition', organization: 'Clean Mumbai Initiative', year: '2021', description: 'Acknowledging responsible celebrations, waste management and environmental awareness.', image: imageUrls.certificate },
-  { name: 'Civic Partnership Honour', organization: 'Ward Cultural Committee', year: '2020', description: 'Presented for sustained support of civic awareness and neighbourhood unity.', image: imageUrls.group },
-  { name: 'Festival Innovation Award', organization: 'Maharashtra Utsav Network', year: '2019', description: 'For presenting heritage in fresh, engaging and respectful ways for all visitors.', image: imageUrls.ceremony },
+  {
+    name: { en: 'Shri Ganesh Gaurav Award', mr: 'श्री गणेश गौरव पुरस्कार' },
+    organization: { en: 'Brihanmumbai Municipal Corporation', mr: 'बृहन्मुंबई महानगरपालिका' },
+    year: '2012, 2015, 2016, 2017, 2018, 2019, 2022, 2023, 2024',
+    description: { en: 'For safeguarding local traditions and welcoming new generations into the celebration.', mr: 'स्थानिक परंपरांचे रक्षण आणि नवीन पिढीला उत्सवात सहभागी करून घेतल्याबद्दल.' },
+    image: imageUrls.medal,
+  },
+  {
+    name: { en: 'Sarvajanik Ganeshotsav Award', mr: 'सार्वजनिक गणेशोत्सव सन्मान' },
+    organization: { en: 'N.M Joshi Marg Police Station', mr: 'एन.एम. जोशी मार्ग पोलीस ठाणे' },
+    year: '2016, 2018',
+    description: { en: 'In recognition of meaningful year-round initiatives that serve the local community.', mr: 'स्थानिक समुदायाची सेवा करणाऱ्या समाजोपयोगी वर्षभर उपक्रमांबद्दल.' },
+    image: '/images/2018 n m joshi polistation 1st.jpeg',
+    images: ['/images/2018 n m joshi polistation 1st.jpeg', '/images/n m joshi marg police station 2016 1st.jpeg'],
+  },
+  {
+    name: { en: 'Best Public Festival', mr: 'सर्वोत्कृष्ट सार्वजनिक उत्सव' },
+    organization: { en: 'Mumbai Festival Council', mr: 'मुंबई फेस्टिव्हल कौन्सिल' },
+    year: '2022',
+    description: { en: 'For an inclusive festival experience shaped by devotion, creativity and care.', mr: 'भक्ती, कलात्मकता आणि आपुलकीने नटलेल्या सर्वसमावेशक उत्सवासाठी.' },
+    image: imageUrls.trophy,
+  },
+  {
+    name: { en: 'Green Mandal Recognition', mr: 'हरित मंडळ गौरव' },
+    organization: { en: 'Clean Mumbai Initiative', mr: 'स्वच्छ मुंबई उपक्रम' },
+    year: '2021',
+    description: { en: 'Acknowledging responsible celebrations, waste management and environmental awareness.', mr: 'जबाबदार उत्सव, कचरा व्यवस्थापन आणि पर्यावरण जागृतीसाठी सन्मान.' },
+    image: imageUrls.certificate,
+  },
+  {
+    name: { en: 'Civic Partnership Honour', mr: 'नागरी सहभाग सन्मान' },
+    organization: { en: 'Ward Cultural Committee', mr: 'प्रभाग सांस्कृतिक समिती' },
+    year: '2020',
+    description: { en: 'Presented for sustained support of civic awareness and neighbourhood unity.', mr: 'नागरी जागृती आणि परिसर एकोप्यासाठी सतत दिलेल्या पाठिंब्याबद्दल.' },
+    image: imageUrls.group,
+  },
+  {
+    name: { en: 'Festival Innovation Award', mr: 'उत्सव नवकल्पना पुरस्कार' },
+    organization: { en: 'Maharashtra Utsav Network', mr: 'महाराष्ट्र उत्सव नेटवर्क' },
+    year: '2019',
+    description: { en: 'For presenting heritage in fresh, engaging and respectful ways for all visitors.', mr: 'सर्व भाविकांसाठी सांस्कृतिक वारसा नाविन्यपूर्ण व आदरपूर्वक मांडल्याबद्दल.' },
+    image: imageUrls.ceremony,
+  },
 ];
 
 const galleryItems = [
-  { label: 'Trophy', image: imageUrls.trophy },
-  { label: 'Certificate', image: imageUrls.certificate },
-  { label: 'Award ceremony', image: imageUrls.ceremony },
-  { label: 'Mandal family', image: imageUrls.group },
+  { label: { en: 'Trophy', mr: 'चषक' }, image: imageUrls.trophy },
+  { label: { en: 'Certificate', mr: 'प्रमाणपत्र' }, image: imageUrls.certificate },
+  { label: { en: 'Award ceremony', mr: 'पुरस्कार सोहळा' }, image: imageUrls.ceremony },
+  { label: { en: 'Mandal family', mr: 'मंडळ कुटुंब' }, image: imageUrls.group },
 ];
 
 const fadeUp = { hidden: { opacity: 0, y: 22 }, visible: { opacity: 1, y: 0 } };
@@ -54,24 +108,25 @@ function AnimatedCount({ value, suffix }) {
 
   useEffect(() => {
     if (!isInView) return undefined;
-    const duration = 1050;
-    const startedAt = performance.now();
-    let frame;
-    const tick = (now) => {
-      const progress = Math.min((now - startedAt) / duration, 1);
-      setCount(Math.round(value * (1 - (1 - progress) ** 3)));
-      if (progress < 1) frame = requestAnimationFrame(tick);
-    };
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
+    const duration = 1200;
+    const steps = 30;
+    const stepTime = duration / steps;
+    let step = 0;
+    const timer = setInterval(() => {
+      step += 1;
+      setCount(Math.round((value * step) / steps));
+      if (step >= steps) clearInterval(timer);
+    }, stepTime);
+    return () => clearInterval(timer);
   }, [isInView, value]);
 
   return <span ref={ref}>{count}{suffix}</span>;
 }
 
 export default function Awards() {
+  const { t, pick } = useLanguage();
   const { items: uploadedAwards, loading } = useFirestoreItems(contentCollections.awards);
-  const [activeAward, setActiveAward] = useState(null);
+  const [activeItem, setActiveItem] = useState(null);
   const [activePhoto, setActivePhoto] = useState(0);
 
   const dynamicAwards = uploadedAwards.map((award) => ({
@@ -82,28 +137,31 @@ export default function Awards() {
     image: award.image || award.images?.[0] || imageUrls.trophy,
     images: award.images?.length ? award.images : [award.image].filter(Boolean),
   }));
+
   const allOtherAwards = [...dynamicAwards, ...otherAwards].map((award) => ({
     ...award,
     images: award.images?.length ? award.images : [award.image].filter(Boolean),
   }));
+
   const allGalleryItems = [
     ...uploadedAwards.flatMap((award) =>
       (award.images?.length ? award.images : [award.image].filter(Boolean)).map((image, index) => ({
-        label: index === 0 ? award.name || 'Award' : `${award.name || 'Award'} ${index + 1}`,
+        label: index === 0 ? pick(award.name) || 'Award' : `${pick(award.name) || 'Award'} ${index + 1}`,
         image,
       })),
     ),
     ...galleryItems,
   ];
-  const modalImages = activeAward?.images?.length ? activeAward.images : [activeAward?.image].filter(Boolean);
 
-  const openPhotos = (award) => {
-    setActiveAward(award);
+  const modalImages = activeItem?.images?.length ? activeItem.images : [activeItem?.image].filter(Boolean);
+
+  const openPhotos = (item) => {
+    setActiveItem(item);
     setActivePhoto(0);
   };
 
   const closePhotos = () => {
-    setActiveAward(null);
+    setActiveItem(null);
     setActivePhoto(0);
   };
 
@@ -114,7 +172,7 @@ export default function Awards() {
 
   return (
     <>
-      <Seo titleKey="seo.homeTitle" descriptionKey="seo.homeDescription" />
+      <Seo titleKey="seo.awardsTitle" descriptionKey="seo.awardsDescription" />
 
       <section className="relative overflow-hidden devotional-gradient">
         <div className="gold-divider absolute inset-x-0 top-0" />
@@ -126,9 +184,9 @@ export default function Awards() {
             <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.12 }} className="mx-auto grid h-16 w-16 place-items-center rounded-2xl border border-mandal-gold/40 bg-white/85 text-mandal-gold shadow-soft">
               <Trophy className="h-8 w-8" aria-hidden="true" />
             </motion.div>
-            <p className="eyebrow mt-6">A legacy of excellence</p>
-            <h1 className="headline mt-4">Awards &amp; Achievements</h1>
-            <p className="body-copy mt-5">Celebrating decades of excellence, dedication, and recognition received by Panchganga Sarvajanik Utsav Mandal.</p>
+            <p className="eyebrow mt-6">{t('awardsPage.eyebrow')}</p>
+            <h1 className="headline mt-4">{t('awardsPage.title')}</h1>
+            <p className="body-copy mt-5">{t('awardsPage.subtitle')}</p>
           </motion.div>
         </div>
       </section>
@@ -138,15 +196,14 @@ export default function Awards() {
           <motion.article initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={fadeUp} transition={{ duration: 0.55, ease: 'easeOut' }} className="relative overflow-hidden rounded-[2rem] border border-mandal-gold/35 bg-white shadow-soft lg:grid lg:grid-cols-[0.85fr_1.15fr]">
             <div className="absolute left-0 top-0 h-full w-1.5 bg-mandal-gold" />
             <div className="p-7 sm:p-10 lg:p-12">
-              <div className="inline-flex items-center gap-2 rounded-full bg-mandal-mint px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-mandal-green"><Sparkles className="h-3.5 w-3.5 text-mandal-gold" />Featured achievement</div>
-              <p className="mt-7 font-semibold text-mandal-leaf">Recognised in 2018</p>
+              <div className="inline-flex items-center gap-2 rounded-full bg-mandal-mint px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-mandal-green"><Sparkles className="h-3.5 w-3.5 text-mandal-gold" />{t('about.awardsList.a1Label')}</div>
+              <p className="mt-7 font-semibold text-mandal-leaf">2015 / 2018</p>
               <h2 className="mt-3 font-display text-4xl font-bold leading-tight text-mandal-green sm:text-5xl">Limca Book of Records Award</h2>
-              <p className="mt-5 max-w-xl leading-8 text-mandal-ink/70">A defining moment in the Panchganga story. This recognition celebrates the mandal’s exceptional scale of devotion, meticulous organisation and enduring contribution to Mumbai’s cultural fabric.</p>
-              <a href="#timeline" className="mt-8 inline-flex items-center gap-2 rounded-full bg-mandal-green px-6 py-3 text-sm font-bold text-white transition hover:bg-mandal-leaf focus:outline-none focus:ring-2 focus:ring-mandal-gold focus:ring-offset-2">Explore our journey <ArrowRight className="h-4 w-4" /></a>
+              <p className="mt-5 max-w-xl leading-8 text-mandal-ink/70">{t('about.awardsList.a1Desc')}</p>
             </div>
             <div className="relative min-h-[19rem] overflow-hidden bg-mandal-green p-5 sm:p-7 lg:h-[32rem]">
-              <motion.img whileHover={{ scale: 1.045 }} transition={{ duration: 0.55, ease: 'easeOut' }} src={imageUrls.trophy} alt="Golden trophy representing the Limca Book of Records Award" className="h-full w-full rounded-[1.5rem] border-2 border-mandal-gold/75 object-cover shadow-soft" />
-              <div className="absolute bottom-10 left-10 rounded-full bg-white/90 px-4 py-2 text-sm font-bold text-mandal-green backdrop-blur"><Trophy className="mr-2 inline h-4 w-4 text-mandal-gold" />A landmark honour</div>
+              <motion.img whileHover={{ scale: 1.045 }} transition={{ duration: 0.55, ease: 'easeOut' }} src={imageUrls.trophy} alt="Limca Book of Records Award" className="h-full w-full rounded-[1.5rem] border-2 border-mandal-gold/75 object-cover shadow-soft" />
+              <div className="absolute bottom-10 left-10 rounded-full bg-white/90 px-4 py-2 text-sm font-bold text-mandal-green backdrop-blur"><Trophy className="mr-2 inline h-4 w-4 text-mandal-gold" />Limca Book of Records</div>
             </div>
           </motion.article>
         </div>
@@ -155,11 +212,11 @@ export default function Awards() {
       <section className="pb-16 sm:pb-20">
         <div className="container-pad">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={stagger} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {statistics.map(({ value, suffix, label, icon: Icon }) => (
-              <motion.div key={label} variants={fadeUp} transition={{ duration: 0.4, ease: 'easeOut' }} whileHover={{ y: -5 }} className="soft-panel group p-5 sm:p-6">
+            {statistics.map(({ value, suffix, labelKey, icon: Icon }) => (
+              <motion.div key={labelKey} variants={fadeUp} transition={{ duration: 0.4, ease: 'easeOut' }} whileHover={{ y: -5 }} className="soft-panel group p-5 sm:p-6">
                 <Icon className="h-6 w-6 text-mandal-gold transition-transform duration-300 group-hover:scale-110" aria-hidden="true" />
                 <p className="mt-4 font-display text-4xl font-bold text-mandal-green"><AnimatedCount value={value} suffix={suffix} /></p>
-                <p className="mt-1 text-sm font-semibold text-mandal-ink/65">{label}</p>
+                <p className="mt-1 text-sm font-semibold text-mandal-ink/65">{t(labelKey)}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -169,41 +226,32 @@ export default function Awards() {
       <section id="timeline" className="section-pad devotional-gradient">
         <div className="container-pad grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={fadeUp} transition={{ duration: 0.45 }}>
-            <p className="eyebrow">Recognition through the years</p>
-            <h2 className="mt-3 font-display text-4xl font-bold text-mandal-green sm:text-5xl">Awards timeline</h2>
-            <p className="mt-5 max-w-md leading-8 text-mandal-ink/70">Every honour is a reflection of shared effort—of our volunteers, devotees, partners and the entire Panchganga family.</p>
+            <p className="eyebrow">{t('about.timelineHeader')}</p>
+            <h2 className="mt-3 font-display text-4xl font-bold text-mandal-green sm:text-5xl">{t('awardsPage.title')}</h2>
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={stagger} className="relative space-y-6 border-l border-mandal-gold/50 pl-7 sm:pl-9">
             {timelineAwards.map((item) => (
               <motion.article key={item.year} variants={fadeUp} transition={{ duration: 0.42 }} className="relative rounded-2xl border border-mandal-green/10 bg-white/90 p-5 shadow-soft sm:p-6">
                 <span className="absolute -left-[2.25rem] top-6 grid h-7 w-7 place-items-center rounded-full border-4 border-mandal-cream bg-mandal-gold sm:-left-[2.75rem]"><Medal className="h-3.5 w-3.5 text-mandal-green" /></span>
-                <div className="flex flex-wrap items-center gap-3"><span className="rounded-full bg-mandal-green px-3 py-1 text-xs font-bold text-white">{item.year}</span><h3 className="font-display text-2xl font-bold text-mandal-green">{item.title}</h3></div>
-                <p className="mt-3 leading-7 text-mandal-ink/68">{item.text}</p>
+                <div className="flex flex-wrap items-center gap-3"><span className="rounded-full bg-mandal-green px-3 py-1 text-xs font-bold text-white">{item.year}</span><h3 className="font-display text-2xl font-bold text-mandal-green">{pick(item.title)}</h3></div>
+                <p className="mt-3 leading-7 text-mandal-ink/68">{pick(item.text)}</p>
               </motion.article>
             ))}
           </motion.div>
         </div>
       </section>
 
-      <section className="section-pad bg-white/75">
-        <div className="container-pad">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={fadeUp} transition={{ duration: 0.45 }} className="soft-panel p-6 sm:p-8">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><div><p className="eyebrow">A record of consistency</p><h2 className="mt-2 font-display text-3xl font-bold text-mandal-green sm:text-4xl">Repeated honours</h2></div><Trophy className="h-8 w-8 text-mandal-gold" /></div>
-            <div className="mt-7 grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center"><div><h3 className="font-display text-3xl font-bold text-mandal-green">BMC Excellence Award</h3><p className="mt-2 text-sm font-bold text-mandal-leaf">Won 9 Times</p><p className="mt-3 leading-7 text-mandal-ink/68">A lasting recognition of the mandal’s dependable standards in festival operations and public service.</p></div><div className="flex flex-wrap gap-2.5">{['2012', '2015', '2016', '2017', '2018', '2019', '2022', '2023', '2024'].map((year) => <span key={year} className="rounded-full border border-mandal-gold/45 bg-mandal-gold/10 px-4 py-2 text-sm font-bold text-mandal-green">{year}</span>)}</div></div>
-          </motion.div>
-        </div>
-      </section>
-
       <section className="section-pad devotional-gradient">
-        <div className="container-pad"><motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={fadeUp} transition={{ duration: 0.45 }}><p className="eyebrow">Honours we cherish</p><h2 className="mt-3 font-display text-4xl font-bold text-mandal-green sm:text-5xl">Other awards</h2></motion.div>
+        <div className="container-pad">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={fadeUp} transition={{ duration: 0.45 }}><p className="eyebrow">{t('awardsPage.eyebrow')}</p><h2 className="mt-3 font-display text-4xl font-bold text-mandal-green sm:text-5xl">{t('awardsPage.title')}</h2></motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={stagger} className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {loading ? Array.from({ length: 3 }).map((_, index) => <CardSkeleton key={index} />) : null}
-            {allOtherAwards.map((award) => <motion.article key={`${award.name}-${award.year}`} variants={fadeUp} transition={{ duration: 0.42 }} whileHover={{ y: -7 }} className="group overflow-hidden rounded-[1.5rem] border border-mandal-green/10 bg-white shadow-soft transition-shadow hover:shadow-[0_20px_46px_rgba(13,63,35,0.17)]"><button type="button" onClick={() => openPhotos(award)} className="block w-full overflow-hidden rounded-[1.25rem] text-left outline-none transition focus:ring-4 focus:ring-mandal-gold/40" aria-label={`Open photos for ${award.name}`}><div className="relative aspect-[16/9] overflow-hidden"><img src={award.image} alt={award.name} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" /><span className="absolute bottom-4 left-4 grid h-10 w-10 place-items-center rounded-full border border-mandal-gold/50 bg-white/95 text-mandal-gold"><Trophy className="h-5 w-5" /></span></div></button><div className="p-5 sm:p-6"><p className="text-xs font-bold uppercase tracking-[0.12em] text-mandal-leaf">{award.organization}</p><h3 className="mt-2 font-display text-2xl font-bold leading-tight text-mandal-green">{award.name}</h3><p className="mt-3 text-sm leading-6 text-mandal-ink/68">{award.description}</p><p className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-mandal-green"><Calendar className="h-4 w-4 text-mandal-gold" />{award.year}</p></div></motion.article>)}
+            {allOtherAwards.map((award) => <motion.article key={`${pick(award.name)}-${award.year}`} variants={fadeUp} transition={{ duration: 0.42 }} whileHover={{ y: -7 }} className="group overflow-hidden rounded-[1.5rem] border border-mandal-green/10 bg-white shadow-soft transition-shadow hover:shadow-[0_20px_46px_rgba(13,63,35,0.17)]"><button type="button" onClick={() => openPhotos(award)} className="block w-full overflow-hidden rounded-[1.25rem] text-left outline-none transition focus:ring-4 focus:ring-mandal-gold/40" aria-label={`Open photos for ${pick(award.name)}`}><div className="relative aspect-[16/9] overflow-hidden"><img src={award.image} alt={pick(award.name)} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" /><span className="absolute bottom-4 left-4 grid h-10 w-10 place-items-center rounded-full border border-mandal-gold/50 bg-white/95 text-mandal-gold"><Trophy className="h-5 w-5" /></span></div></button><div className="p-5 sm:p-6"><p className="text-xs font-bold uppercase tracking-[0.12em] text-mandal-leaf">{pick(award.organization)}</p><h3 className="mt-2 font-display text-2xl font-bold leading-tight text-mandal-green">{pick(award.name)}</h3><p className="mt-3 text-sm leading-6 text-mandal-ink/68">{pick(award.description)}</p><p className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-mandal-green"><Calendar className="h-4 w-4 text-mandal-gold" />{award.year}</p></div></motion.article>)}
           </motion.div>
         </div>
       </section>
 
-      {activeAward ? (
+      {activeItem ? (
         <div
           className="fixed inset-0 z-[80] grid place-items-center bg-[#0B3D1F]/88 p-4 backdrop-blur-sm"
           role="dialog"
@@ -216,7 +264,7 @@ export default function Awards() {
             <div className="flex items-center justify-between gap-4 border-b border-[#1F7A3D]/15 px-5 py-4">
               <div className="min-w-0">
                 <p className="text-xs font-black uppercase tracking-[0.22em] text-[#1F7A3D]">Award Photos</p>
-                <h3 className="truncate font-display text-2xl font-bold text-[#0B3D1F]">{activeAward.name}</h3>
+                <h3 className="truncate font-display text-2xl font-bold text-[#0B3D1F]">{pick(activeItem.name) || pick(activeItem.title)}</h3>
               </div>
               <button
                 type="button"
@@ -231,7 +279,7 @@ export default function Awards() {
             <div className="relative bg-[#F6FAEF] p-4 sm:p-6">
               <img
                 src={modalImages[activePhoto]}
-                alt={`${activeAward.name} ${activePhoto + 1}`}
+                alt={`${pick(activeItem.name) || pick(activeItem.title)} ${activePhoto + 1}`}
                 className="mx-auto h-[62vh] max-h-[680px] w-full rounded-2xl object-contain"
               />
 
@@ -256,29 +304,9 @@ export default function Awards() {
                 </>
               ) : null}
             </div>
-
-            {modalImages.length > 1 ? (
-              <div className="flex gap-2 overflow-x-auto px-5 pb-5">
-                {modalImages.map((image, index) => (
-                  <button
-                    key={`${image}-${index}`}
-                    type="button"
-                    onClick={() => setActivePhoto(index)}
-                    className={`h-16 w-20 shrink-0 overflow-hidden rounded-xl border-2 transition ${
-                      activePhoto === index ? 'border-[#1F7A3D]' : 'border-transparent opacity-65 hover:opacity-100'
-                    }`}
-                    aria-label={`View photo ${index + 1}`}
-                  >
-                    <img src={image} alt="" className="h-full w-full object-cover" loading="lazy" />
-                  </button>
-                ))}
-              </div>
-            ) : null}
           </div>
         </div>
       ) : null}
-
-      <section className="section-pad bg-white/75"><div className="container-pad"><motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={fadeUp} transition={{ duration: 0.45 }} className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"><div><p className="eyebrow">Moments of pride</p><h2 className="mt-3 font-display text-4xl font-bold text-mandal-green sm:text-5xl">Award gallery</h2></div><p className="max-w-sm text-sm leading-6 text-mandal-ink/65">Snapshots that honour the people and moments behind every recognition.</p></motion.div><motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={stagger} className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{allGalleryItems.map((item) => <motion.figure key={`${item.label}-${item.image}`} variants={fadeUp} transition={{ duration: 0.4 }} whileHover={{ y: -5 }} className="group overflow-hidden rounded-2xl border border-mandal-green/10 bg-white shadow-soft"><div className="aspect-square overflow-hidden"><img src={item.image} alt={item.label} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" /></div><figcaption className="px-4 py-3 text-sm font-bold text-mandal-green">{item.label}</figcaption></motion.figure>)}</motion.div></div></section>
     </>
   );
 }

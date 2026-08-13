@@ -8,7 +8,7 @@ import { contentCollections, toLocalized } from '../utils/contentStore.js';
 import { RowSkeleton } from './Skeleton.jsx';
 
 export default function SponsorsSection() {
-  const { pick } = useLanguage();
+  const { t, pick } = useLanguage();
   const [active, setActive] = useState(null);
   const [activeImage, setActiveImage] = useState(0);
   const carouselRef = useRef(null);
@@ -67,9 +67,9 @@ export default function SponsorsSection() {
         transition={{ duration: 0.55, ease: 'easeOut' }}
       >
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="font-display text-4xl font-bold uppercase text-mandal-green sm:text-5xl">Sponsors</h2>
+          <h2 className="font-display text-4xl font-bold uppercase text-mandal-green sm:text-5xl">{t('home.sponsorsTitle')}</h2>
           <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-mandal-ink/80 sm:text-xl">
-            "Together, supporting a legacy of faith, grandeur, and the soul of Ganesh Utsav."
+            {t('home.sponsorsQuote')}
           </p>
         </div>
 
@@ -154,7 +154,7 @@ export default function SponsorsSection() {
                     <img src={active.logo} alt={pick(active.alt) || pick(active.name)} className="max-h-full max-w-full object-contain" />
                   </div>
                   <div>
-                    <p className="text-xs font-black uppercase tracking-[0.28em] text-mandal-green">Sponsor Gallery</p>
+                    <p className="text-xs font-black uppercase tracking-[0.28em] text-mandal-green">{t('home.sponsorsGalleryTitle')}</p>
                     <h3 className="mt-1 font-display text-4xl font-bold uppercase text-mandal-green sm:text-5xl">{pick(active.name)}</h3>
                   </div>
                 </div>
@@ -162,7 +162,7 @@ export default function SponsorsSection() {
 
               <div className="p-5 sm:p-7">
                 <p className="mb-6 max-w-3xl leading-8 text-mandal-ink/70">
-                  {active.message || 'Thank you for supporting.'}
+                  {active.message ? pick(active.message) : t('home.sponsorsDefaultMsg')}
                 </p>
 
                 <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

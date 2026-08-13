@@ -5,6 +5,7 @@ import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import ScrollToTop from './components/ScrollToTop.jsx';
 import ProtectedRoute from "./components/ProtectedRoute";
+import { useLanguage } from './context/LanguageContext.jsx';
 
 const Home = lazy(() => import('./pages/Home.jsx'));
 const About = lazy(() => import('./pages/About.jsx'));
@@ -26,6 +27,7 @@ const pageMotion = {
 
 export default function App() {
   const location = useLocation();
+  const { t } = useLanguage();
 
   return (
     <div className="min-h-screen overflow-x-hidden devotional-gradient text-mandal-ink">
@@ -37,7 +39,7 @@ export default function App() {
             fallback={
               <div className="grid min-h-[50vh] place-items-center px-4">
                 <div className="rounded-2xl bg-white px-6 py-4 text-sm font-bold text-mandal-green shadow-soft">
-                  Loading...
+                  {t('loading')}
                 </div>
               </div>
             }
@@ -70,6 +72,12 @@ export default function App() {
                 }
               />
               <Route path="/admin/:section/:mode" element={
+                  <ProtectedRoute>
+                    <AdminContentManager />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/admin/:section/:mode/:id" element={
                   <ProtectedRoute>
                     <AdminContentManager />
                   </ProtectedRoute>

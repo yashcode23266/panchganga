@@ -21,7 +21,7 @@ const fadeIn = {
 };
 
 export default function Home() {
-  const { t, pick } = useLanguage();
+  const { language, t, pick } = useLanguage();
 
   return (
     <>
@@ -129,7 +129,7 @@ export default function Home() {
             </div>
             <div className="mt-8">
               <ButtonLink to="/about" variant="secondary">
-                View More
+                {t('common.viewMore')}
               </ButtonLink>
             </div>
           </motion.div>
@@ -163,9 +163,6 @@ export default function Home() {
         </div>
       </section>
 
-
-
-
       <section className="section-pad devotional-gradient">
         <div className="container-pad">
           <div className="soft-panel grid gap-8 p-6 sm:p-8 lg:grid-cols-[1fr_0.95fr] lg:items-center">
@@ -187,74 +184,66 @@ export default function Home() {
         </div>
       </section>
 
-
       <section className="section-pad devotional-gradient">
         <div className="container-pad">
           <div className="soft-panel grid gap-8 p-6 sm:p-8 lg:grid-cols-[1fr_0.95fr] lg:items-center">
-
-            {/* LEFT TEXT */}
             <div>
-              <p className="eyebrow">SPECIAL THANKS</p>
-
+              <p className="eyebrow">{t('home.specialThanks')}</p>
               <h2 className="mt-3 font-display text-4xl font-bold text-mandal-green">
-                Honoring Our Supporter
+                {t('home.honoringSupporterTitle')}
               </h2>
-
-              <p className="mt-4 max-w-2xl leading-8 text-mandal-ink/70">
-                We extend our heartfelt gratitude to{" "}
-                <span className="font-semibold text-mandal-ink">Dr. Sumeet Sanjay Patil</span>{" "}
-                His visionary concepts and socially relevant themes have brought our stories to life. We are grateful for his continued guidance and dedication.
+              <p className="mt-4 max-w-2xl leading-8 text-mandal-ink/80">
+                {language === 'mr' ? (
+                  <>
+                    आम्ही <strong className="font-extrabold text-mandal-green text-xl underline decoration-mandal-gold/50 underline-offset-4">डॉ. सुमित संजय पाटील</strong> यांचे मनापासून आभार मानतो. त्यांच्या दूरदृष्टीपूर्ण संकल्पना आणि सामाजिक विषयांवरील संकल्पनांनी आमच्या देखाव्यांना जिवंतपणा दिला आहे. त्यांच्या सततच्या मार्गदर्शनाबद्दल आणि समर्पणाबद्दल आम्ही कृतज्ञ आहोत.
+                  </>
+                ) : (
+                  <>
+                    We extend our heartfelt gratitude to <strong className="font-extrabold text-mandal-green text-xl underline decoration-mandal-gold/50 underline-offset-4">Dr. Sumeet Sanjay Patil</strong>. His visionary concepts and socially relevant themes have brought our stories to life. We are grateful for his continued guidance and dedication.
+                  </>
+                )}
               </p>
             </div>
-
-            {/* RIGHT IMAGE (same style as map box) */}
             <div className="overflow-hidden rounded-[2rem] border border-mandal-green/10 bg-white shadow-soft flex items-center justify-center">
-
               <img
-                src="/images/drsumit.jpeg"   // 👉 replace with your image
-                alt="supporter"
+                src="/images/drsumit.jpeg"
+                alt="Dr. Sumeet Sanjay Patil"
                 className="h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
+                loading="lazy"
               />
-
             </div>
-
           </div>
         </div>
       </section>
 
-
-
       <section className="section-pad devotional-gradient">
         <div className="container-pad">
           <div className="soft-panel grid gap-8 p-6 sm:p-8 lg:grid-cols-[1fr_0.95fr] lg:items-center">
-
-            {/* LEFT TEXT */}
             <div>
-              <p className="eyebrow">SPECIAL THANKS</p>
-
+              <p className="eyebrow">{t('home.specialThanks')}</p>
               <h2 className="mt-3 font-display text-4xl font-bold text-mandal-green">
-                A Lasting Legacy
+                {t('home.lastingLegacyTitle')}
               </h2>
-
-              <p className="mt-4 max-w-2xl leading-8 text-mandal-ink/70">
-                We extend our heartfelt gratitude to Late{" "}
-                <span className="font-semibold text-mandal-ink"> Sunil Kalyankar</span>{" "}
-                He was an integral pillar of our team for over 15 years, renowned for his exceptional talent in crafting eco-friendly Shadu clay idols. His signature antique finishes, intricate balancing idols, and masterpieces like Ashtabhuja and Panchamukhi Ganesha reflected his extraordinary artistry. Even during severe illness, his dedication never wavered. His guidance and divine legacy will forever live on in our hearts.
-
+              <p className="mt-4 max-w-2xl leading-8 text-mandal-ink/80">
+                {language === 'mr' ? (
+                  <>
+                    आम्ही कै. <strong className="font-extrabold text-mandal-green text-xl underline decoration-mandal-gold/50 underline-offset-4">सुनील कल्याणकर</strong> यांच्याप्रती कृतज्ञता व्यक्त करतो. ते १५ वर्षांहून अधिक काळ आमच्या टीमचा प्रमुख स्तंभ होते, जे पर्यावरणपूरक शाडूच्या मातीच्या मूर्ती साकारण्याच्या अप्रतिम कौशल्यासाठी प्रसिद्ध होते. त्यांची अँटीक फिनिश, शिल्पकला आणि अष्टभुजा व पंचमुखी गणेशासारख्या कलाकृती त्यांच्या अद्वितीय कलात्मकतेचे प्रतीक होत्या. गंभीर आजारपणातही त्यांचे समर्पण कधीच डगमगले नाही. त्यांचे मार्गदर्शन आणि कलात्मक वारसा आमच्या हृदयात कायम राहील.
+                  </>
+                ) : (
+                  <>
+                    We extend our heartfelt gratitude to Late <strong className="font-extrabold text-mandal-green text-xl underline decoration-mandal-gold/50 underline-offset-4">Sunil Kalyankar</strong>. He was an integral pillar of our team for over 15 years, renowned for his exceptional talent in crafting eco-friendly Shadu clay idols. His signature antique finishes, intricate balancing idols, and masterpieces like Ashtabhuja and Panchamukhi Ganesha reflected his extraordinary artistry. Even during severe illness, his dedication never wavered. His guidance and divine legacy will forever live on in our hearts.
+                  </>
+                )}
               </p>
             </div>
-
-            {/* RIGHT IMAGE (same style as map box) */}
             <div className="overflow-hidden rounded-[2rem] border border-mandal-green/10 bg-white shadow-soft flex items-center justify-center">
-
               <img
-                src="/images/murti.jpeg"   // 👉 replace with your image
-                alt="supporter"
+                src="/images/murti.jpeg"
+                alt="Late Sunil Kalyankar"
                 className="h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
+                loading="lazy"
               />
-
             </div>
-
           </div>
         </div>
       </section>

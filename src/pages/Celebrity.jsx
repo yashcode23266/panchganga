@@ -1,6 +1,8 @@
-// components/Celebrity.jsx
 import React from 'react';
 import MasonryGrid from '../components/ui/MasonryGrid.jsx';
+import Seo from '../components/Seo.jsx';
+import { useLanguage } from '../context/LanguageContext.jsx';
+
 // Local celebrity images — place celeb1.jpg ... celeb29.jpg in /public/images/
 const galleryItems = Array.from({ length: 29 }, (_, i) => ({
   id: i + 1,
@@ -8,15 +10,18 @@ const galleryItems = Array.from({ length: 29 }, (_, i) => ({
 }));
 
 const Celebrity = () => {
+  const { t } = useLanguage();
   return (
-    <div className="w-full min-h-screen bg-background p-4 sm:p-6 md:p-8">
+    <>
+      <Seo titleKey="seo.celebrityTitle" descriptionKey="seo.celebrityDescription" />
+      <div className="w-full min-h-screen bg-background p-4 sm:p-6 md:p-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-2">
-            Celebrity Gallery
+            {t('celebrity.title')}
           </h1>
           <p className="text-lg text-muted-foreground">
-            A curated showcase of iconic faces
+            {t('celebrity.subtitle')}
           </p>
         </div>
 
@@ -37,6 +42,7 @@ const Celebrity = () => {
         />
       </div>
     </div>
+    </>
   );
 };
 

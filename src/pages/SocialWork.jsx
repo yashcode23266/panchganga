@@ -63,7 +63,7 @@ export default function SocialWork() {
                   type="button"
                   onClick={() => openPhotos(event)}
                   className="block w-full overflow-hidden rounded-[1.75rem] bg-mandal-mint/30 text-left outline-none ring-mandal-gold/0 transition focus:ring-4"
-                  aria-label={`Open photos for ${pick(event.title)}`}
+                  aria-label={`${t('openPhotosFor')} ${pick(event.title)}`}
                 >
                   <img
                     className="h-56 w-full object-cover transition duration-700 group-hover:scale-105"
@@ -97,14 +97,14 @@ export default function SocialWork() {
           <div className="relative w-full max-w-5xl overflow-hidden rounded-[2rem] bg-white shadow-2xl">
             <div className="flex items-center justify-between gap-4 border-b border-[#1F7A3D]/15 px-5 py-4">
               <div className="min-w-0">
-                <p className="text-xs font-black uppercase tracking-[0.22em] text-[#1F7A3D]">Social Work Photos</p>
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-[#1F7A3D]">{t('socialWork.title')}</p>
                 <h3 className="truncate font-display text-2xl font-bold text-[#0B3D1F]">{pick(activeItem.title)}</h3>
               </div>
               <button
                 type="button"
                 onClick={closePhotos}
                 className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#0B3D1F] text-white transition hover:bg-[#16632F]"
-                aria-label="Close photos"
+                aria-label={t('common.close')}
               >
                 <X size={20} />
               </button>
@@ -123,7 +123,7 @@ export default function SocialWork() {
                     type="button"
                     onClick={() => changePhoto(-1)}
                     className="absolute left-5 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white text-[#0B3D1F] shadow-md transition hover:bg-[#A3C73A]"
-                    aria-label="Previous photo"
+                    aria-label={t('previousPhoto')}
                   >
                     <ChevronLeft size={22} />
                   </button>
@@ -131,7 +131,7 @@ export default function SocialWork() {
                     type="button"
                     onClick={() => changePhoto(1)}
                     className="absolute right-5 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white text-[#0B3D1F] shadow-md transition hover:bg-[#A3C73A]"
-                    aria-label="Next photo"
+                    aria-label={t('nextPhoto')}
                   >
                     <ChevronRight size={22} />
                   </button>
@@ -149,7 +149,7 @@ export default function SocialWork() {
                     className={`h-16 w-20 shrink-0 overflow-hidden rounded-xl border-2 transition ${
                       activePhoto === index ? 'border-[#1F7A3D]' : 'border-transparent opacity-65 hover:opacity-100'
                     }`}
-                    aria-label={`View photo ${index + 1}`}
+                    aria-label={`${t('viewPhoto')} ${index + 1}`}
                   >
                     <img src={image} alt="" className="h-full w-full object-cover" loading="lazy" />
                   </button>

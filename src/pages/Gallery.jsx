@@ -7,7 +7,7 @@ import { CardSkeleton } from '../components/Skeleton.jsx';
 import { useLanguage } from '../context/LanguageContext.jsx';
 import { galleryImages } from '../data/images.js';
 import useFirestoreItems from '../hooks/useFirestoreItems.js';
-import { contentCollections, toLocalized } from '../utils/contentStore.js';
+import { contentCollections, getOptimizedImageUrl, toLocalized } from '../utils/contentStore.js';
 
 export default function Gallery() {
   const [active, setActive] = useState(null);
@@ -53,12 +53,12 @@ export default function Gallery() {
       <section className="section-pad pt-4 sm:pt-6">
         <div className="container-pad">
           <div className="mb-5 flex items-center justify-between gap-4 sm:mb-6">
-            <p className="text-sm font-semibold text-mandal-ink/60">Swipe through our celebrations, one memorable year at a time.</p>
+            <p className="text-sm font-semibold text-mandal-ink/60">{t('gallerySwipe')}</p>
             <div className="hidden shrink-0 items-center gap-2 sm:flex">
-              <button type="button" onClick={() => scrollGallery(-1)} className="grid h-11 w-11 place-items-center rounded-full border border-mandal-green/10 bg-white text-mandal-green shadow-soft transition hover:border-mandal-gold hover:bg-mandal-mint" aria-label="Previous year">
+              <button type="button" onClick={() => scrollGallery(-1)} className="grid h-11 w-11 min-h-[44px] min-w-[44px] place-items-center rounded-full border border-mandal-green/10 bg-white text-mandal-green shadow-soft transition hover:border-mandal-gold hover:bg-mandal-mint" aria-label={t('previousYear')}>
                 <ChevronLeft size={20} />
               </button>
-              <button type="button" onClick={() => scrollGallery(1)} className="grid h-11 w-11 place-items-center rounded-full border border-mandal-green/10 bg-white text-mandal-green shadow-soft transition hover:border-mandal-gold hover:bg-mandal-mint" aria-label="Next year">
+              <button type="button" onClick={() => scrollGallery(1)} className="grid h-11 w-11 min-h-[44px] min-w-[44px] place-items-center rounded-full border border-mandal-green/10 bg-white text-mandal-green shadow-soft transition hover:border-mandal-gold hover:bg-mandal-mint" aria-label={t('nextYear')}>
                 <ChevronRight size={20} />
               </button>
             </div>
@@ -74,20 +74,20 @@ export default function Gallery() {
               onClick={() => setActive({ year, images })}
               className="group w-[82vw] shrink-0 snap-start overflow-hidden rounded-[1.5rem] bg-white text-left shadow-soft transition hover:-translate-y-1 hover:shadow-[0_18px_38px_rgba(13,63,35,0.16)] sm:w-[22rem] lg:w-[24rem]"
             >
-              <div className="relative overflow-hidden bg-mandal-mint/35">
-                <img className="h-72 w-full object-contain transition duration-700 group-hover:scale-105" src={cover.src} alt={pick(cover.alt)} loading="lazy" />
+              <div className="relative overflow-hidden bg-mandal-mint/35 aspect-[4/3]">
+                <img className="h-72 w-full object-contain transition duration-700 group-hover:scale-105" src={getOptimizedImageUrl(cover.src, 600)} alt={pick(cover.alt)} loading="lazy" decoding="async" />
                 <span className="absolute left-5 top-5 rounded-full bg-mandal-green px-4 py-2 text-sm font-bold text-white shadow-soft">{year}</span>
               </div>
               <div className="p-5">
                 <p className="font-display text-2xl font-bold text-mandal-green">{pick(cover.caption)}</p>
-                <p className="mt-1 text-sm font-semibold text-mandal-ink/55">{images.length} {images.length === 1 ? 'photo' : 'photos'}</p>
+                <p className="mt-1 text-sm font-semibold text-mandal-ink/55">{images.length} {images.length === 1 ? t('photo') : t('photos')}</p>
               </div>
             </button>
           ))}
           </div>
-          <div className="mt-2 flex justify-center gap-2 sm:hidden">
-            <button type="button" onClick={() => scrollGallery(-1)} className="grid h-10 w-10 place-items-center rounded-full border border-mandal-green/10 bg-white text-mandal-green shadow-soft" aria-label="Previous year"><ChevronLeft size={19} /></button>
-            <button type="button" onClick={() => scrollGallery(1)} className="grid h-10 w-10 place-items-center rounded-full border border-mandal-green/10 bg-white text-mandal-green shadow-soft" aria-label="Next year"><ChevronRight size={19} /></button>
+          <div className="mt-3 flex justify-center gap-3 sm:hidden">
+            <button type="button" onClick={() => scrollGallery(-1)} className="grid h-11 w-11 min-h-[44px] min-w-[44px] place-items-center rounded-full border border-mandal-green/10 bg-white text-mandal-green shadow-soft" aria-label={t('previousYear')}><ChevronLeft size={20} /></button>
+            <button type="button" onClick={() => scrollGallery(1)} className="grid h-11 w-11 min-h-[44px] min-w-[44px] place-items-center rounded-full border border-mandal-green/10 bg-white text-mandal-green shadow-soft" aria-label={t('nextYear')}><ChevronRight size={20} /></button>
           </div>
         </div>
       </section>

@@ -25,3 +25,24 @@ export function toLocalized(value) {
   if (typeof value === 'object') return value;
   return { en: value, mr: value };
 }
+
+/**
+ * Automatically injects Cloudinary format, quality, and width parameters
+ * for fast loading and reduced payload size.
+ */
+export function getOptimizedImageUrl(url, width = 800) {
+  if (!url || typeof url !== 'string') return url;
+
+  if (url.includes('res.cloudinary.com') && url.includes('/upload/')) {
+    const searchTarget = '/upload/';
+    const index = url.indexOf(searchTarget);
+    if (index !== -1 && !url.includes('f_auto,q_auto')) {
+      const prefix = url.slice(0, index + searchTarget.length);
+      const suffix = url.slice(index + searchTarget.length);
+      return `${prefix}f_auto,q_auto,w_${width},c_limit/${suffix}`;
+    }
+  }
+
+  return url;
+}
+

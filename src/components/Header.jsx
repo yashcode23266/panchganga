@@ -88,23 +88,23 @@ export default function Header() {
 
         <button
           type="button"
-          className={`${colors.surface} grid h-10 w-10 shrink-0 place-items-center rounded-full text-white shadow-md sm:h-11 sm:w-11 md:hidden`}
+          className={`${colors.surface} grid h-11 w-11 min-h-[44px] min-w-[44px] shrink-0 place-items-center rounded-full text-white shadow-md md:hidden`}
           onClick={() => setOpen((value) => !value)}
           aria-label={open ? t('nav.close') : t('nav.menu')}
         >
-          {open ? <X size={20} /> : <Menu size={20} />}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {open && (
         <div className="relative z-10 border-t border-[#1F7A3D]/20 bg-[#A3C73A] md:hidden">
-          <nav className="relative container-pad flex flex-col gap-1 py-2.5">
+          <nav className="relative container-pad flex flex-col gap-1.5 py-3">
             {navItems.map(([to, key]) => (
               <NavLink
                 key={to}
                 to={to}
                 className={({ isActive }) =>
-                  `rounded-lg px-3.5 py-1.5 text-sm font-bold transition ${isActive
+                  `flex min-h-[44px] items-center rounded-xl px-4 py-2.5 text-sm font-bold transition ${isActive
                     ? 'bg-[#0B3D1F] text-white'
                     : 'text-mandal-green hover:bg-white/45'
                   }`
@@ -117,8 +117,11 @@ export default function Header() {
 
             <button
               type="button"
-              onClick={() => setLanguage(nextLanguage)}
-              className={`${colors.surface} mt-1 rounded-lg px-3.5 py-2 text-sm font-bold text-white shadow-sm transition`}
+              onClick={() => {
+                setLanguage(nextLanguage);
+                setOpen(false);
+              }}
+              className={`${colors.surface} mt-1.5 flex min-h-[44px] items-center justify-center rounded-xl px-4 py-2.5 text-sm font-bold text-white shadow-sm transition`}
             >
               {t('nav.language')}
             </button>

@@ -22,7 +22,7 @@ body {
   background:
     radial-gradient(circle at top left, rgba(232, 244, 223, 0.72), transparent 30rem),
     linear-gradient(145deg, #ffffff 0%, #fbfdf8 58%, #edf7e8 100%);
-  font-family: Inter, system-ui, sans-serif;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
 }
 
 img {
@@ -47,6 +47,20 @@ img {
 
 .body-copy {
   @apply text-base leading-8 text-mandal-ink/75 sm:text-lg;
+}
+
+html.lang-mr body {
+  font-family: 'Noto Sans Devanagari', 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+html.lang-mr .font-display,
+html.lang-mr .headline {
+  font-family: 'Noto Sans Devanagari', 'Inter', system-ui, -apple-system, sans-serif;
+  letter-spacing: 0;
+}
+
+html.lang-mr .eyebrow {
+  letter-spacing: 0.08em;
 }
 
 .soft-panel {
