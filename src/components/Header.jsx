@@ -28,13 +28,13 @@ export default function Header() {
   const nextLanguage = language === 'en' ? 'mr' : 'en';
 
   const navClass = ({ isActive }) =>
-    `text-sm font-bold tracking-[0.01em] transition ${isActive ? 'text-mandal-leaf' : `${colors.textSoft} ${colors.hover}`
+    `text-xs lg:text-sm font-bold tracking-[0.01em] transition whitespace-nowrap ${isActive ? 'text-mandal-leaf' : `${colors.textSoft} ${colors.hover}`
     }`;
 
   return (
-    <header className={`sticky top-0 z-40 overflow-hidden bg-[#A3C73A] ${colors.text} shadow-md`}>
+    <header className={`sticky top-0 z-40 bg-[#A3C73A] ${colors.text} shadow-md`}>
       <div className="absolute inset-x-0 bottom-0 h-px bg-[#1F7A3D]/25" />
-      <div className="relative z-10 container-pad flex h-20 items-center justify-between">
+      <div className="relative z-10 container-pad flex h-20 items-center justify-between gap-3 md:gap-4 lg:gap-8">
         <button
           type="button"
           onClick={() => {
@@ -53,22 +53,22 @@ export default function Header() {
               }, 3000);
             }
           }}
-          className="flex items-center gap-3"
+          className="flex shrink-0 items-center gap-2.5 text-left sm:gap-3"
         >
           <img
             src="/images/panlogo.png"
             alt={t('brand.name')}
-            className="h-16 w-16 object-contain drop-shadow-md sm:h-[4.5rem] sm:w-[4.5rem]"
+            className="h-12 w-12 shrink-0 object-contain drop-shadow-md sm:h-14 sm:w-14 lg:h-16 lg:w-16"
           />
 
           <span
-            className={`font-serif text-[0.8rem] font-black leading-none tracking-[-0.02em] ${colors.text} sm:text-[1.8rem]`}
+            className={`font-serif text-[0.8rem] font-black leading-tight tracking-[-0.02em] ${colors.text} sm:text-[1.1rem] md:text-[1.25rem] lg:text-[1.2rem] xl:text-[1.3rem]`}
           >
             {t('brand.shortName')}
           </span>
         </button>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden shrink items-center gap-3 md:flex lg:gap-5 xl:gap-8">
           {navItems.map(([to, key]) => (
             <NavLink key={to} to={to} className={navClass}>
               {t(key)}
@@ -76,11 +76,11 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden shrink-0 items-center gap-3 md:flex">
           <button
             type="button"
             onClick={() => setLanguage(nextLanguage)}
-            className={`${colors.surface} ${colors.surfaceHover} rounded-xl px-5 py-2 text-sm font-bold tracking-[0.01em] text-white shadow-md transition`}
+            className={`${colors.surface} ${colors.surfaceHover} rounded-xl px-4 py-2 text-xs font-bold tracking-[0.01em] text-white shadow-md transition lg:px-5 lg:text-sm`}
           >
             {t('nav.language')}
           </button>
@@ -88,7 +88,7 @@ export default function Header() {
 
         <button
           type="button"
-          className={`${colors.surface} grid h-11 w-11 place-items-center rounded-full text-white shadow-md md:hidden`}
+          className={`${colors.surface} grid h-10 w-10 shrink-0 place-items-center rounded-full text-white shadow-md sm:h-11 sm:w-11 md:hidden`}
           onClick={() => setOpen((value) => !value)}
           aria-label={open ? t('nav.close') : t('nav.menu')}
         >
@@ -98,13 +98,13 @@ export default function Header() {
 
       {open && (
         <div className="relative z-10 border-t border-[#1F7A3D]/20 bg-[#A3C73A] md:hidden">
-          <nav className="relative container-pad flex flex-col gap-2 py-4">
+          <nav className="relative container-pad flex flex-col gap-1 py-2.5">
             {navItems.map(([to, key]) => (
               <NavLink
                 key={to}
                 to={to}
                 className={({ isActive }) =>
-                  `rounded-xl px-4 py-3 text-base font-bold transition ${isActive
+                  `rounded-lg px-3.5 py-1.5 text-sm font-bold transition ${isActive
                     ? 'bg-[#0B3D1F] text-white'
                     : 'text-mandal-green hover:bg-white/45'
                   }`
@@ -118,7 +118,7 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setLanguage(nextLanguage)}
-              className={`${colors.surface} mt-2 rounded-xl px-4 py-3 font-bold text-white`}
+              className={`${colors.surface} mt-1 rounded-lg px-3.5 py-2 text-sm font-bold text-white shadow-sm transition`}
             >
               {t('nav.language')}
             </button>

@@ -2,7 +2,7 @@ export const translations = {
   en: {
     brand: {
       name: 'Panchganga Sarvajanik Utsav Mandal',
-      shortName: 'Panchganga Sarvajanik Utsav Mandal  ',
+      shortName: 'Panchganga Sarvajanik Utsav Mandal',
       established: 'Established 1998',
     },
     nav: {
@@ -19,16 +19,16 @@ export const translations = {
       language: 'Marathi',
     },
     seo: {
-      homeTitle: 'Panchganga Sarvajanik Ganesh Utsav Mandal | Home',
-      homeDescription: 'A calm premium digital home for Panchganga Sarvajanik Ganesh Utsav Mandal.',
-      aboutTitle: 'About | Panchganga Sarvajanik Ganesh Utsav Mandal',
-      aboutDescription: 'History, tradition, and community values of Panchganga Sarvajanik Ganesh Utsav Mandal.',
-      socialWorkTitle: 'Social Work | Panchganga Sarvajanik Ganesh Utsav Mandal',
+      homeTitle: 'Panchganga Sarvajanik Utsav Mandal | Home',
+      homeDescription: 'A calm premium digital home for Panchganga Sarvajanik Utsav Mandal.',
+      aboutTitle: 'About | Panchganga Sarvajanik Utsav Mandal',
+      aboutDescription: 'History, tradition, and community values of Panchganga Sarvajanik Utsav Mandal.',
+      socialWorkTitle: 'Social Work | Panchganga Sarvajanik Utsav Mandal',
       socialWorkDescription: 'Community welfare, social initiatives, and service-oriented programs for the mandal.',
-      galleryTitle: 'Gallery | Panchganga Sarvajanik Ganesh Utsav Mandal',
-      galleryDescription: 'Memories and year-wise photo archive of Panchganga Sarvajanik Ganesh Utsav Mandal.',
-      contactTitle: 'Contact | Panchganga Sarvajanik Ganesh Utsav Mandal',
-      contactDescription: 'Address, email, map, and social links for Panchganga Sarvajanik Ganesh Utsav Mandal.',
+      galleryTitle: 'Gallery | Panchganga Sarvajanik Utsav Mandal',
+      galleryDescription: 'Memories and year-wise photo archive of Panchganga Sarvajanik Utsav Mandal.',
+      contactTitle: 'Contact | Panchganga Sarvajanik Utsav Mandal',
+      contactDescription: 'Address, email, map, and social links for Panchganga Sarvajanik Utsav Mandal.',
     },
     common: {
       learnMore: 'Learn More',
@@ -44,9 +44,9 @@ export const translations = {
       eyebrow: 'With devotion and community',
       headline: 'A peaceful home for tradition, seva, and Ganpati Bappa.',
       welcome:
-        'Welcome to Panchganga Sarvajanik Ganesh Utsav Mandal, where devotion is celebrated with grace, discipline, and togetherness.',
+        'Welcome to Panchganga Sarvajanik Utsav Mandal, where devotion is celebrated with grace, discipline, and togetherness.',
       announcement:
-        'Panchganga Sarvajanik Ganesh Utsav Mandal | Established 1990.',
+        'Panchganga Sarvajanik Utsav Mandal | Established 1990.',
       introTitle: 'Every festival for society... every initiative for transformation.',
       introText:
         'Our mandal brings families, friends, and neighbours together through prayer, service, cultural programs, and respectful celebration.',
@@ -61,7 +61,7 @@ export const translations = {
     },
     about: {
       eyebrow: 'Our story',
-      title: 'Panchganga Sarvajanik Ganesh Utsav Mandal',
+      title: 'Panchganga Sarvajanik Utsav Mandal',
       intro:
         'Born from simple devotion, the mandal has grown into a shared cultural space where every generation finds belonging.',
       beginningTitle: 'Our Beginning',
@@ -99,7 +99,7 @@ export const translations = {
   mr: {
     brand: {
       name: 'पंचगंगा सार्वजनिक गणेश उत्सव मंडळ',
-      shortName: 'पंचगंगा ',
+      shortName: 'पंचगंगा सार्वजनिक उत्सव मंडळ',
       established: 'स्थापना १९९८',
     },
     nav: {

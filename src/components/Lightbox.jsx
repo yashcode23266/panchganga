@@ -64,34 +64,14 @@ export default function Lightbox({ gallery, onClose }) {
     >
 
       {/* ── HEADER ──────────────────────────────────────────────
-          Logo square │ eyebrow + big title │ [back] │ red ✕
-          Exactly as shown in the screenshot
+          Title │ [back] │ red ✕
       ──────────────────────────────────────────────────────── */}
       <header
         className="flex shrink-0 items-center gap-4 px-5 py-4 sm:px-8"
         style={{ borderBottom: '1.5px solid rgba(0,0,0,0.07)' }}
       >
-        {/* Logo / icon tile */}
-        <div
-          className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl shadow"
-          style={{ background: 'linear-gradient(135deg,#FF6B00,#FFD700)' }}
-        >
-          {gallery.logo
-            ? <img src={gallery.logo} alt="" className="h-full w-full object-cover" />
-            : <span className="text-2xl select-none">🙏</span>
-          }
-        </div>
-
         {/* Text block */}
         <div className="min-w-0 flex-1">
-          <p
-            className="text-xs font-bold uppercase tracking-[0.2em]"
-            style={{ color: '#1B5E3B99' }}
-          >
-            {focused !== null
-              ? `← ${t('gallery.eyebrow') ?? 'Gallery'} · ${gallery.year}`
-              : (t('gallery.eyebrow') ?? 'Gallery')}
-          </p>
           <h2
             className="truncate font-display text-2xl font-bold leading-tight"
             style={{ color: '#1B5E3B', fontFamily: '"Georgia", serif' }}
@@ -116,7 +96,7 @@ export default function Lightbox({ gallery, onClose }) {
           </button>
         )}
 
-        {/* Red ✕ — matches screenshot exactly */}
+        {/* Red ✕ */}
         <button
           type="button"
           onClick={focused !== null ? () => setFocused(null) : onClose}
@@ -154,12 +134,6 @@ export default function Lightbox({ gallery, onClose }) {
                     decoding="async"
                     className="block w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  {/* Caption hover overlay */}
-                  <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/55 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <p className="line-clamp-2 text-sm font-semibold text-white">
-                      {pick(image.caption) || pick(image.alt) || `Photo ${i + 1}`}
-                    </p>
-                  </div>
                 </div>
               </button>
             ))}

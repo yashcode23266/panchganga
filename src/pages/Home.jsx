@@ -203,7 +203,7 @@ export default function Home() {
               <p className="mt-4 max-w-2xl leading-8 text-mandal-ink/70">
                 We extend our heartfelt gratitude to{" "}
                 <span className="font-semibold text-mandal-ink">Dr. Sumeet Sanjay Patil</span>{" "}
-                for his valuable support and contribution towards making this festival successful.
+                His visionary concepts and socially relevant themes have brought our stories to life. We are grateful for his continued guidance and dedication.
               </p>
             </div>
 
@@ -233,13 +233,14 @@ export default function Home() {
               <p className="eyebrow">SPECIAL THANKS</p>
 
               <h2 className="mt-3 font-display text-4xl font-bold text-mandal-green">
-                Honoring Our Supporter
+                A Lasting Legacy
               </h2>
 
               <p className="mt-4 max-w-2xl leading-8 text-mandal-ink/70">
-                We extend our heartfelt gratitude to{" "}
-                <span className="font-semibold text-mandal-ink">Dr. Sumeet Sanjay Patil</span>{" "}
-                for his valuable support and contribution towards making this festival successful.
+                We extend our heartfelt gratitude to Late{" "}
+                <span className="font-semibold text-mandal-ink"> Sunil Kalyankar</span>{" "}
+                He was an integral pillar of our team for over 15 years, renowned for his exceptional talent in crafting eco-friendly Shadu clay idols. His signature antique finishes, intricate balancing idols, and masterpieces like Ashtabhuja and Panchamukhi Ganesha reflected his extraordinary artistry. Even during severe illness, his dedication never wavered. His guidance and divine legacy will forever live on in our hearts.
+
               </p>
             </div>
 

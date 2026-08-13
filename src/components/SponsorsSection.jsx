@@ -105,7 +105,7 @@ export default function SponsorsSection() {
                 whileTap={{ scale: 0.98 }}
               >
                 <div className="absolute inset-0 rounded-xl ring-1 ring-transparent transition group-hover:ring-mandal-gold" />
-                <div className="mx-auto grid h-24 w-full place-items-center rounded-lg bg-white p-3">
+                <div className="mx-auto grid h-28 w-full place-items-center rounded-lg bg-white p-2.5">
                   <img
                     src={sponsor.logo}
                     alt={pick(sponsor.alt) || pick(sponsor.name)}
