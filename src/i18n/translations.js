@@ -2,7 +2,7 @@ export const translations = {
   en: {
     brand: {
       name: 'Panchganga Sarvajanik Utsav Mandal',
-      shortName: 'Panchganga',
+      shortName: 'Panchganga Sarvajanik Utsav Mandal  ',
       established: 'Established 1998',
     },
     nav: {

@@ -73,76 +73,76 @@ export default function About() {
     <>
       <Seo titleKey="seo.aboutTitle" descriptionKey="seo.aboutDescription" />
 
-  {/* ══════════════════════════════════════════════
+      {/* ══════════════════════════════════════════════
     HERO — dark glow + rings + particles, mandal theme
 ════════════════════════════════════════════════ */}
-<section className="relative overflow-hidden bg-[#A3C73A] section-pad">
+      <section className="relative overflow-hidden bg-[#A3C73A] section-pad">
 
-  {/* Decorative background layer */}
-  <div className="pointer-events-none absolute inset-0">
+        {/* Decorative background layer */}
+        <div className="pointer-events-none absolute inset-0">
 
-    {/* Radial glow, centered behind logo/title */}
-    <div
-      className="absolute left-1/2 top-1/2 h-[140%] w-[140%] -translate-x-1/2 -translate-y-1/2"
-      style={{
-        background:
-          'radial-gradient(circle, rgba(212,175,55,0.35) 15%, rgba(15,77,47,0.55) 55%, rgba(11,46,29,0.95) 65%, #0B2E1D 100%)',
-      }}
-    />
+          {/* Radial glow, centered behind logo/title */}
+          <div
+            className="absolute left-1/2 top-1/2 h-[140%] w-[140%] -translate-x-1/2 -translate-y-1/2"
+            style={{
+              background:
+                'radial-gradient(circle, rgba(212,175,55,0.35) 15%, rgba(15,77,47,0.55) 55%, rgba(11,46,29,0.95) 75%, #0B2E1D 100%)',
+            }}
+          />
 
-    {/* Concentric rings */}
-    <svg
-      className="absolute left-1/2 top-1/2 h-[900px] w-[900px] -translate-x-1/2 -translate-y-1/2 opacity-[0.18]"
-      viewBox="0 0 900 900"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {[90, 150, 210, 270, 330, 390, 450].map((r) => (
-        <circle key={r} cx="450" cy="450" r={r} stroke="#D4AF37" strokeWidth="1" />
-      ))}
-    </svg>
+          {/* Concentric rings */}
+          <svg
+            className="absolute left-1/2 top-1/2 h-[900px] w-[900px] -translate-x-1/2 -translate-y-1/2 opacity-[0.18]"
+            viewBox="0 0 900 900"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {[90, 150, 210, 270, 330, 390, 450].map((r) => (
+              <circle key={r} cx="450" cy="450" r={r} stroke="#D4AF37" strokeWidth="1" />
+            ))}
+          </svg>
 
-    {/* Scattered gold particles */}
-    <svg className="absolute inset-0 h-full w-full opacity-70" xmlns="http://www.w3.org/2000/svg">
-      {[
-        [10, 8], [92, 6], [6, 45], [96, 40], [16, 78],
-        [88, 82], [50, 4], [50, 96], [28, 20], [72, 20],
-        [22, 88], [80, 60], [4, 65], [97, 65],
-      ].map(([x, y], i) => (
-        <circle key={i} cx={`${x}%`} cy={`${y}%`} r={i % 3 === 0 ? 3 : 2} fill="#D4AF37" />
-      ))}
-    </svg>
-  </div>
+          {/* Scattered gold particles */}
+          <svg className="absolute inset-0 h-full w-full opacity-70" xmlns="http://www.w3.org/2000/svg">
+            {[
+              [10, 8], [92, 6], [6, 45], [96, 40], [16, 78],
+              [88, 82], [50, 4], [50, 96], [28, 20], [72, 20],
+              [22, 88], [80, 60], [4, 65], [97, 65],
+            ].map(([x, y], i) => (
+              <circle key={i} cx={`${x}%`} cy={`${y}%`} r={i % 3 === 0 ? 3 : 2} fill="#D4AF37" />
+            ))}
+          </svg>
+        </div>
 
 
 
-  <div className="container-pad relative z-10 text-center">
-   {/* Logo mark */}
-<div className="mx-auto mb-8 h-40 w-40">
-  <img
-    src="images/panlogo.png"
-    alt="Panchganga Sarvajanik Utsav Mandal Logo"
-    className="h-full w-full object-contain drop-shadow-[0_0_25px_rgba(212,175,55,0.5)]"
-  />
-</div>
+        <div className="container-pad relative z-10 text-center">
+          {/* Logo mark */}
+          <div className="mx-auto mb-8 h-40 w-40">
+            <img
+              src="images/panlogo.png"
+              alt="Panchganga Sarvajanik Utsav Mandal Logo"
+              className="h-full w-full object-contain drop-shadow-[0_0_25px_rgba(212,175,55,0.5)]"
+            />
+          </div>
 
-    <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-mandal-green">
-      Established 1990
-    </p>
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-mandal-green">
+            Established 1990
+          </p>
 
-    <h1 className="font-display text-5xl font-bold leading-tight text-mandal-green sm:text-6xl lg:text-7xl">
-      Panchganga Sarvajanik Utsav Mandal
-    </h1>
+          <h1 className="font-display text-5xl font-bold leading-tight text-mandal-green sm:text-6xl lg:text-7xl">
+            Panchganga Sarvajanik Utsav Mandal
+          </h1>
 
-    <p className="mt-5 text-lg text-white/80 sm:text-xl">
-      Culture • Environment • Awareness • Transformation
-    </p>
+          <p className="mt-5 text-lg text-white/80 sm:text-xl">
+            Culture • Environment • Awareness • Transformation
+          </p>
 
-    <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-      
-    </div>
-  </div>
-</section>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+
+          </div>
+        </div>
+      </section>
 
 
       {/* ── INTRO + PHOTO ────────────────────────────────────── */}

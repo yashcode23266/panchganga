@@ -41,21 +41,21 @@ export default function Home() {
 
 
       <div className="overflow-hidden border-y border-mandal-gold/30 bg-[#ffffff] py-3 text-green-1100">
-  <div className="marquee-track flex w-max gap-20 whitespace-nowrap text-sm font-semibold">
-    
-    {[...Array(2)].map((_, i) => (
-      <div key={i} className="flex items-center gap-20">
-        {[...Array(3)].map((_, index) => (
-          <span key={index} className="flex items-center gap-20">
-            <span>{t('home.announcement')}</span>
-            <span className="text-mandal-gold">&bull;</span>
-          </span>
-        ))}
+        <div className="marquee-track flex w-max gap-20 whitespace-nowrap text-sm font-semibold">
+
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="flex items-center gap-20">
+              {[...Array(3)].map((_, index) => (
+                <span key={index} className="flex items-center gap-20">
+                  <span>{t('home.announcement')}</span>
+                  <span className="text-mandal-gold">&bull;</span>
+                </span>
+              ))}
+            </div>
+          ))}
+
+        </div>
       </div>
-    ))}
-
-  </div>
-</div>
 
 
 
@@ -66,7 +66,7 @@ export default function Home() {
 
 
 
-    {/*HERO SECTION */} 
+      {/*HERO SECTION */}
       <section className="relative h-[calc(100vh-64px)] min-h-130 overflow-hidden bg-[#fffdf9]">
         <div className="relative h-full w-full">
           <img
@@ -76,18 +76,13 @@ export default function Home() {
             height="1402"
             fetchPriority="high"
             decoding="async"
-            className="hero-image-fade absolute inset-0 h-full w-full scale-125 object-contain sm:scale-100 object-[center_40%]"
+            className="hero-image-fade absolute inset-0 h-full w-full scale-[1.5] object-contain object-[center_45%] sm:scale-100"
           />
         </div>
       </section>
 
-
-
-
-
-
       {/* COUNTDOWN */}
-      <section className="px-4 py-8 sm:px-6 sm:py-14">
+      <section className="-mt-8 px-4 py-8 sm:-mt-12 sm:px-6 sm:py-14">
         <div className="mx-auto max-w-4xl rounded-3xl bg-white p-4 shadow-xl ring-1 ring-green-200 sm:p-8">
           <Countdown />
         </div>
@@ -109,7 +104,7 @@ export default function Home() {
         </div>
       </div>
 
-            <FeaturedVideo />
+      <FeaturedVideo />
 
 
       <section className="section-pad green-wash">
@@ -193,40 +188,75 @@ export default function Home() {
       </section>
 
 
-<section className="section-pad devotional-gradient">
-  <div className="container-pad">
-    <div className="soft-panel grid gap-8 p-6 sm:p-8 lg:grid-cols-[1fr_0.95fr] lg:items-center">
-      
-      {/* LEFT TEXT */}
-      <div>
-        <p className="eyebrow">SPECIAL THANKS</p>
+      <section className="section-pad devotional-gradient">
+        <div className="container-pad">
+          <div className="soft-panel grid gap-8 p-6 sm:p-8 lg:grid-cols-[1fr_0.95fr] lg:items-center">
 
-        <h2 className="mt-3 font-display text-4xl font-bold text-mandal-green">
-          Honoring Our Supporter
-        </h2>
+            {/* LEFT TEXT */}
+            <div>
+              <p className="eyebrow">SPECIAL THANKS</p>
 
-        <p className="mt-4 max-w-2xl leading-8 text-mandal-ink/70">
-          We extend our heartfelt gratitude to{" "}
-          <span className="font-semibold text-mandal-ink">Dr. Sumeet Sanjay Patil</span>{" "}
-          for his valuable support and contribution towards making this festival successful.
-        </p>
-      </div>
+              <h2 className="mt-3 font-display text-4xl font-bold text-mandal-green">
+                Honoring Our Supporter
+              </h2>
 
-      {/* RIGHT IMAGE (same style as map box) */}
-      <div className="overflow-hidden rounded-[2rem] border border-mandal-green/10 bg-white shadow-soft flex items-center justify-center">
-        
-        <img
-          src="/images/drsumit.jpeg"   // 👉 replace with your image
-          alt="supporter"
-          className="h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
-        />
+              <p className="mt-4 max-w-2xl leading-8 text-mandal-ink/70">
+                We extend our heartfelt gratitude to{" "}
+                <span className="font-semibold text-mandal-ink">Dr. Sumeet Sanjay Patil</span>{" "}
+                for his valuable support and contribution towards making this festival successful.
+              </p>
+            </div>
 
-      </div>
+            {/* RIGHT IMAGE (same style as map box) */}
+            <div className="overflow-hidden rounded-[2rem] border border-mandal-green/10 bg-white shadow-soft flex items-center justify-center">
 
-    </div>
-  </div>
-</section>
+              <img
+                src="/images/drsumit.jpeg"   // 👉 replace with your image
+                alt="supporter"
+                className="h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
+              />
 
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+
+      <section className="section-pad devotional-gradient">
+        <div className="container-pad">
+          <div className="soft-panel grid gap-8 p-6 sm:p-8 lg:grid-cols-[1fr_0.95fr] lg:items-center">
+
+            {/* LEFT TEXT */}
+            <div>
+              <p className="eyebrow">SPECIAL THANKS</p>
+
+              <h2 className="mt-3 font-display text-4xl font-bold text-mandal-green">
+                Honoring Our Supporter
+              </h2>
+
+              <p className="mt-4 max-w-2xl leading-8 text-mandal-ink/70">
+                We extend our heartfelt gratitude to{" "}
+                <span className="font-semibold text-mandal-ink">Dr. Sumeet Sanjay Patil</span>{" "}
+                for his valuable support and contribution towards making this festival successful.
+              </p>
+            </div>
+
+            {/* RIGHT IMAGE (same style as map box) */}
+            <div className="overflow-hidden rounded-[2rem] border border-mandal-green/10 bg-white shadow-soft flex items-center justify-center">
+
+              <img
+                src="/images/murti.jpeg"   // 👉 replace with your image
+                alt="supporter"
+                className="h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+
+            </div>
+
+          </div>
+        </div>
+      </section>
 
     </>
   );

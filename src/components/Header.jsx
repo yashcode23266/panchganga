@@ -28,8 +28,7 @@ export default function Header() {
   const nextLanguage = language === 'en' ? 'mr' : 'en';
 
   const navClass = ({ isActive }) =>
-    `text-sm font-bold tracking-[0.01em] transition ${
-      isActive ? 'text-mandal-leaf' : `${colors.textSoft} ${colors.hover}`
+    `text-sm font-bold tracking-[0.01em] transition ${isActive ? 'text-mandal-leaf' : `${colors.textSoft} ${colors.hover}`
     }`;
 
   return (
@@ -42,13 +41,13 @@ export default function Header() {
             setOpen(false);
             const newClickCount = logoClicks + 1;
             setLogoClicks(newClickCount);
-            
+
             if (newClickCount === 5) {
               navigate('/admin-login');
               setLogoClicks(0);
             } else {
               navigate('/');
-              // Reset counter after 3 seconds of inactivity
+
               setTimeout(() => {
                 setLogoClicks(0);
               }, 3000);
@@ -59,9 +58,12 @@ export default function Header() {
           <img
             src="/images/panlogo.png"
             alt={t('brand.name')}
-            className="h-14 w-14 rounded-full border-2 border-white bg-white object-contain shadow-md"
+            className="h-16 w-16 object-contain drop-shadow-md sm:h-[4.5rem] sm:w-[4.5rem]"
           />
-          <span className={`max-w-[190px] font-display text-xl font-bold leading-tight ${colors.text} sm:text-2xl`}>
+
+          <span
+            className={`font-serif text-[0.8rem] font-black leading-none tracking-[-0.02em] ${colors.text} sm:text-[1.8rem]`}
+          >
             {t('brand.shortName')}
           </span>
         </button>
@@ -102,10 +104,9 @@ export default function Header() {
                 key={to}
                 to={to}
                 className={({ isActive }) =>
-                  `rounded-xl px-4 py-3 text-base font-bold transition ${
-                    isActive
-                      ? 'bg-[#0B3D1F] text-white'
-                      : 'text-mandal-green hover:bg-white/45'
+                  `rounded-xl px-4 py-3 text-base font-bold transition ${isActive
+                    ? 'bg-[#0B3D1F] text-white'
+                    : 'text-mandal-green hover:bg-white/45'
                   }`
                 }
                 onClick={() => setOpen(false)}
