@@ -402,7 +402,46 @@ export const eventImages = [
 
     },
 
+
   },
+  {
+
+    key: 'Kolhapur Flood',
+
+    image: '/images/flood.jpeg',
+
+    images: [
+
+      '/images/f1.jpeg',
+
+      '/images/f2.jpeg',
+
+      '/images/f3.jpeg',
+      '/images/f4.jpeg',
+      '/images/f5.jpeg',
+      '/images/f6.jpeg',
+      '/images/f7.jpeg',
+      '/images/f8.jpeg',
+      '/images/f9.jpeg',
+
+
+
+    ],
+
+    title: { en: 'Kolhapur Flood Relief', mr: 'कोल्हापूर पूर मदत निधी' },
+
+    text: {
+
+      en: 'Gathering and distributing relief funds and essential supplies to aid families affected by the Kolhapur floods.',
+
+      mr: 'कोल्हापूरमधील पूरग्रस्त कुटुंबांना मदत करण्यासाठी निधी आणि अत्यावश्यक वस्तूंचे वाटप.',
+
+    },
+
+
+  },
+
+
 
 ];
 
@@ -634,12 +673,6 @@ export const galleryImages = [
   {
     year: "2019",
     src: "/ganpati20198.jpeg",
-    caption: { en: "Book Movement", mr: "पुस्तक चळवळ " },
-    alt: { en: "Book Movement", mr: "पुस्तक चळवळ" },
-  },
-  {
-    year: "2019",
-    src: "/ganpati20199.jpeg",
     caption: { en: "Book Movement", mr: "पुस्तक चळवळ " },
     alt: { en: "Book Movement", mr: "पुस्तक चळवळ" },
   },

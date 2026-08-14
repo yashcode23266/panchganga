@@ -47,23 +47,23 @@ const timelineAwards = [
 
 const otherAwards = [
   {
-    name: { en: 'Shri Ganesh Gaurav Award', mr: 'श्री गणेश गौरव पुरस्कार' },
-    organization: { en: 'Brihanmumbai Municipal Corporation', mr: 'बृहन्मुंबई महानगरपालिका' },
+    name: { en: 'Brihanmumbai Municipal Corporation', mr: 'बृहन्मुंबई महानगरपालिका' },
+    organization: { en: 'Shri Ganesh Gaurav Award', mr: 'श्री गणेश गौरव पुरस्कार' },
     year: '2012, 2015, 2016, 2017, 2018, 2019, 2022, 2023, 2024',
     description: { en: 'For safeguarding local traditions and welcoming new generations into the celebration.', mr: 'स्थानिक परंपरांचे रक्षण आणि नवीन पिढीला उत्सवात सहभागी करून घेतल्याबद्दल.' },
-    image: '/images/bmcframe.jpeg',
+    image: '/images/bmclogo.png',
     images: ['/images/bmc2012.jpeg', '/images/bmc2015.jpeg', '/images/bmc2016.jpeg', '/images/bmc2017.jpeg', '/images/bmc2018.jpeg', '/images/bmc2019.jpeg', '/images/bmc2022.jpeg', '/images/bmcfpj2022.jpeg', '/images/bmc2023.jpeg', '/images/bmc2024.jpeg',]
   },
   {
-    name: { en: 'Ganesh Murti Ustav Spardha', mr: 'गणेश मूर्ती उत्सव स्पर्धा' },
-    organization: { en: 'Lokstta', mr: 'लोकसत्ता' },
+    name: { en: 'Loksatta', mr: 'लोकसत्ता' },
+    organization: { en: 'Ganesh Murti Ustav Spardha', mr: 'गणेश मूर्ती उत्सव स्पर्धा' },
     year: '2024, 2023',
     description: { en: 'In recognition of meaningful year-round initiatives that serve the local community.', mr: 'स्थानिक समुदायाची सेवा करणाऱ्या समाजोपयोगी वर्षभर उपक्रमांबद्दल.' },
-    image: '/images/lokstta24.jpeg',
+    image: '/images/loksatta.jpeg',
     images: ['/images/lokstta24.jpeg', '/images/lokstta2030.jpeg', '/images/loksttaframe.jpeg', '/images/loksttaframe1.jpeg', '/images/loksttaframe2.jpeg', '/images/loksttaframe3.jpeg', '/images/loksattaganpati1.jpeg', '/images/loksttaraja.jpeg',],
   },
   {
-    name: { en: 'Best Decoration and cleanliness', mr: 'सर्वोत्कृष्ट देखावा व स्वच्छता' },
+    name: { en: '1st in Maharashtra', mr: 'महाराष्ट्रामध्ये प्रथम' },
     organization: { en: 'Bharatiya janata Party', mr: 'भारतीय जनता पार्टी' },
     year: '2022, 2023',
     description: { en: 'For an inclusive festival experience shaped by devotion, creativity and care.', mr: 'भक्ती, कलात्मकता आणि आपुलकीने नटलेल्या सर्वसमावेशक उत्सवासाठी.' },
@@ -71,11 +71,11 @@ const otherAwards = [
     images: ['/images/bjp1.jpeg', '/images/bjp2.jpeg',],
   },
   {
-    name: { en: 'Green Mandal Recognition', mr: 'हरित मंडळ गौरव' },
+    name: { en: 'Times Green Ganesha', mr: 'टाईम्स ग्रीन गणेश ' },
     organization: { en: 'Clean Mumbai Initiative', mr: 'स्वच्छ मुंबई उपक्रम' },
     year: '2012,2017,2024,2025',
     description: { en: 'Acknowledging responsible celebrations, waste management and environmental awareness.', mr: 'जबाबदार उत्सव, कचरा व्यवस्थापन आणि पर्यावरण जागृतीसाठी सन्मान.' },
-    image: '/images/eco2025.jpeg',
+    image: '/images/timesgreen.jpeg',
     images: ['/images/eco2012.jpeg', '/images/eco2017.jpeg', '/images/eco2024.jpeg', '/images/eco2025.jpeg', '/images/eco.jpeg',],
   },
   {
@@ -83,7 +83,7 @@ const otherAwards = [
     organization: { en: 'Ward Cultural Committee', mr: 'प्रभाग सांस्कृतिक समिती' },
 
     description: { en: 'Presented for sustained support of civic awareness and neighbourhood unity.', mr: 'नागरी जागृती आणि परिसर एकोप्यासाठी सतत दिलेल्या पाठिंब्याबद्दल.' },
-    image: '/images/utsavmumbaicha.jpeg',
+    image: '/images/eknath.jpeg',
     images: ['/images/utsavmumbaicha.jpeg',],
   },
   {
@@ -91,7 +91,7 @@ const otherAwards = [
     organization: { en: 'Maharashtra Utsav Network', mr: 'महाराष्ट्र उत्सव नेटवर्क' },
     year: '2016 , 2018',
     description: { en: 'For presenting heritage in fresh, engaging and respectful ways for all visitors.', mr: 'सर्व भाविकांसाठी सांस्कृतिक वारसा नाविन्यपूर्ण व आदरपूर्वक मांडल्याबद्दल.' },
-    image: '/images/policeframe.jpeg',
+    image: '/images/police .png',
     images: ['/images/policeframe.jpeg', '/images/police2012.jpeg', '/images/police2018.jpeg',],
   },
   {

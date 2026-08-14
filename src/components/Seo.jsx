@@ -7,7 +7,7 @@ export default function Seo({ titleKey, descriptionKey, image }) {
   useEffect(() => {
     const title = t(titleKey) || 'Panchganga Sarvajanik Utsav Mandal';
     const description = t(descriptionKey) || 'Official web portal of Panchganga Sarvajanik Utsav Mandal, Mumbai.';
-    const imageUrl = image || 'https://panchgangamandal.org/images/panlogo.png';
+    const imageUrl = image || 'https://panchgangasarvajanikutsavmandal.in/images/panlogo.png';
     const currentUrl = window.location.href;
 
     document.title = title;

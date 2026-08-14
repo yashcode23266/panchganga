@@ -79,7 +79,7 @@ const TIMELINE = [
     text: { en: 'A full transition to eco-friendly idols and decorations, setting a benchmark for sustainable celebrations across Mumbai.', mr: 'पर्यावरणपूरक मूर्ती आणि सजावटीचा पूर्ण स्वीकार, मुंबईभर शाश्वत उत्सवाचा आदर्श.' },
   },
   {
-    year: '2015',
+    year: '2017',
     title: { en: 'Limca Book of Records', mr: 'लिम्का बुक ऑफ रेकॉर्ड्स' },
     text: { en: 'Nationally recognised for the unique display of 108 eco-friendly Lord Ganesha idols — each carrying a distinct and powerful social message.', mr: '१०८ पर्यावरणपूरक गणेशमूर्तींच्या प्रदर्शनासाठी राष्ट्रीय स्तरावर लिम्का बुक ऑफ रेकॉर्ड्समध्ये नोंद.' },
   },
