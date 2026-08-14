@@ -392,7 +392,7 @@ export const eventImages = [
 
     ],
 
-    title: { en: 'Clothes Donation', mr: 'कपडे वाटप उपक्रम' },
+    title: { en: 'Clothes Gift To Tribal People', mr: 'आदिवासी पाडा वस्त्र भेट' },
 
     text: {
 
@@ -428,7 +428,7 @@ export const eventImages = [
 
     ],
 
-    title: { en: 'Kolhapur Flood Relief', mr: 'कोल्हापूर पूर मदत निधी' },
+    title: { en: 'Clothes Gift To Kolhapur', mr: 'कपडे वाटप कोल्हापूर' },
 
     text: {
 

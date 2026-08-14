@@ -57,8 +57,8 @@ const otherAwards = [
   {
     name: { en: 'Loksatta', mr: 'लोकसत्ता' },
     organization: { en: 'Ganesh Murti Ustav Spardha', mr: 'गणेश मूर्ती उत्सव स्पर्धा' },
-    year: '2024, 2023',
-    description: { en: 'In recognition of meaningful year-round initiatives that serve the local community.', mr: 'स्थानिक समुदायाची सेवा करणाऱ्या समाजोपयोगी वर्षभर उपक्रमांबद्दल.' },
+    year: '2016,2017,2018,2022,2023',
+    description: { en: 'Mumbai cha Raja, the best decoration as well as the Ganesh idol.', mr: 'मुंबईचा राजा, सर्वोत्कृष्ट सजावट तसेच गणेश मूर्ती.' },
     image: '/images/loksatta.jpeg',
     images: ['/images/lokstta24.jpeg', '/images/lokstta2030.jpeg', '/images/loksttaframe.jpeg', '/images/loksttaframe1.jpeg', '/images/loksttaframe2.jpeg', '/images/loksttaframe3.jpeg', '/images/loksattaganpati1.jpeg', '/images/loksttaraja.jpeg',],
   },
@@ -258,8 +258,46 @@ export default function Awards() {
         <div className="container-pad">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={fadeUp} transition={{ duration: 0.45 }}><p className="eyebrow">{t('awardsPage.eyebrow')}</p><h2 className="mt-3 font-display text-4xl font-bold text-mandal-green sm:text-5xl">{t('awardsPage.title')}</h2></motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} variants={stagger} className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {loading ? Array.from({ length: 3 }).map((_, index) => <CardSkeleton key={index} />) : null}
-            {allOtherAwards.map((award) => <motion.article key={`${pick(award.name)}-${award.year}`} variants={fadeUp} transition={{ duration: 0.42 }} whileHover={{ y: -7 }} className="group overflow-hidden rounded-[1.5rem] border border-mandal-green/10 bg-white shadow-soft transition-shadow hover:shadow-[0_20px_46px_rgba(13,63,35,0.17)]"><button type="button" onClick={() => openPhotos(award)} className="block w-full overflow-hidden rounded-[1.25rem] text-left outline-none transition focus:ring-4 focus:ring-mandal-gold/40" aria-label={`Open photos for ${pick(award.name)}`}><div className="relative aspect-[16/9] overflow-hidden"><img src={award.image} alt={pick(award.name)} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" /><span className="absolute bottom-4 left-4 grid h-10 w-10 place-items-center rounded-full border border-mandal-gold/50 bg-white/95 text-mandal-gold"><Trophy className="h-5 w-5" /></span></div></button><div className="p-5 sm:p-6"><p className="text-xs font-bold uppercase tracking-[0.12em] text-mandal-leaf">{pick(award.organization)}</p><h3 className="mt-2 font-display text-2xl font-bold leading-tight text-mandal-green">{pick(award.name)}</h3><p className="mt-3 text-sm leading-6 text-mandal-ink/68">{pick(award.description)}</p><p className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-mandal-green"><Calendar className="h-4 w-4 text-mandal-gold" />{award.year}</p></div></motion.article>)}
+            {allOtherAwards.map((award, index) => {
+              const isTopThree = index < 3;
+              return (
+                <motion.article
+                  key={`${pick(award.name)}-${award.year}`}
+                  variants={fadeUp}
+                  transition={{ duration: 0.42 }}
+                  whileHover={{ y: -7 }}
+                  className="group overflow-hidden rounded-[1.5rem] border border-mandal-green/10 bg-white shadow-soft transition-shadow hover:shadow-[0_20px_46px_rgba(13,63,35,0.17)]"
+                >
+                  <button
+                    type="button"
+                    onClick={() => openPhotos(award)}
+                    className="block w-full overflow-hidden rounded-[1.25rem] text-left outline-none transition focus:ring-4 focus:ring-mandal-gold/40"
+                    aria-label={`Open photos for ${pick(award.name)}`}
+                  >
+                    <div className={`relative aspect-[16/9] overflow-hidden ${isTopThree ? 'bg-[#F6FAEF] p-3' : ''}`}>
+                      <img
+                        src={award.image}
+                        alt={pick(award.name)}
+                        loading="lazy"
+                        className={`h-full w-full transition duration-700 group-hover:scale-105 ${isTopThree ? 'object-contain' : 'object-cover'}`}
+                      />
+                      <span className="absolute bottom-3 left-3 grid h-9 w-9 place-items-center rounded-full border border-mandal-gold/50 bg-white/95 text-mandal-gold shadow-sm">
+                        <Trophy className="h-4 w-4" />
+                      </span>
+                    </div>
+                  </button>
+                  <div className="p-5 sm:p-6">
+                    <p className="text-xs font-bold uppercase tracking-[0.12em] text-mandal-leaf">{pick(award.organization)}</p>
+                    <h3 className="mt-2 font-display text-2xl font-bold leading-tight text-mandal-green">{pick(award.name)}</h3>
+                    <p className="mt-3 text-sm leading-6 text-mandal-ink/68">{pick(award.description)}</p>
+                    <p className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-mandal-green">
+                      <Calendar className="h-4 w-4 text-mandal-gold" />
+                      {award.year}
+                    </p>
+                  </div>
+                </motion.article>
+              );
+            })}
           </motion.div>
         </div>
       </section>

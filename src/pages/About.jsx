@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import Seo from '../components/Seo.jsx';
 import SectionIntro from '../components/SectionIntro.jsx';
 import { useLanguage } from '../context/LanguageContext.jsx';
@@ -109,6 +110,109 @@ function DotPattern({ opacity = 0.05, color = '#0F4D2F', size = 24 }) {
   );
 }
 
+// ── Rotating ring group (Framer Motion handles the animation loop) ──
+function RotatingRings({ radii, direction, duration }) {
+  return (
+    <div className="absolute left-1/2 top-1/2 h-[900px] w-[900px] -translate-x-1/2 -translate-y-1/2 opacity-[0.18]">
+      <motion.svg
+        className="h-full w-full"
+        viewBox="0 0 900 900"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ transformOrigin: '450px 450px' }}
+        animate={{ rotate: direction === 'cw' ? 360 : -360 }}
+        transition={{ repeat: Infinity, ease: 'linear', duration }}
+      >
+        {radii.map((r) => (
+          <circle key={r} cx="450" cy="450" r={r} stroke="#D4AF37" strokeWidth="1" />
+        ))}
+      </motion.svg>
+    </div>
+  );
+}
+
+// ── Twinkling & floating glowing gold particle ──────────────
+function TwinkleParticle({ x, y, r, delay, dx, dy, duration }) {
+  return (
+    <motion.circle
+      cx={`${x}%`}
+      cy={`${y}%`}
+      r={r}
+      fill="#FFD700"
+      initial={{ opacity: 0.4, scale: 1, x: 0, y: 0 }}
+      animate={{
+        opacity: [0.4, 1, 0.6, 1, 0.4],
+        scale: [1, 1.4, 0.95, 1.35, 1],
+        x: [0, dx, -dx * 0.6, dx * 0.4, 0],
+        y: [0, -dy, dy * 0.5, -dy * 0.6, 0],
+      }}
+      transition={{ repeat: Infinity, duration, delay, ease: 'easeInOut' }}
+      style={{
+        transformOrigin: `${x}% ${y}%`,
+        filter: 'drop-shadow(0px 0px 5px rgba(255, 215, 0, 0.9)) drop-shadow(0px 0px 10px rgba(212, 175, 55, 0.6))',
+      }}
+    />
+  );
+}
+
+const PARTICLES = [
+  [10, 8], [92, 6], [6, 45], [96, 40], [16, 78],
+  [88, 82], [50, 4], [50, 96], [28, 20], [72, 20],
+  [22, 88], [80, 60], [4, 65], [97, 65],
+].map(([x, y], i) => ({
+  x,
+  y,
+  r: i % 3 === 0 ? 3 : 2,
+  delay: (i % 7) * 0.45,
+  dx: ((i % 4) + 1) * 2.5 * (i % 2 === 0 ? 1 : -1),
+  dy: ((i % 3) + 2) * 3,
+  duration: 5.5 + (i % 4) * 1.1,
+}));
+
+// ── Falling leaf particle ────────────────────────────────────
+function FallingLeaf({ left, delay, duration, size, rotateStart }) {
+  return (
+    <motion.svg
+      className="pointer-events-none absolute top-0"
+      style={{ left: `${left}%`, width: size, height: size }}
+      viewBox="0 0 24 24"
+      fill="none"
+      initial={{ y: '-10%', x: 0, rotate: rotateStart, opacity: 0 }}
+      animate={{
+        y: ['-10%', '50vh', '115vh'],
+        x: [0, 18, -14],
+        rotate: [rotateStart, rotateStart + 180, rotateStart + 360],
+        opacity: [0, 0.8, 0.7, 0],
+      }}
+      transition={{
+        repeat: Infinity,
+        duration,
+        delay,
+        ease: 'linear',
+        times: [0, 0.5, 1],
+      }}
+    >
+      <path
+        d="M12 2C7 6 4 11 4 15c0 4.4 3.6 7 8 7s8-2.6 8-7c0-4-3-9-8-13Z"
+        fill="#D4AF37"
+        fillOpacity="0.55"
+      />
+      <path d="M12 4v18" stroke="#0F4D2F" strokeWidth="0.6" strokeOpacity="0.3" />
+    </motion.svg>
+  );
+}
+
+const LEAVES = [
+  { left: 6, delay: 0, duration: 11, size: 18, rotateStart: 10 },
+  { left: 16, delay: 3.2, duration: 13, size: 14, rotateStart: -20 },
+  { left: 28, delay: 1.4, duration: 10, size: 20, rotateStart: 30 },
+  { left: 40, delay: 5, duration: 12, size: 16, rotateStart: -10 },
+  { left: 55, delay: 2.1, duration: 14, size: 18, rotateStart: 15 },
+  { left: 68, delay: 6.5, duration: 11, size: 15, rotateStart: -25 },
+  { left: 80, delay: 0.8, duration: 13, size: 19, rotateStart: 20 },
+  { left: 90, delay: 4, duration: 10, size: 14, rotateStart: -15 },
+];
+
 // ── Component ─────────────────────────────────────────────────
 
 export default function About() {
@@ -119,7 +223,7 @@ export default function About() {
       <Seo titleKey="seo.aboutTitle" descriptionKey="seo.aboutDescription" />
 
       {/* ══════════════════════════════════════════════
-    HERO — dark glow + rings + particles, mandal theme
+    HERO — dark glow + rotating rings + twinkling particles + falling leaves
 ════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden bg-[#A3C73A] section-pad">
 
@@ -135,28 +239,21 @@ export default function About() {
             }}
           />
 
-          {/* Concentric rings */}
-          <svg
-            className="absolute left-1/2 top-1/2 h-[900px] w-[900px] -translate-x-1/2 -translate-y-1/2 opacity-[0.18]"
-            viewBox="0 0 900 900"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {[90, 150, 210, 270, 330, 390, 450].map((r) => (
-              <circle key={r} cx="450" cy="450" r={r} stroke="#D4AF37" strokeWidth="1" />
+          {/* Concentric rings — alternating slow rotation for a subtle mandala-spin */}
+          <RotatingRings radii={[90, 210, 330, 450]} direction="cw" duration={90} />
+          <RotatingRings radii={[150, 270, 390]} direction="ccw" duration={120} />
+
+          {/* Scattered gold particles — glowing, gentle twinkle/pulse, staggered */}
+          <svg className="absolute inset-0 h-full w-full opacity-95 overflow-visible" xmlns="http://www.w3.org/2000/svg">
+            {PARTICLES.map((p, i) => (
+              <TwinkleParticle key={i} {...p} />
             ))}
           </svg>
 
-          {/* Scattered gold particles */}
-          <svg className="absolute inset-0 h-full w-full opacity-70" xmlns="http://www.w3.org/2000/svg">
-            {[
-              [10, 8], [92, 6], [6, 45], [96, 40], [16, 78],
-              [88, 82], [50, 4], [50, 96], [28, 20], [72, 20],
-              [22, 88], [80, 60], [4, 65], [97, 65],
-            ].map(([x, y], i) => (
-              <circle key={i} cx={`${x}%`} cy={`${y}%`} r={i % 3 === 0 ? 3 : 2} fill="#D4AF37" />
-            ))}
-          </svg>
+          {/* Falling leaves */}
+          {LEAVES.map((leaf, i) => (
+            <FallingLeaf key={i} {...leaf} />
+          ))}
         </div>
 
         <div className="container-pad relative z-10 text-center">
