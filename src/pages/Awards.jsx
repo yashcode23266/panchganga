@@ -54,12 +54,12 @@ const otherAwards = [
     image: imageUrls.medal,
   },
   {
-    name: { en: 'Sarvajanik Ganeshotsav Award', mr: 'सार्वजनिक गणेशोत्सव सन्मान' },
-    organization: { en: 'N.M Joshi Marg Police Station', mr: 'एन.एम. जोशी मार्ग पोलीस ठाणे' },
+    name: { en: 'Ganesh Murti Ustav Murti', mr: 'गणेश मूर्ती उत्सव स्पर्धा' },
+    organization: { en: 'Lokstta', mr: 'लोकसत्ता' },
     year: '2016, 2018',
     description: { en: 'In recognition of meaningful year-round initiatives that serve the local community.', mr: 'स्थानिक समुदायाची सेवा करणाऱ्या समाजोपयोगी वर्षभर उपक्रमांबद्दल.' },
-    image: '/images/2018 n m joshi polistation 1st.jpeg',
-    images: ['/images/2018 n m joshi polistation 1st.jpeg', '/images/n m joshi marg police station 2016 1st.jpeg'],
+    image: '/images/lokstta24.jpeg',
+    images: [ '/images/lokstta24.jpeg','/images/lokstta23.jpeg', '/images/loksttaframe1.jpeg', '/images/loksttaframe2.jpeg' , '/images/loksttaframe3.jpeg', '/images/loksattaganpati1.jpeg','/images/loksttaraja.jpeg', ],
   },
   {
     name: { en: 'Best Public Festival', mr: 'सर्वोत्कृष्ट सार्वजनिक उत्सव' },
