@@ -206,7 +206,7 @@ export const aboutImages = [
 
 
 
-    src: '/ganpati.png',
+    src: '/ganpati2025.jpeg',
 
 
 
@@ -1071,7 +1071,7 @@ export const sponsorImages = [
 
 
 
-    images: ['/images/jewellers.png', '/images/panlogo.png', '/images/sponsor-diya.svg'],
+    images: ['/images/jewellers.png'],
 
 
 

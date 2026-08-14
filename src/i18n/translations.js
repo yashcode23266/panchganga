@@ -49,7 +49,7 @@ export const translations = {
       celebrityTitle: 'Celebrity Visit Gallery | Panchganga Sarvajanik Utsav Mandal',
       celebrityDescription: 'Iconic celebrity visits, film personalities, and dignitaries at Panchganga Sarvajanik Utsav Mandal.',
       contactTitle: 'Contact Us | Panchganga Sarvajanik Utsav Mandal',
-      contactDescription: 'Visit Panchganga Sarvajanik Utsav Mandal in Parel, Mumbai. Address, location map, email, and social media channels.',
+      contactDescription: 'Visit Panchganga Sarvajanik Utsav Mandal in Delisle Road, Mumbai. Address, location map, email, and social media channels.',
     },
     common: {
       learnMore: 'Learn More',
@@ -190,7 +190,7 @@ export const translations = {
     },
     footer: {
       text: 'Established in 1990, Panchganga Sarvajanik Utsav Mandal is a respected Ganesh mandal in Mumbai known for devotion and social values. For 35+ years, it has raised awareness through meaningful themes highlighting various sections of society. Blending tradition with innovation, the mandal promotes responsible and purposeful Ganeshotsav celebrations.',
-      address: 'Panchganga Sarvajanik Utsav Mandal, Parel, Mumbai, Maharashtra 400012',
+      address: 'Panchganga Sarvajanik Utsav Mandal, Delisle Road, Mumbai, Maharashtra 400013',
       quickLinks: 'Quick Links',
       rights: 'All rights reserved.',
     },
@@ -245,7 +245,7 @@ export const translations = {
       celebrityTitle: 'सेलिब्रिटी उपस्थिती | पंचगंगा सार्वजनिक गणेश उत्सव मंडळ',
       celebrityDescription: 'पंचगंगा मंडळात भेट दिलेल्या नामांकित सेलिब्रिटी आणि मान्यवरांचे छायाचित्र.',
       contactTitle: 'संपर्क | पंचगंगा सार्वजनिक गणेश उत्सव मंडळ',
-      contactDescription: 'पंचगंगा सार्वजनिक गणेश उत्सव मंडळ, परळ, मुंबई चा पत्ता, नकाशा आणि संपर्क माहिती.',
+      contactDescription: 'पंचगंगा सार्वजनिक गणेश उत्सव मंडळ, डिलाईल रोड, मुंबई चा पत्ता, नकाशा आणि संपर्क माहिती.',
     },
     common: {
       learnMore: 'अधिक जाणून घ्या',
@@ -386,7 +386,7 @@ export const translations = {
     },
     footer: {
       text: '१९९० मध्ये स्थापन झालेले पंचगंगा सार्वजनिक उत्सव मंडळ हे मुंबईतील भक्ती आणि सामाजिक मूल्यांसाठी प्रसिद्ध असलेले आदरणीय गणेश मंडळ आहे. ३५+ वर्षांहून अधिक काळ मंडळाने समाजोपयोगी विषयांवरून जनजागृती केली आहे.',
-      address: 'पंचगंगा सार्वजनिक उत्सव मंडळ, परळ, मुंबई, महाराष्ट्र ४०००१२',
+      address: 'पंचगंगा सार्वजनिक उत्सव मंडळ, डिलाईल रोड, मुंबई, महाराष्ट्र ४०००१३',
       quickLinks: 'महत्त्वाच्या लिंक्स',
       rights: 'सर्व हक्क राखीव.',
     },

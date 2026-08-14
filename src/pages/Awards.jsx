@@ -52,7 +52,7 @@ const otherAwards = [
     year: '2012, 2015, 2016, 2017, 2018, 2019, 2022, 2023, 2024',
     description: { en: 'For safeguarding local traditions and welcoming new generations into the celebration.', mr: 'स्थानिक परंपरांचे रक्षण आणि नवीन पिढीला उत्सवात सहभागी करून घेतल्याबद्दल.' },
     image: '/images/bmcframe.jpeg',
-    images: [ '/images/bmc2012.jpeg', '/images/bmc2015.jpeg','/images/bmc2016.jpeg','/images/bmc2017.jpeg','/images/bmc2018.jpeg', '/images/bmc2019.jpeg', '/images/bmc2022.jpeg', '/images/bmcfpj2022.jpeg',   '/images/bmc2023.jpeg', '/images/bmc2024.jpeg', ]
+    images: ['/images/bmc2012.jpeg', '/images/bmc2015.jpeg', '/images/bmc2016.jpeg', '/images/bmc2017.jpeg', '/images/bmc2018.jpeg', '/images/bmc2019.jpeg', '/images/bmc2022.jpeg', '/images/bmcfpj2022.jpeg', '/images/bmc2023.jpeg', '/images/bmc2024.jpeg',]
   },
   {
     name: { en: 'Ganesh Murti Ustav Spardha', mr: 'गणेश मूर्ती उत्सव स्पर्धा' },
@@ -60,15 +60,15 @@ const otherAwards = [
     year: '2024, 2023',
     description: { en: 'In recognition of meaningful year-round initiatives that serve the local community.', mr: 'स्थानिक समुदायाची सेवा करणाऱ्या समाजोपयोगी वर्षभर उपक्रमांबद्दल.' },
     image: '/images/lokstta24.jpeg',
-    images: [ '/images/lokstta24.jpeg','/images/lokstta2030.jpeg', '/images/loksttaframe.jpeg', '/images/loksttaframe1.jpeg', '/images/loksttaframe2.jpeg' , '/images/loksttaframe3.jpeg', '/images/loksattaganpati1.jpeg','/images/loksttaraja.jpeg', ],
+    images: ['/images/lokstta24.jpeg', '/images/lokstta2030.jpeg', '/images/loksttaframe.jpeg', '/images/loksttaframe1.jpeg', '/images/loksttaframe2.jpeg', '/images/loksttaframe3.jpeg', '/images/loksattaganpati1.jpeg', '/images/loksttaraja.jpeg',],
   },
   {
     name: { en: 'Best Decoration and cleanliness', mr: 'सर्वोत्कृष्ट देखावा व स्वच्छता' },
     organization: { en: 'Bharatiya janata Party', mr: 'भारतीय जनता पार्टी' },
-    year: '2022, 2023' ,
+    year: '2022, 2023',
     description: { en: 'For an inclusive festival experience shaped by devotion, creativity and care.', mr: 'भक्ती, कलात्मकता आणि आपुलकीने नटलेल्या सर्वसमावेशक उत्सवासाठी.' },
     image: '/images/bjp1.jpeg',
-    images: [ '/images/bjp1.jpeg','/images/bjp2.jpeg', ],
+    images: ['/images/bjp1.jpeg', '/images/bjp2.jpeg',],
   },
   {
     name: { en: 'Green Mandal Recognition', mr: 'हरित मंडळ गौरव' },
@@ -76,12 +76,12 @@ const otherAwards = [
     year: '2012,2017,2024,2025',
     description: { en: 'Acknowledging responsible celebrations, waste management and environmental awareness.', mr: 'जबाबदार उत्सव, कचरा व्यवस्थापन आणि पर्यावरण जागृतीसाठी सन्मान.' },
     image: '/images/eco2025.jpeg',
-    images: [ '/images/eco2012.jpeg','/images/eco2017.jpeg', '/images/eco2024.jpeg', '/images/eco2025.jpeg','/images/eco.jpeg', ],
+    images: ['/images/eco2012.jpeg', '/images/eco2017.jpeg', '/images/eco2024.jpeg', '/images/eco2025.jpeg', '/images/eco.jpeg',],
   },
   {
     name: { en: 'Ustav MumbaiCha', mr: 'उत्सव मुंबईचा' },
     organization: { en: 'Ward Cultural Committee', mr: 'प्रभाग सांस्कृतिक समिती' },
-    
+
     description: { en: 'Presented for sustained support of civic awareness and neighbourhood unity.', mr: 'नागरी जागृती आणि परिसर एकोप्यासाठी सतत दिलेल्या पाठिंब्याबद्दल.' },
     image: '/images/utsavmumbaicha.jpeg',
     images: ['/images/utsavmumbaicha.jpeg',],
@@ -92,7 +92,7 @@ const otherAwards = [
     year: '2016 , 2018',
     description: { en: 'For presenting heritage in fresh, engaging and respectful ways for all visitors.', mr: 'सर्व भाविकांसाठी सांस्कृतिक वारसा नाविन्यपूर्ण व आदरपूर्वक मांडल्याबद्दल.' },
     image: '/images/policeframe.jpeg',
-    images: [  '/images/policeframe.jpeg','/images/police2012.jpeg', '/images/police2018.jpeg', ],
+    images: ['/images/policeframe.jpeg', '/images/police2012.jpeg', '/images/police2018.jpeg',],
   },
   {
     name: { en: 'Most valuable Award', mr: 'सर्वात मूल्यवान पुरस्कार' },
@@ -100,7 +100,7 @@ const otherAwards = [
     year: '2014, 2016, 2017,2018,2019, 2024, 2025',
     description: { en: 'For presenting heritage in fresh, engaging and respectful ways for all visitors.', mr: 'सर्व भाविकांसाठी सांस्कृतिक वारसा नाविन्यपूर्ण व आदरपूर्वक मांडल्याबद्दल.' },
     image: '/images/abu00.jpeg',
-    images: [  '/images/abu2014.jpeg','/images/abu2016.jpeg', '/images/abu20161.jpeg', '/images/abu2016171.jpeg', '/images/abu11.jpeg','/images/abu1718.jpeg','/images/abu21819.jpeg', '/images/abu2024.jpeg', '/images/abu00.jpeg', ],
+    images: ['/images/abu2014.jpeg', '/images/abu2016.jpeg', '/images/abu20161.jpeg', '/images/abu2016171.jpeg', '/images/abu11.jpeg', '/images/abu1718.jpeg', '/images/abu21819.jpeg', '/images/abu2024.jpeg', '/images/abu00.jpeg',],
   },
 ];
 
@@ -210,7 +210,7 @@ export default function Awards() {
             <div className="absolute left-0 top-0 h-full w-1.5 bg-mandal-gold" />
             <div className="p-7 sm:p-10 lg:p-12">
               <div className="inline-flex items-center gap-2 rounded-full bg-mandal-mint px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-mandal-green"><Sparkles className="h-3.5 w-3.5 text-mandal-gold" />{t('about.awardsList.a1Label')}</div>
-              <p className="mt-7 font-semibold text-mandal-leaf">2015 / 2018</p>
+              <p className="mt-7 font-semibold text-mandal-leaf">2017</p>
               <h2 className="mt-3 font-display text-4xl font-bold leading-tight text-mandal-green sm:text-5xl">Limca Book of Records Award</h2>
               <p className="mt-5 max-w-xl leading-8 text-mandal-ink/70">{t('about.awardsList.a1Desc')}</p>
             </div>
