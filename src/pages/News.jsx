@@ -149,8 +149,6 @@ const newsItems = [
       '/images/Maharashtra Times.jpg',
       '/images/times1.jpeg',
       '/images/times2.jpeg',
-      'images/times3.jpeg',
-      '/images/news14.jpeg',
       '/images/news15.jpeg',
     ],
   },
@@ -161,11 +159,7 @@ const newsItems = [
     coverImage: '/images/news1.jpeg',
     gallery: [
       '/images/news1.jpeg',
-      '/images/paper1.jpg',
-      '/images/loksatta1.jpg',
       '/images/paper2.jpeg',
-      '/images/news16.jpeg',
-      '/images/news17.jpeg',
     ],
   },
   {
@@ -175,11 +169,42 @@ const newsItems = [
     coverImage: '/images/news3.jpeg',
     gallery: [
       '/images/news3.jpeg',
-      '/images/news4.jpeg',
-      '/images/news5.jpeg',
+      '/images/news8.jpeg',
       '/images/news6.jpeg',
-      '/images/news18.jpeg',
       '/images/news19.jpeg',
+    ],
+  },
+  {
+    media: 'Loksatta',
+    year: '2023',
+    type: 'newspaper',
+    coverImage: '/images/loksatta1.jpg',
+    gallery: [
+      '/images/loksatta1.jpg',
+      '/images/news18.jpeg',
+
+    ],
+  },
+  {
+    media: 'Pudhari',
+    year: '2023',
+    type: 'newspaper',
+    coverImage: '/images/news14.jpeg',
+    gallery: [
+      '/images/news14.jpeg',
+      '/images/news9.jpeg',
+
+    ],
+  },
+  {
+    media: 'Saamana',
+    year: '2023',
+    type: 'newspaper',
+    coverImage: '/images/news12.jpeg',
+    gallery: [
+      '/images/news12.jpeg',
+      '/images/news4.jpeg',
+
     ],
   },
   {
@@ -189,39 +214,106 @@ const newsItems = [
     coverImage: '/images/lokmat.jpg',
     gallery: [
       '/images/lokmat.jpg',
+      '/images/news11.jpeg',
       '/images/news7.jpeg',
-      '/images/news8.jpeg',
-      '/images/news9.jpeg',
       '/images/news20.jpeg',
-      '/images/news21.jpeg',
     ],
   },
   {
+    media: 'Maharashtra Dinman',
+    year: '2023',
+    type: 'newspaper',
+    coverImage: '/images/times3.jpeg',
+    gallery: [
+      '/images/times3.jpeg',
+
+    ],
+  },
+  {
+    media: 'Mid Day',
+    year: '2023',
+    type: 'newspaper',
+    coverImage: '/images/paper1.jpg',
+    gallery: [
+      '/images/paper1.jpg',
+
+    ],
+  },
+  {
+    media: 'Maha News',
+    year: '2017',
+    type: 'newspaper',
+    coverImage: '/images/news16.jpeg',
+    gallery: [
+      '/images/news16.jpeg',
+
+    ],
+  },
+  {
+    media: 'Mi Marathi',
+    year: '2015',
+    type: 'newspaper',
+    coverImage: '/images/news17.jpeg',
+    gallery: [
+      '/images/news17.jpeg',
+
+    ],
+  },
+  {
+    media: 'Tarun Bharat',
+    year: '2024',
+    type: 'newspaper',
+    coverImage: '/images/news5.jpeg',
+    gallery: [
+      '/images/news5.jpeg',
+
+    ],
+  },
+  {
+    media: 'The Global Times',
+    year: '2024',
+    type: 'newspaper',
+    coverImage: '/images/news21.jpeg',
+    gallery: [
+      '/images/news21.jpeg',
+
+    ],
+  },
+  {
+    media: 'Rane Prakashan',
+    year: '2024',
+    type: 'newspaper',
+    coverImage: '/images/news22.jpeg',
+    gallery: [
+      '/images/news22.jpeg',
+
+    ],
+  },
+  {
+    media: 'Navrashtra',
+    year: '2024',
+    type: 'newspaper',
+    coverImage: '/images/news13.jpeg',
+    gallery: [
+      '/images/news13.jpeg',
+
+    ],
+  },
+
+  {
     media: 'Sanjeevani',
-    
+
     type: 'yt',
     youtubeLink: 'https://youtu.be/yd9yf8v1sYc?si=b-_DM8wS2TmRVhrZ',
   },
-  
+
   {
     media: 'vastra',
-    
+
     type: 'yt',
     youtubeLink: 'https://youtu.be/ls_f2VOrefE?si=_lrET_7if7_LK-hg', // add the real YouTube URL here to enable this card
   },
-  {
-    media: 'Mumbai Mirror',
-    year: '2021',
-    type: 'newspaper',
-    coverImage: '/images/news10.jpeg',
-    gallery: [
-      '/images/news10.jpeg',
-      '/images/news11.jpeg',
-      '/images/news12.jpeg',
-      '/images/news13.jpeg',
-      '/images/news22.jpeg',
-    ],
-  },
+
   {
     media: 'Mumbai cha Raja',
     year: '2015',
@@ -230,7 +322,7 @@ const newsItems = [
   },
   {
     media: 'offical song',
-  
+
     type: 'yt',
     youtubeLink: 'https://youtu.be/AqBPU1IclLo?si=4LRMke8GhABH9pFI', // add the real YouTube URL here to enable this card
   },
@@ -280,9 +372,9 @@ function ClippingModal({ item, onClose }) {
 
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === 'Escape')      onClose();
-      if (e.key === 'ArrowLeft')   prev();
-      if (e.key === 'ArrowRight')  next();
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowLeft') prev();
+      if (e.key === 'ArrowRight') next();
     };
     window.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
@@ -421,13 +513,13 @@ export default function News() {
 
   const allItems = useMemo(() => {
     const dynamic = uploadedNews.map((item) => ({
-      title:       item.title       || 'News Update',
-      media:       item.media       || 'Panchganga',
-      year:        item.year        || '2026',
-      type:        item.type        || 'newspaper',
+      title: item.title || 'News Update',
+      media: item.media || 'Panchganga',
+      year: item.year || '2026',
+      type: item.type || 'newspaper',
       youtubeLink: item.youtubeLink || '',
-      coverImage:  item.coverImage  || item.gallery?.[0],
-      gallery:     item.gallery?.length ? item.gallery : [item.coverImage].filter(Boolean),
+      coverImage: item.coverImage || item.gallery?.[0],
+      gallery: item.gallery?.length ? item.gallery : [item.coverImage].filter(Boolean),
     }));
     return [...dynamic, ...newsItems];
   }, [uploadedNews]);
@@ -488,11 +580,10 @@ export default function News() {
                 key={tKey}
                 type="button"
                 onClick={() => setTypeFilter(tKey)}
-                className={`flex min-h-[44px] items-center justify-center rounded-full px-5 py-2.5 text-xs font-bold transition ${
-                  typeFilter === tKey
-                    ? 'bg-mandal-gold text-mandal-green shadow-sm'
-                    : 'border border-mandal-green/15 bg-white text-mandal-ink/70 hover:border-mandal-gold'
-                }`}
+                className={`flex min-h-[44px] items-center justify-center rounded-full px-5 py-2.5 text-xs font-bold transition ${typeFilter === tKey
+                  ? 'bg-mandal-gold text-mandal-green shadow-sm'
+                  : 'border border-mandal-green/15 bg-white text-mandal-ink/70 hover:border-mandal-gold'
+                  }`}
               >
                 {tKey === 'All' ? t('newsPage.allTypes') : typeLabels[tKey]}
               </button>
@@ -545,9 +636,8 @@ export default function News() {
                           src={item.coverImage}
                           alt={item.title}
                           loading="lazy"
-                          className={`h-full w-full transition duration-500 group-hover:scale-[1.03] ${
-                            isYoutube ? 'object-cover' : 'object-contain p-3'
-                          }`}
+                          className={`h-full w-full transition duration-500 group-hover:scale-[1.03] ${isYoutube ? 'object-cover' : 'object-contain p-3'
+                            }`}
                           style={isYoutube ? undefined : { filter: 'contrast(1.05) brightness(0.97)' }}
                           onError={(e) => {
                             e.currentTarget.style.display = 'none';
@@ -589,7 +679,7 @@ export default function News() {
                       </div>
 
                       {isYoutube && (
-                          <a
+                        <a
                           href={item.youtubeLink}
                           target="_blank"
                           rel="noreferrer"
