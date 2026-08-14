@@ -31,7 +31,7 @@ export const translations = {
       celebrity: 'Celebrity',
       menu: 'Menu',
       close: 'Close',
-      language: 'Marathi',
+      language: 'मराठी',
     },
     seo: {
       homeTitle: 'Panchganga Sarvajanik Utsav Mandal | Official Website',
@@ -91,6 +91,8 @@ export const translations = {
       sponsorsQuote: '"Together, supporting a legacy of faith, grandeur, and the soul of Ganesh Utsav."',
       sponsorsGalleryTitle: 'Sponsor Gallery',
       sponsorsDefaultMsg: 'Thank you for supporting Panchganga Sarvajanik Utsav Mandal.',
+      featuredVideoTitle: 'Panchganga Sarvajanik Utsav Mandal',
+      featuredVideoSubtitle: 'Watch the journey of devotion, tradition, and our shared celebration.',
     },
     about: {
       eyebrow: 'Our story',
@@ -285,6 +287,8 @@ export const translations = {
       sponsorsQuote: '"एकत्रितपणे भक्ती, भव्यता आणि गणेशोत्सवाचा आत्मा जपत परंपरेला पाठिंबा देणे."',
       sponsorsGalleryTitle: 'प्रायोजक चित्र दालन',
       sponsorsDefaultMsg: 'पंचगंगा सार्वजनिक गणेश उत्सव मंडळाचे उत्सवाला पाठिंबा दिल्याबद्दल मनःपूर्वक आभार.',
+      featuredVideoTitle: 'पंचगंगा सार्वजनिक गणेश उत्सव मंडळ',
+      featuredVideoSubtitle: 'भक्ती, परंपरा आणि उत्सवाचा आपला प्रवास पहा.',
     },
     about: {
       eyebrow: 'आमची कथा',

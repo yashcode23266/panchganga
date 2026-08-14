@@ -1,10 +1,10 @@
-const FEATURED_VIDEO = {
-  title: 'Panchganga Sarvajanik Utsav Mandal',
-  subtitle: 'Watch the journey of devotion, tradition, and our shared celebration.',
-  youtubeEmbedUrl: 'https://www.youtube.com/embed/V5vg1h4sft4',
-};
+import { useLanguage } from '../context/LanguageContext.jsx';
+
+const YOUTUBE_EMBED_URL = 'https://www.youtube.com/embed/V5vg1h4sft4';
 
 export default function FeaturedVideo() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative overflow-hidden section-pad devotional-gradient">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-mandal-gold to-transparent" />
@@ -13,17 +13,17 @@ export default function FeaturedVideo() {
 
       <div className="container-pad relative text-center">
         <h2 className="font-display text-4xl font-bold text-mandal-green sm:text-5xl">
-          {FEATURED_VIDEO.title}
+          {t('home.featuredVideoTitle')}
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-mandal-ink/65">
-          {FEATURED_VIDEO.subtitle}
+          {t('home.featuredVideoSubtitle')}
         </p>
 
         <div className="relative mx-auto mt-10 max-w-4xl">
           <div className="overflow-hidden rounded-2xl border border-mandal-green/10 bg-white p-2 shadow-soft" style={{ aspectRatio: '16/9' }}>
             <iframe
-              src={FEATURED_VIDEO.youtubeEmbedUrl}
-              title={FEATURED_VIDEO.title}
+              src={YOUTUBE_EMBED_URL}
+              title={t('home.featuredVideoTitle')}
               className="h-full w-full rounded-xl"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
