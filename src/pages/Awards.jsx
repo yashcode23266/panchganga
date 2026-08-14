@@ -55,12 +55,12 @@ const otherAwards = [
     images: [ '/images/bmc2012.jpeg', '/images/bmc2015.jpeg','/images/bmc2016.jpeg','/images/bmc2017.jpeg','/images/bmc2018.jpeg', '/images/bmc2019.jpeg', '/images/bmc2022.jpeg', '/images/bmcfpj2022.jpeg',   '/images/bmc2023.jpeg', '/images/bmc2024.jpeg', ]
   },
   {
-    name: { en: 'Ganesh Murti Ustav Murti', mr: 'गणेश मूर्ती उत्सव स्पर्धा' },
+    name: { en: 'Ganesh Murti Ustav Spardha', mr: 'गणेश मूर्ती उत्सव स्पर्धा' },
     organization: { en: 'Lokstta', mr: 'लोकसत्ता' },
     year: '2024, 2023',
     description: { en: 'In recognition of meaningful year-round initiatives that serve the local community.', mr: 'स्थानिक समुदायाची सेवा करणाऱ्या समाजोपयोगी वर्षभर उपक्रमांबद्दल.' },
     image: '/images/lokstta24.jpeg',
-    images: [ '/images/lokstta24.jpeg','/images/lokstta23.jpeg', '/images/loksttaframe1.jpeg', '/images/loksttaframe2.jpeg' , '/images/loksttaframe3.jpeg', '/images/loksattaganpati1.jpeg','/images/loksttaraja.jpeg', ],
+    images: [ '/images/lokstta24.jpeg','/images/lokstta2030.jpeg', '/images/loksttaframe.jpeg', '/images/loksttaframe1.jpeg', '/images/loksttaframe2.jpeg' , '/images/loksttaframe3.jpeg', '/images/loksattaganpati1.jpeg','/images/loksttaraja.jpeg', ],
   },
   {
     name: { en: 'Best Decoration and cleanliness', mr: 'सर्वोत्कृष्ट देखावा व स्वच्छता' },
@@ -73,23 +73,34 @@ const otherAwards = [
   {
     name: { en: 'Green Mandal Recognition', mr: 'हरित मंडळ गौरव' },
     organization: { en: 'Clean Mumbai Initiative', mr: 'स्वच्छ मुंबई उपक्रम' },
-    year: '2021',
+    year: '2012,2017,2024,2025',
     description: { en: 'Acknowledging responsible celebrations, waste management and environmental awareness.', mr: 'जबाबदार उत्सव, कचरा व्यवस्थापन आणि पर्यावरण जागृतीसाठी सन्मान.' },
-    image: imageUrls.certificate,
+    image: '/images/eco2025.jpeg',
+    images: [ '/images/eco2012.jpeg','/images/eco2017.jpeg', '/images/eco2024.jpeg', '/images/eco2025.jpeg','/images/eco.jpeg', ],
   },
   {
-    name: { en: 'Civic Partnership Honour', mr: 'नागरी सहभाग सन्मान' },
+    name: { en: 'Ustav MumbaiCha', mr: 'उत्सव मुंबईचा' },
     organization: { en: 'Ward Cultural Committee', mr: 'प्रभाग सांस्कृतिक समिती' },
-    year: '2020',
+    
     description: { en: 'Presented for sustained support of civic awareness and neighbourhood unity.', mr: 'नागरी जागृती आणि परिसर एकोप्यासाठी सतत दिलेल्या पाठिंब्याबद्दल.' },
-    image: imageUrls.group,
+    image: '/images/utsavmumbaicha.jpeg',
+    images: ['/images/utsavmumbaicha.jpeg',],
   },
   {
-    name: { en: 'Festival Innovation Award', mr: 'उत्सव नवकल्पना पुरस्कार' },
+    name: { en: 'Mumbai Police ganeshutsav', mr: 'मुंबई पोलीस गणेशोत्सव' },
     organization: { en: 'Maharashtra Utsav Network', mr: 'महाराष्ट्र उत्सव नेटवर्क' },
-    year: '2019',
+    year: '2016 , 2018',
     description: { en: 'For presenting heritage in fresh, engaging and respectful ways for all visitors.', mr: 'सर्व भाविकांसाठी सांस्कृतिक वारसा नाविन्यपूर्ण व आदरपूर्वक मांडल्याबद्दल.' },
-    image: imageUrls.ceremony,
+    image: '/images/policeframe.jpeg',
+    images: [  '/images/policeframe.jpeg','/images/police2012.jpeg', '/images/police2018.jpeg', ],
+  },
+  {
+    name: { en: 'Most valuable Award', mr: 'सर्वात मूल्यवान पुरस्कार' },
+    organization: { en: 'Maharashtra Utsav Network', mr: 'महाराष्ट्र उत्सव नेटवर्क' },
+    year: '2014, 2016, 2017,2018,2019, 2024, 2025',
+    description: { en: 'For presenting heritage in fresh, engaging and respectful ways for all visitors.', mr: 'सर्व भाविकांसाठी सांस्कृतिक वारसा नाविन्यपूर्ण व आदरपूर्वक मांडल्याबद्दल.' },
+    image: '/images/abu00.jpeg',
+    images: [  '/images/abu2014.jpeg','/images/abu2016.jpeg', '/images/abu20161.jpeg', '/images/abu2016171.jpeg', '/images/abu11.jpeg','/images/abu1718.jpeg','/images/abu21819.jpeg', '/images/abu2024.jpeg', '/images/abu00.jpeg', ],
   },
 ];
 
