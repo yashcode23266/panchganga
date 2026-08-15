@@ -67,10 +67,10 @@ export default function Home() {
 
 
       {/*HERO SECTION */}
-      <section className="relative h-[calc(100vh-64px)] min-h-130 overflow-hidden bg-[#fffdf9] aspect-[1122/1402]">
+      <section className="relative h-[calc(100vh-64px)] min-h-130 overflow-hidden bg-[#fffdf9]">
         <div className="relative h-full w-full">
           <img
-            src="/images/hero.webp"
+            src="/images/hero.png"
             alt="Ganpati Bappa"
             width="1122"
             height="1402"
@@ -206,7 +206,7 @@ export default function Home() {
             </div>
             <div className="overflow-hidden rounded-[2rem] border border-mandal-green/10 bg-white shadow-soft flex items-center justify-center">
               <img
-                src="/images/drsumit.webp"
+                src="/images/drsumit.jpeg"
                 alt="Dr. Sumeet Sanjay Patil"
                 className="h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
                 loading="lazy"
@@ -238,7 +238,7 @@ export default function Home() {
             </div>
             <div className="overflow-hidden rounded-[2rem] border border-mandal-green/10 bg-white shadow-soft flex items-center justify-center">
               <img
-                src="/images/murti.webp"
+                src="/images/murti.jpeg"
                 alt="Late Sunil Kalyankar"
                 className="h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
                 loading="lazy"
