@@ -109,6 +109,8 @@ export default function SponsorsSection() {
                   <img
                     src={sponsor.logo}
                     alt={pick(sponsor.alt) || pick(sponsor.name)}
+                    width="160"
+                    height="80"
                     className="max-h-full max-w-full object-contain"
                     loading="lazy"
                     decoding="async"

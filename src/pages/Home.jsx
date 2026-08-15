@@ -67,10 +67,10 @@ export default function Home() {
 
 
       {/*HERO SECTION */}
-      <section className="relative h-[calc(100vh-64px)] min-h-130 overflow-hidden bg-[#fffdf9]">
+      <section className="relative h-[calc(100vh-64px)] min-h-130 overflow-hidden bg-[#fffdf9] aspect-[1122/1402]">
         <div className="relative h-full w-full">
           <img
-            src="/images/hero.png"
+            src="/images/hero.webp"
             alt="Ganpati Bappa"
             width="1122"
             height="1402"
