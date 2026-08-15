@@ -12,19 +12,19 @@ import { contentCollections, getOptimizedImageUrl } from '../utils/contentStore.
 // Then reference them as: '/images/logos/electronic/your-logo.png'
 // ═════════════════════════════════════════════════════════════════════════════
 const electronicMediaLogos = [
-  { name: 'Zee 24 Taas', src: '/images/zee24 taas.png' },
-  { name: 'ABP Majha', src: '/images/abp majha.png' },
-  { name: 'tv9 Marathi', src: '/images/tv9 Marathi.png' },
-  { name: 'News18 Lokmat', src: '/images/lokmat.png' },
-  { name: 'Saam TV', src: '/images/samTV.png' },
+  { name: 'Zee 24 Taas', src: '/images/zee24 taas.webp' },
+  { name: 'ABP Majha', src: '/images/abp majha.webp' },
+  { name: 'tv9 Marathi', src: '/images/tv9 Marathi.webp' },
+  { name: 'News18 Lokmat', src: '/images/lokmat.webp' },
+  { name: 'Saam TV', src: '/images/samTV.webp' },
 ];
 
 const printMediaLogos = [
-  { name: 'Maharashtra Times', src: '/images/maharashtra times.png' },
-  { name: 'Lokmat', src: '/images/lokmat.png' },
-  { name: 'Sakal', src: '/images/sakal.png' },
-  { name: 'Mumbai Mirror', src: '/images/mumbai mirror.png' },
-  { name: 'Loksatta', src: '/images/loksatta.png' },
+  { name: 'Maharashtra Times', src: '/images/maharashtra times.webp' },
+  { name: 'Lokmat', src: '/images/lokmat.webp' },
+  { name: 'Sakal', src: '/images/sakal.webp' },
+  { name: 'Mumbai Mirror', src: '/images/mumbai mirror.webp' },
+  { name: 'Loksatta', src: '/images/loksatta.webp' },
 ];
 
 function LogoMarquee({ logos, direction = 'left', speed = 45 }) {
@@ -144,44 +144,44 @@ const newsItems = [
     media: 'Maharashtra Times',
     year: '2024',
     type: 'newspaper',
-    coverImage: '/images/Maharashtra Times.jpg',
+    coverImage: '/images/Maharashtra Times.webp',
     gallery: [
-      '/images/Maharashtra Times.jpg',
-      '/images/times1.jpeg',
-      '/images/times2.jpeg',
-      '/images/news15.jpeg',
+      '/images/Maharashtra Times.webp',
+      '/images/times1.webp',
+      '/images/times2.webp',
+      '/images/news15.webp',
     ],
   },
   {
     media: 'Local Paper',
     year: '2015',
     type: 'newspaper',
-    coverImage: '/images/news1.jpeg',
+    coverImage: '/images/news1.webp',
     gallery: [
-      '/images/news1.jpeg',
-      '/images/paper2.jpeg',
+      '/images/news1.webp',
+      '/images/paper2.webp',
     ],
   },
   {
     media: 'Sakal',
     year: '2023',
     type: 'newspaper',
-    coverImage: '/images/news3.jpeg',
+    coverImage: '/images/news3.webp',
     gallery: [
-      '/images/news3.jpeg',
-      '/images/news8.jpeg',
-      '/images/news6.jpeg',
-      '/images/news19.jpeg',
+      '/images/news3.webp',
+      '/images/news8.webp',
+      '/images/news6.webp',
+      '/images/news19.webp',
     ],
   },
   {
     media: 'Loksatta',
     year: '2023',
     type: 'newspaper',
-    coverImage: '/images/loksatta1.jpg',
+    coverImage: '/images/loksatta1.webp',
     gallery: [
-      '/images/loksatta1.jpg',
-      '/images/news18.jpeg',
+      '/images/loksatta1.webp',
+      '/images/news18.webp',
 
     ],
   },
@@ -189,10 +189,10 @@ const newsItems = [
     media: 'Pudhari',
     year: '2023',
     type: 'newspaper',
-    coverImage: '/images/news14.jpeg',
+    coverImage: '/images/news14.webp',
     gallery: [
-      '/images/news14.jpeg',
-      '/images/news9.jpeg',
+      '/images/news14.webp',
+      '/images/news9.webp',
 
     ],
   },
@@ -200,10 +200,10 @@ const newsItems = [
     media: 'Saamana',
     year: '2023',
     type: 'newspaper',
-    coverImage: '/images/news12.jpeg',
+    coverImage: '/images/news12.webp',
     gallery: [
-      '/images/news12.jpeg',
-      '/images/news4.jpeg',
+      '/images/news12.webp',
+      '/images/news4.webp',
 
     ],
   },
@@ -211,21 +211,21 @@ const newsItems = [
     media: 'Lokmat',
     year: '2023',
     type: 'newspaper',
-    coverImage: '/images/lokmat.jpg',
+    coverImage: '/images/lokmat.webp',
     gallery: [
-      '/images/lokmat.jpg',
-      '/images/news11.jpeg',
-      '/images/news7.jpeg',
-      '/images/news20.jpeg',
+      '/images/lokmat.webp',
+      '/images/news11.webp',
+      '/images/news7.webp',
+      '/images/news20.webp',
     ],
   },
   {
     media: 'Maharashtra Dinman',
     year: '2023',
     type: 'newspaper',
-    coverImage: '/images/times3.jpeg',
+    coverImage: '/images/times3.webp',
     gallery: [
-      '/images/times3.jpeg',
+      '/images/times3.webp',
 
     ],
   },
@@ -233,9 +233,9 @@ const newsItems = [
     media: 'Mid Day',
     year: '2023',
     type: 'newspaper',
-    coverImage: '/images/paper1.jpg',
+    coverImage: '/images/paper1.webp',
     gallery: [
-      '/images/paper1.jpg',
+      '/images/paper1.webp',
 
     ],
   },
@@ -243,9 +243,9 @@ const newsItems = [
     media: 'Maha News',
     year: '2017',
     type: 'newspaper',
-    coverImage: '/images/news16.jpeg',
+    coverImage: '/images/news16.webp',
     gallery: [
-      '/images/news16.jpeg',
+      '/images/news16.webp',
 
     ],
   },
@@ -253,9 +253,9 @@ const newsItems = [
     media: 'Mi Marathi',
     year: '2015',
     type: 'newspaper',
-    coverImage: '/images/news17.jpeg',
+    coverImage: '/images/news17.webp',
     gallery: [
-      '/images/news17.jpeg',
+      '/images/news17.webp',
 
     ],
   },
@@ -263,9 +263,9 @@ const newsItems = [
     media: 'Tarun Bharat',
     year: '2024',
     type: 'newspaper',
-    coverImage: '/images/news5.jpeg',
+    coverImage: '/images/news5.webp',
     gallery: [
-      '/images/news5.jpeg',
+      '/images/news5.webp',
 
     ],
   },
@@ -273,9 +273,9 @@ const newsItems = [
     media: 'The Global Times',
     year: '2024',
     type: 'newspaper',
-    coverImage: '/images/news21.jpeg',
+    coverImage: '/images/news21.webp',
     gallery: [
-      '/images/news21.jpeg',
+      '/images/news21.webp',
 
     ],
   },
@@ -283,9 +283,9 @@ const newsItems = [
     media: 'Rane Prakashan',
     year: '2024',
     type: 'newspaper',
-    coverImage: '/images/news22.jpeg',
+    coverImage: '/images/news22.webp',
     gallery: [
-      '/images/news22.jpeg',
+      '/images/news22.webp',
 
     ],
   },
@@ -293,9 +293,9 @@ const newsItems = [
     media: 'Navrashtra',
     year: '2024',
     type: 'newspaper',
-    coverImage: '/images/news13.jpeg',
+    coverImage: '/images/news13.webp',
     gallery: [
-      '/images/news13.jpeg',
+      '/images/news13.webp',
 
     ],
   },

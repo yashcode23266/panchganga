@@ -8,7 +8,7 @@ import useFirestoreItems from '../hooks/useFirestoreItems.js';
 import { contentCollections } from '../utils/contentStore.js';
 
 const imageUrls = {
-  trophy: '/images/limca-book-of-records.jpeg',
+  trophy: '/images/limca-book-of-records.webp',
   medal: 'https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=900&q=85',
   certificate: 'https://images.unsplash.com/photo-1589330694653-ded6df03f754?auto=format&fit=crop&w=900&q=85',
   ceremony: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1100&q=85',
@@ -51,56 +51,56 @@ const otherAwards = [
     organization: { en: 'Shri Ganesh Gaurav Award', mr: 'श्री गणेश गौरव पुरस्कार' },
     year: '2012, 2015, 2016, 2017, 2018, 2019, 2022, 2023, 2024',
     description: { en: 'For safeguarding local traditions and welcoming new generations into the celebration.', mr: 'स्थानिक परंपरांचे रक्षण आणि नवीन पिढीला उत्सवात सहभागी करून घेतल्याबद्दल.' },
-    image: '/images/bmclogo.png',
-    images: ['/images/bmc2012.jpeg', '/images/bmc2015.jpeg', '/images/bmc2016.jpeg', '/images/bmc2017.jpeg', '/images/bmc2018.jpeg', '/images/bmc2019.jpeg', '/images/bmc2022.jpeg', '/images/bmcfpj2022.jpeg', '/images/bmc2023.jpeg', '/images/bmc2024.jpeg',]
+    image: '/images/bmclogo.webp',
+    images: ['/images/bmc2012.webp', '/images/bmc2015.webp', '/images/bmc2016.webp', '/images/bmc2017.webp', '/images/bmc2018.webp', '/images/bmc2019.webp', '/images/bmc2022.webp', '/images/bmcfpj2022.webp', '/images/bmc2023.webp', '/images/bmc2024.webp',]
   },
   {
     name: { en: 'Loksatta', mr: 'लोकसत्ता' },
     organization: { en: 'Ganesh Murti Ustav Spardha', mr: 'गणेश मूर्ती उत्सव स्पर्धा' },
     year: '2016,2017,2018,2022,2023',
     description: { en: 'Mumbai cha Raja, the best decoration as well as the Ganesh idol.', mr: 'मुंबईचा राजा, सर्वोत्कृष्ट सजावट तसेच गणेश मूर्ती.' },
-    image: '/images/loksatta.jpeg',
-    images: ['/images/lokstta24.jpeg', '/images/lokstta2030.jpeg', '/images/loksttaframe.jpeg', '/images/loksttaframe1.jpeg', '/images/loksttaframe2.jpeg', '/images/loksttaframe3.jpeg', '/images/loksattaganpati1.jpeg', '/images/loksttaraja.jpeg',],
+    image: '/images/loksatta.webp',
+    images: ['/images/lokstta24.webp', '/images/lokstta2030.webp', '/images/loksttaframe.webp', '/images/loksttaframe1.webp', '/images/loksttaframe2.webp', '/images/loksttaframe3.webp', '/images/loksattaganpati1.webp', '/images/loksttaraja.webp',],
   },
   {
     name: { en: '1st in Maharashtra', mr: 'महाराष्ट्रामध्ये प्रथम' },
     organization: { en: 'Bharatiya janata Party', mr: 'भारतीय जनता पार्टी' },
     year: '2022, 2023',
     description: { en: 'For an inclusive festival experience shaped by devotion, creativity and care.', mr: 'भक्ती, कलात्मकता आणि आपुलकीने नटलेल्या सर्वसमावेशक उत्सवासाठी.' },
-    image: '/images/bjp1.jpeg',
-    images: ['/images/bjp1.jpeg', '/images/bjp2.jpeg',],
+    image: '/images/bjp1.webp',
+    images: ['/images/bjp1.webp', '/images/bjp2.webp',],
   },
   {
     name: { en: 'Times Green Ganesha', mr: 'टाईम्स ग्रीन गणेश ' },
     organization: { en: 'Clean Mumbai Initiative', mr: 'स्वच्छ मुंबई उपक्रम' },
     year: '2012,2017,2024,2025',
     description: { en: 'Acknowledging responsible celebrations, waste management and environmental awareness.', mr: 'जबाबदार उत्सव, कचरा व्यवस्थापन आणि पर्यावरण जागृतीसाठी सन्मान.' },
-    image: '/images/timesgreen.jpeg',
-    images: ['/images/eco2012.jpeg', '/images/eco2017.jpeg', '/images/eco2024.jpeg', '/images/eco2025.jpeg', '/images/eco.jpeg',],
+    image: '/images/timesgreen.webp',
+    images: ['/images/eco2012.webp', '/images/eco2017.webp', '/images/eco2024.webp', '/images/eco2025.webp', '/images/eco.webp',],
   },
   {
     name: { en: 'Ustav MumbaiCha', mr: 'उत्सव मुंबईचा' },
     organization: { en: 'Ward Cultural Committee', mr: 'प्रभाग सांस्कृतिक समिती' },
 
     description: { en: 'Presented for sustained support of civic awareness and neighbourhood unity.', mr: 'नागरी जागृती आणि परिसर एकोप्यासाठी सतत दिलेल्या पाठिंब्याबद्दल.' },
-    image: '/images/eknath.jpeg',
-    images: ['/images/utsavmumbaicha.jpeg',],
+    image: '/images/eknath.webp',
+    images: ['/images/utsavmumbaicha.webp',],
   },
   {
     name: { en: 'Mumbai Police ganeshutsav', mr: 'मुंबई पोलीस गणेशोत्सव' },
     organization: { en: 'Maharashtra Utsav Network', mr: 'महाराष्ट्र उत्सव नेटवर्क' },
     year: '2016 , 2018',
     description: { en: 'For presenting heritage in fresh, engaging and respectful ways for all visitors.', mr: 'सर्व भाविकांसाठी सांस्कृतिक वारसा नाविन्यपूर्ण व आदरपूर्वक मांडल्याबद्दल.' },
-    image: '/images/police .png',
-    images: ['/images/policeframe.jpeg', '/images/police2012.jpeg', '/images/police2018.jpeg',],
+    image: '/images/police .webp',
+    images: ['/images/policeframe.webp', '/images/police2012.webp', '/images/police2018.webp',],
   },
   {
     name: { en: 'Most valuable Award', mr: 'सर्वात मूल्यवान पुरस्कार' },
     organization: { en: 'Maharashtra Utsav Network', mr: 'महाराष्ट्र उत्सव नेटवर्क' },
     year: '2014, 2016, 2017,2018,2019, 2024, 2025',
     description: { en: 'For presenting heritage in fresh, engaging and respectful ways for all visitors.', mr: 'सर्व भाविकांसाठी सांस्कृतिक वारसा नाविन्यपूर्ण व आदरपूर्वक मांडल्याबद्दल.' },
-    image: '/images/abu00.jpeg',
-    images: ['/images/abu2014.jpeg', '/images/abu2016.jpeg', '/images/abu20161.jpeg', '/images/abu2016171.jpeg', '/images/abu11.jpeg', '/images/abu1718.jpeg', '/images/abu21819.jpeg', '/images/abu2024.jpeg', '/images/abu00.jpeg',],
+    image: '/images/abu00.webp',
+    images: ['/images/abu2014.webp', '/images/abu2016.webp', '/images/abu20161.webp', '/images/abu2016171.webp', '/images/abu11.webp', '/images/abu1718.webp', '/images/abu21819.webp', '/images/abu2024.webp', '/images/abu00.webp',],
   },
 ];
 

@@ -206,7 +206,7 @@ export default function Home() {
             </div>
             <div className="overflow-hidden rounded-[2rem] border border-mandal-green/10 bg-white shadow-soft flex items-center justify-center">
               <img
-                src="/images/drsumit.jpeg"
+                src="/images/drsumit.webp"
                 alt="Dr. Sumeet Sanjay Patil"
                 className="h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
                 loading="lazy"
@@ -238,7 +238,7 @@ export default function Home() {
             </div>
             <div className="overflow-hidden rounded-[2rem] border border-mandal-green/10 bg-white shadow-soft flex items-center justify-center">
               <img
-                src="/images/murti.jpeg"
+                src="/images/murti.webp"
                 alt="Late Sunil Kalyankar"
                 className="h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
                 loading="lazy"

@@ -56,7 +56,7 @@ export default function Header() {
           className="flex shrink-0 items-center gap-2.5 text-left sm:gap-3"
         >
           <img
-            src="/images/panlogo.png"
+            src="/images/panlogo.webp"
             alt={t('brand.name')}
             className="h-12 w-12 shrink-0 object-contain drop-shadow-md sm:h-14 sm:w-14 lg:h-16 lg:w-16"
           />

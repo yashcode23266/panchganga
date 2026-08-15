@@ -55,7 +55,7 @@ export default function Footer() {
       <div className="relative z-10 container-pad grid gap-10 py-12 text-center md:grid-cols-[1.35fr_1fr_1.1fr] md:text-left">
         <div className="flex flex-col items-center md:items-start">
           <img
-            src="/images/panlogo.png"
+            src="/images/panlogo.webp"
             alt={t('brand.name')}
             width="500"
             height="500"

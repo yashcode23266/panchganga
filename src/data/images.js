@@ -6,7 +6,7 @@ export const fixedimages = [
 
 
 
-    src: '/ganpati2025.jpeg',
+    src: '/ganpati2025.webp',
 
 
 
@@ -34,7 +34,7 @@ export const fixedimages = [
 
 
 
-    src: '/ganpati2024.jpeg',
+    src: '/ganpati2024.webp',
 
 
 
@@ -62,7 +62,7 @@ export const fixedimages = [
 
 
 
-    src: '/ganpati2023.jpeg',
+    src: '/ganpati2023.webp',
 
 
 
@@ -110,7 +110,7 @@ export const homeImages = {
 
 
 
-    src: '/ganpati2018.jpeg',
+    src: '/ganpati2018.webp',
 
 
 
@@ -138,7 +138,7 @@ export const homeImages = {
 
 
 
-    src: '/ganpati1990.jpeg',
+    src: '/ganpati1990.webp',
 
 
 
@@ -178,7 +178,7 @@ export const aboutImages = [
 
 
 
-    src: '/ganpati.png',
+    src: '/ganpati.webp',
 
 
 
@@ -206,7 +206,7 @@ export const aboutImages = [
 
 
 
-    src: '/ganpati2025.jpeg',
+    src: '/ganpati2025.webp',
 
 
 
@@ -244,17 +244,17 @@ export const eventImages = [
 
     key: 'floodRelief',
 
-    image: '/images/book3.jpg',
+    image: '/images/book3.webp',
 
     images: [
 
-      '/images/book3.jpg',
+      '/images/book3.webp',
 
-      '/images/book1.jpg',
+      '/images/book1.webp',
 
-      '/images/book2.jpg',
+      '/images/book2.webp',
 
-      '/images/book4.jpg',
+      '/images/book4.webp',
 
     ],
 
@@ -274,15 +274,15 @@ export const eventImages = [
 
     key: 'assamFlood',
 
-    image: '/images/assam3.jpg',
+    image: '/images/assam3.webp',
 
     images: [
 
-      '/images/assam3.jpg',
+      '/images/assam3.webp',
 
-      '/images/assam1.jpg',
+      '/images/assam1.webp',
 
-      '/images/assam2.jpg',
+      '/images/assam2.webp',
 
     ],
 
@@ -302,13 +302,13 @@ export const eventImages = [
 
     key: 'foodDonation',
 
-    image: '/images/food2.jpg',
+    image: '/images/food2.webp',
 
     images: [
 
-      '/images/food2.jpg',
+      '/images/food2.webp',
 
-      '/images/food1.jpg',
+      '/images/food1.webp',
 
     ],
 
@@ -328,39 +328,39 @@ export const eventImages = [
 
     key: 'healthCheckup',
 
-    image: '/images/h1.jpg',
+    image: '/images/h1.webp',
 
     images: [
 
-      '/images/h1.jpg',
+      '/images/h1.webp',
 
-      '/images/h2.jpg',
+      '/images/h2.webp',
 
-      '/images/h3.jpg',
+      '/images/h3.webp',
 
-      '/images/h4.jpg',
+      '/images/h4.webp',
 
-      '/images/h5.jpg',
+      '/images/h5.webp',
 
-      '/images/h6.jpg',
+      '/images/h6.webp',
 
-      '/images/h7.jpg',
+      '/images/h7.webp',
 
-      '/images/h8.jpg',
+      '/images/h8.webp',
 
-      '/images/h9.jpg',
+      '/images/h9.webp',
 
-      '/images/h10.jpg',
+      '/images/h10.webp',
 
-      '/images/h11.jpg',
+      '/images/h11.webp',
 
-      '/images/h12.jpg',
+      '/images/h12.webp',
 
-      '/images/h13.jpg',
+      '/images/h13.webp',
 
-      '/images/h14.jpg',
+      '/images/h14.webp',
 
-      '/images/h15.jpg',
+      '/images/h15.webp',
 
     ],
 
@@ -380,15 +380,15 @@ export const eventImages = [
 
     key: 'clothesDonation',
 
-    image: '/images/c1.jpeg',
+    image: '/images/c1.webp',
 
     images: [
 
-      '/images/c1.jpeg',
+      '/images/c1.webp',
 
-      '/images/c2.jpeg',
+      '/images/c2.webp',
 
-      '/images/c4.jpeg',
+      '/images/c4.webp',
 
     ],
 
@@ -408,21 +408,21 @@ export const eventImages = [
 
     key: 'Kolhapur Flood',
 
-    image: '/images/flood.jpeg',
+    image: '/images/flood.webp',
 
     images: [
 
-      '/images/f1.jpeg',
+      '/images/f1.webp',
 
-      '/images/f2.jpeg',
+      '/images/f2.webp',
 
-      '/images/f3.jpeg',
-      '/images/f4.jpeg',
-      '/images/f5.jpeg',
-      '/images/f6.jpeg',
-      '/images/f7.jpeg',
-      '/images/f8.jpeg',
-      '/images/f9.jpeg',
+      '/images/f3.webp',
+      '/images/f4.webp',
+      '/images/f5.webp',
+      '/images/f6.webp',
+      '/images/f7.webp',
+      '/images/f8.webp',
+      '/images/f9.webp',
 
 
 
@@ -450,583 +450,583 @@ export const eventImages = [
 export const galleryImages = [
   {
     year: "2025",
-    src: "/ganpati2025.jpeg",
+    src: "/ganpati2025.webp",
     caption: { en: "Adulterated Food vs. Health is Wealth", mr: "भेसळयुक्त अन्न, आरोग्यच धन " },
     alt: { en: "Adulterated Food vs. Health is Wealth", mr: "भेसळयुक्त अन्न, आरोग्यच धन " },
   },
   {
     year: "2025",
-    src: "/ganpati20251.jpeg",
+    src: "/ganpati20251.webp",
     caption: { en: "Adulterated Food vs. Health is Wealth", mr: "भेसळयुक्त अन्न, आरोग्यच धन " },
     alt: { en: "Adulterated Food vs. Health is Wealth", mr: "भेसळयुक्त अन्न, आरोग्यच धन " },
   },
   {
     year: "2025",
-    src: "/ganpati20252.jpeg",
+    src: "/ganpati20252.webp",
     caption: { en: "Adulterated Food vs. Health is Wealth", mr: "भेसळयुक्त अन्न, आरोग्यच धन " },
     alt: { en: "Adulterated Food vs. Health is Wealth", mr: "भेसळयुक्त अन्न, आरोग्यच धन " },
   },
   {
     year: "2025",
-    src: "/ganpati20253.jpeg",
+    src: "/ganpati20253.webp",
     caption: { en: "Adulterated Food vs. Health is Wealth", mr: "भेसळयुक्त अन्न, आरोग्यच धन " },
     alt: { en: "Adulterated Food vs. Health is Wealth", mr: "भेसळयुक्त अन्न, आरोग्यच धन " },
   },
   {
     year: "2025",
-    src: "/ganpati20254.jpeg",
+    src: "/ganpati20254.webp",
     caption: { en: "Adulterated Food vs. Health is Wealth", mr: "भेसळयुक्त अन्न, आरोग्यच धन " },
     alt: { en: "Adulterated Food vs. Health is Wealth", mr: "भेसळयुक्त अन्न, आरोग्यच धन " },
   },
   {
     year: "2025",
-    src: "/ganpati20255.jpeg",
+    src: "/ganpati20255.webp",
     caption: { en: "Adulterated Food vs. Health is Wealth", mr: "भेसळयुक्त अन्न, आरोग्यच धन " },
     alt: { en: "Adulterated Food vs. Health is Wealth", mr: "भेसळयुक्त अन्न, आरोग्यच धन " },
   },
   {
     year: "2024",
-    src: "/ganpati2024.jpeg",
+    src: "/ganpati2024.webp",
     caption: { en: "Clothing: a thought... a resolve... a culture.", mr: "वस्त्र, एक विचार..एक व्रत.. एक संस्कृती" },
     alt: { en: "Clothing: a thought... a resolve... a culture.", mr: "वस्त्र, एक विचार..एक व्रत.. एक संस्कृती" },
   },
   {
     year: "2024",
-    src: "/ganpati20241.jpeg",
+    src: "/ganpati20241.webp",
     caption: { en: "Clothing: a thought... a resolve... a culture.", mr: "वस्त्र, एक विचार..एक व्रत.. एक संस्कृती" },
     alt: { en: "Clothing: a thought... a resolve... a culture.", mr: "वस्त्र, एक विचार..एक व्रत.. एक संस्कृती" },
   },
   {
     year: "2024",
-    src: "/ganapti20242.jpeg",
+    src: "/ganapti20242.webp",
     caption: { en: "Clothing: a thought... a resolve... a culture.", mr: "वस्त्र, एक विचार..एक व्रत.. एक संस्कृती" },
     alt: { en: "Clothing: a thought... a resolve... a culture.", mr: "वस्त्र, एक विचार..एक व्रत.. एक संस्कृती" },
   },
   {
     year: "2024",
-    src: "/ganpati20243.jpeg",
+    src: "/ganpati20243.webp",
     caption: { en: "Clothing: a thought... a resolve... a culture.", mr: "वस्त्र, एक विचार..एक व्रत.. एक संस्कृती" },
     alt: { en: "Clothing: a thought... a resolve... a culture.", mr: "वस्त्र, एक विचार..एक व्रत.. एक संस्कृती" },
   },
   {
     year: "2024",
-    src: "/ganpati20244.jpeg",
+    src: "/ganpati20244.webp",
     caption: { en: "Clothing: a thought... a resolve... a culture.", mr: "वस्त्र, एक विचार..एक व्रत.. एक संस्कृती" },
     alt: { en: "Clothing: a thought... a resolve... a culture.", mr: "वस्त्र, एक विचार..एक व्रत.. एक संस्कृती" },
   },
   {
     year: "2024",
-    src: "/ganpati20245.jpeg",
+    src: "/ganpati20245.webp",
     caption: { en: "Clothing: a thought... a resolve... a culture.", mr: "वस्त्र, एक विचार..एक व्रत.. एक संस्कृती" },
     alt: { en: "Clothing: a thought... a resolve... a culture.", mr: "वस्त्र, एक विचार..एक व्रत.. एक संस्कृती" },
   },
   {
     year: "2023",
-    src: "/ganpati2023.jpeg",
+    src: "/ganpati2023.webp",
     caption: { en: "Food donation is the best donation", mr: "अन्नदान हे श्रेष्ठदान " },
     alt: { en: "Food donation is the best donation", mr: "अन्नदान हे श्रेष्ठदान " },
   },
   {
     year: "2023",
-    src: "/ganpati20231.jpeg",
+    src: "/ganpati20231.webp",
     caption: { en: "Food donation is the best donation", mr: "अन्नदान हे श्रेष्ठदान " },
     alt: { en: "Food donation is the best donation", mr: "अन्नदान हे श्रेष्ठदान " },
   },
   {
     year: "2023",
-    src: "/ganpati20232.jpeg",
+    src: "/ganpati20232.webp",
     caption: { en: "Food donation is the best donation", mr: "अन्नदान हे श्रेष्ठदान " },
     alt: { en: "Food donation is the best donation", mr: "अन्नदान हे श्रेष्ठदान " },
   },
   {
     year: "2023",
-    src: "/ganpati20233.jpeg",
+    src: "/ganpati20233.webp",
     caption: { en: "Food donation is the best donation", mr: "अन्नदान हे श्रेष्ठदान " },
     alt: { en: "Food donation is the best donation", mr: "अन्नदान हे श्रेष्ठदान " },
   },
   {
     year: "2023",
-    src: "/ganpati20234.jpeg",
+    src: "/ganpati20234.webp",
     caption: { en: "Food donation is the best donation", mr: "अन्नदान हे श्रेष्ठदान " },
     alt: { en: "Food donation is the best donation", mr: "अन्नदान हे श्रेष्ठदान " },
   },
   {
     year: "2023",
-    src: "/ganpati20235.jpeg",
+    src: "/ganpati20235.webp",
     caption: { en: "Food donation is the best donation", mr: "अन्नदान हे श्रेष्ठदान " },
     alt: { en: "Food donation is the best donation", mr: "अन्नदान हे श्रेष्ठदान " },
   },
   {
     year: "2023",
-    src: "/ganpati20236.jpeg",
+    src: "/ganpati20236.webp",
     caption: { en: "Food donation is the best donation", mr: "अन्नदान हे श्रेष्ठदान " },
     alt: { en: "Food donation is the best donation", mr: "अन्नदान हे श्रेष्ठदान " },
   },
   {
     year: "2023",
-    src: "/ganpati20237.jpeg",
+    src: "/ganpati20237.webp",
     caption: { en: "Food donation is the best donation", mr: "अन्नदान हे श्रेष्ठदान " },
     alt: { en: "Food donation is the best donation", mr: "अन्नदान हे श्रेष्ठदान " },
   },
   {
     year: "2022",
-    src: "/ganpati2022.jpeg",
+    src: "/ganpati2022.webp",
     caption: { en: "Accessible India, Well-equipped India", mr: "सुगम्य भारत, सुसज्ज भारत" },
     alt: { en: "Accessible India, Well-equipped India", mr: "सुगम्य भारत, सुसज्ज भारत" },
   },
   {
     year: "2022",
-    src: "/ganpati20221.jpeg",
+    src: "/ganpati20221.webp",
     caption: { en: "Accessible India, Well-equipped India", mr: "सुगम्य भारत, सुसज्ज भारत" },
     alt: { en: "Accessible India, Well-equipped India", mr: "सुगम्य भारत, सुसज्ज भारत" },
   },
   {
     year: "2022",
-    src: "/ganpati20222.jpeg",
+    src: "/ganpati20222.webp",
     caption: { en: "Accessible India, Well-equipped India", mr: "सुगम्य भारत, सुसज्ज भारत" },
     alt: { en: "Accessible India, Well-equipped India", mr: "सुगम्य भारत, सुसज्ज भारत" },
   },
   {
     year: "2022",
-    src: "/ganpati20223.jpeg",
+    src: "/ganpati20223.webp",
     caption: { en: "Accessible India, Well-equipped India", mr: "सुगम्य भारत, सुसज्ज भारत" },
     alt: { en: "Accessible India, Well-equipped India", mr: "सुगम्य भारत, सुसज्ज भारत" },
   },
   {
     year: "2021",
-    src: "/ganpati2021.jpeg",
+    src: "/ganpati2021.webp",
     caption: { en: "Temple of Knowledge", mr: "ज्ञानमंदिर" },
     alt: { en: "Temple of Knowledge", mr: "ज्ञानमंदिर" },
   },
   {
     year: "2021",
-    src: "/ganpati20211.jpeg",
+    src: "/ganpati20211.webp",
     caption: { en: "Temple of Knowledge", mr: "ज्ञानमंदिर" },
     alt: { en: "Temple of Knowledge", mr: "ज्ञानमंदिर" },
   },
   {
     year: "2021",
-    src: "/ganpati20212.jpeg",
+    src: "/ganpati20212.webp",
     caption: { en: "Temple of Knowledge", mr: "ज्ञानमंदिर" },
     alt: { en: "Temple of Knowledge", mr: "ज्ञानमंदिर" },
   },
   {
     year: "2021",
-    src: "/ganpati20213.jpeg",
+    src: "/ganpati20213.webp",
     caption: { en: "Temple of Knowledge", mr: "ज्ञानमंदिर" },
     alt: { en: "Temple of Knowledge", mr: "ज्ञानमंदिर" },
   },
   {
     year: "2020",
-    src: "/ganpati2020.jpeg",
+    src: "/ganpati2020.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "2019",
-    src: "/ganpati2019.jpeg",
+    src: "/ganpati2019.webp",
     caption: { en: "Book Movement", mr: "पुस्तक चळवळ " },
     alt: { en: "Book Movement", mr: "पुस्तक चळवळ" },
   },
   {
     year: "2019",
-    src: "/ganpati20191.jpeg",
+    src: "/ganpati20191.webp",
     caption: { en: "Book Movement", mr: "पुस्तक चळवळ " },
     alt: { en: "Book Movement", mr: "पुस्तक चळवळ" },
   },
   {
     year: "2019",
-    src: "/ganpati20192.jpeg",
+    src: "/ganpati20192.webp",
     caption: { en: "Book Movement", mr: "पुस्तक चळवळ " },
     alt: { en: "Book Movement", mr: "पुस्तक चळवळ" },
   },
   {
     year: "2019",
-    src: "/ganpati20193.jpeg",
+    src: "/ganpati20193.webp",
     caption: { en: "Book Movement", mr: "पुस्तक चळवळ " },
     alt: { en: "Book Movement", mr: "पुस्तक चळवळ" },
   },
   {
     year: "2019",
-    src: "/ganpati20194.jpeg",
+    src: "/ganpati20194.webp",
     caption: { en: "Book Movement", mr: "पुस्तक चळवळ " },
     alt: { en: "Book Movement", mr: "पुस्तक चळवळ" },
   },
   {
     year: "2019",
-    src: "/ganpati20195.jpeg",
+    src: "/ganpati20195.webp",
     caption: { en: "Book Movement", mr: "पुस्तक चळवळ " },
     alt: { en: "Book Movement", mr: "पुस्तक चळवळ" },
   },
   {
     year: "2019",
-    src: "/ganpati20196.jpeg",
+    src: "/ganpati20196.webp",
     caption: { en: "Book Movement", mr: "पुस्तक चळवळ " },
     alt: { en: "Book Movement", mr: "पुस्तक चळवळ" },
   },
   {
     year: "2019",
-    src: "/ganpati20197.jpeg",
+    src: "/ganpati20197.webp",
     caption: { en: "Book Movement", mr: "पुस्तक चळवळ " },
     alt: { en: "Book Movement", mr: "पुस्तक चळवळ" },
   },
   {
     year: "2019",
-    src: "/ganpati20198.jpeg",
+    src: "/ganpati20198.webp",
     caption: { en: "Book Movement", mr: "पुस्तक चळवळ " },
     alt: { en: "Book Movement", mr: "पुस्तक चळवळ" },
   },
   {
     year: "2018",
-    src: "/ganpati2018.jpeg",
+    src: "/ganpati2018.webp",
     caption: { en: "The face was burnt, but not the dream.", mr: "चेहरा होरपळला, पण स्वप्न नाही (ॲसिड हल्लाग्रस्त देखावा)" },
     alt: { en: "The face was burnt, but not the dream.", mr: "चेहरा होरपळला, पण स्वप्न नाही कलाकृती" },
   },
   {
     year: "2018",
-    src: "/ganpati20181.jpeg",
+    src: "/ganpati20181.webp",
     caption: { en: "The face was burnt, but not the dream.", mr: "चेहरा होरपळला, पण स्वप्न नाही (ॲसिड हल्लाग्रस्त देखावा)" },
     alt: { en: "The face was burnt, but not the dream.", mr: "चेहरा होरपळला, पण स्वप्न नाही कलाकृती" },
   },
   {
     year: "2018",
-    src: "/ganpati20182.jpeg",
+    src: "/ganpati20182.webp",
     caption: { en: "The face was burnt, but not the dream.", mr: "चेहरा होरपळला, पण स्वप्न नाही (ॲसिड हल्लाग्रस्त देखावा)" },
     alt: { en: "The face was burnt, but not the dream.", mr: "चेहरा होरपळला, पण स्वप्न नाही कलाकृती" },
   },
   {
     year: "2018",
-    src: "/ganpati20183.jpeg",
+    src: "/ganpati20183.webp",
     caption: { en: "The face was burnt, but not the dream.", mr: "चेहरा होरपळला, पण स्वप्न नाही (ॲसिड हल्लाग्रस्त देखावा)" },
     alt: { en: "The face was burnt, but not the dream.", mr: "चेहरा होरपळला, पण स्वप्न नाही कलाकृती" },
   },
   {
     year: "2018",
-    src: "/ganpati20184.jpeg",
+    src: "/ganpati20184.webp",
     caption: { en: "The face was burnt, but not the dream.", mr: "चेहरा होरपळला, पण स्वप्न नाही (ॲसिड हल्लाग्रस्त देखावा)" },
     alt: { en: "The face was burnt, but not the dream.", mr: "चेहरा होरपळला, पण स्वप्न नाही कलाकृती" },
   },
   {
     year: "2018",
-    src: "/ganpati20185.jpeg",
+    src: "/ganpati20185.webp",
     caption: { en: "The face was burnt, but not the dream.", mr: "चेहरा होरपळला, पण स्वप्न नाही (ॲसिड हल्लाग्रस्त देखावा)" },
     alt: { en: "The face was burnt, but not the dream.", mr: "चेहरा होरपळला, पण स्वप्न नाही कलाकृती" },
   },
   {
     year: "2018",
-    src: "/ganpati20186.jpeg",
+    src: "/ganpati20186.webp",
     caption: { en: "The face was burnt, but not the dream.", mr: "चेहरा होरपळला, पण स्वप्न नाही (ॲसिड हल्लाग्रस्त देखावा)" },
     alt: { en: "The face was burnt, but not the dream.", mr: "चेहरा होरपळला, पण स्वप्न नाही कलाकृती" },
   },
   {
     year: "2017",
-    src: "/ganpati2017.jpeg",
+    src: "/ganpati2017.webp",
     caption: { en: "Save electricity.", mr: " वीज वाचवा " },
     alt: { en: "Save electricity.", mr: "वीज वाचवा " },
   },
   {
     year: "2017",
-    src: "/ganpati20171.jpeg",
+    src: "/ganpati20171.webp",
     caption: { en: "Save electricity.", mr: " वीज वाचवा " },
     alt: { en: "Save electricity.", mr: "वीज वाचवा " },
   },
   {
     year: "2016",
-    src: "/ganpati2016.jpeg",
+    src: "/ganpati2016.webp",
     caption: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या  " },
     alt: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या " },
   },
   {
     year: "2016",
-    src: "/ganpati20161.jpeg",
+    src: "/ganpati20161.webp",
     caption: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या  " },
     alt: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या " },
   },
   {
     year: "2016",
-    src: "/ganpati20162.jpeg",
+    src: "/ganpati20162.webp",
     caption: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या  " },
     alt: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या " },
   },
   {
     year: "2016",
-    src: "/ganpati20163.jpeg",
+    src: "/ganpati20163.webp",
     caption: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या  " },
     alt: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या " },
   },
   {
     year: "2016",
-    src: "/ganpati20164.jpeg",
+    src: "/ganpati20164.webp",
     caption: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या  " },
     alt: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या " },
   },
   {
     year: "2016",
-    src: "/ganpati20165.jpeg",
+    src: "/ganpati20165.webp",
     caption: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या  " },
     alt: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या " },
   },
   {
     year: "2016",
-    src: "/ganpati20166.jpeg",
+    src: "/ganpati20166.webp",
     caption: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या  " },
     alt: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या " },
   },
   {
     year: "2016",
-    src: "/ganpati20167.jpeg",
+    src: "/ganpati20167.webp",
     caption: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या  " },
     alt: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या " },
   },
   {
     year: "2016",
-    src: "/ganpati20168.jpeg",
+    src: "/ganpati20168.webp",
     caption: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या  " },
     alt: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या " },
   },
   {
     year: "2016",
-    src: "/ganpati20169.jpeg",
+    src: "/ganpati20169.webp",
     caption: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या  " },
     alt: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या " },
   },
   {
     year: "2016",
-    src: "/ganpati201610.jpeg",
+    src: "/ganpati201610.webp",
     caption: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या  " },
     alt: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या " },
   },
   {
     year: "2016",
-    src: "/ganpati201611.jpeg",
+    src: "/ganpati201611.webp",
     caption: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या  " },
     alt: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या " },
   },
   {
     year: "2016",
-    src: "/ganpati201612.jpeg",
+    src: "/ganpati201612.webp",
     caption: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या  " },
     alt: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या " },
   },
   {
     year: "2016",
-    src: "/ganpati201613.jpeg",
+    src: "/ganpati201613.webp",
     caption: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या  " },
     alt: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या " },
   },
   {
     year: "2016",
-    src: "/ganpati201614.jpeg",
+    src: "/ganpati201614.webp",
     caption: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या  " },
     alt: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या " },
   },
   {
     year: "2016",
-    src: "/ganpati201615.jpeg",
+    src: "/ganpati201615.webp",
     caption: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या  " },
     alt: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या " },
   },
   {
     year: "2016",
-    src: "/ganpati201616.jpeg",
+    src: "/ganpati201616.webp",
     caption: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या  " },
     alt: { en: "Bappa, keep a watchful eye.", mr: "बाप्पा लक्ष्य असूद्या " },
   },
   {
     year: "2015",
-    src: "/ganpati2015.jpeg",
+    src: "/ganpati2015.webp",
     caption: { en: "Eye Donation Best Donation", mr: "नेत्रदान श्रेष्ठदान  " },
     alt: { en: "Eye Donation Best Donation", mr: "नेत्रदान श्रेष्ठदान " },
   },
   {
     year: "2015",
-    src: "/ganpati20151.jpeg",
+    src: "/ganpati20151.webp",
     caption: { en: "Eye Donation Best Donation", mr: "नेत्रदान श्रेष्ठदान  " },
     alt: { en: "Eye Donation Best Donation", mr: "नेत्रदान श्रेष्ठदान " },
   },
   {
     year: "2015",
-    src: "/ganpati20152.jpeg",
+    src: "/ganpati20152.webp",
     caption: { en: "Eye Donation Best Donation", mr: "नेत्रदान श्रेष्ठदान  " },
     alt: { en: "Eye Donation Best Donation", mr: "नेत्रदान श्रेष्ठदान " },
   },
   {
     year: "2015",
-    src: "/ganpati20153.jpeg",
+    src: "/ganpati20153.webp",
     caption: { en: "Eye Donation Best Donation", mr: "नेत्रदान श्रेष्ठदान  " },
     alt: { en: "Eye Donation Best Donation", mr: "नेत्रदान श्रेष्ठदान " },
   },
   {
     year: "2015",
-    src: "/ganpati20154.jpeg",
+    src: "/ganpati20154.webp",
     caption: { en: "Eye Donation Best Donation", mr: "नेत्रदान श्रेष्ठदान  " },
     alt: { en: "Eye Donation Best Donation", mr: "नेत्रदान श्रेष्ठदान " },
   },
   {
     year: "2014",
-    src: "/ganpati2014.jpeg",
+    src: "/ganpati2014.webp",
     caption: { en: "Jyotiba Temple", mr: "जोतिबा मंदिर " },
     alt: { en: "Jyotiba Temple", mr: "जोतिबा मंदिर" },
   },
   {
     year: "2014",
-    src: "/ganpati20141.jpeg",
+    src: "/ganpati20141.webp",
     caption: { en: "Jyotiba Temple", mr: "जोतिबा मंदिर " },
     alt: { en: "Jyotiba Temple", mr: "जोतिबा मंदिर" },
   },
   {
     year: "2014",
-    src: "/ganpati20142.jpeg",
+    src: "/ganpati20142.webp",
     caption: { en: "Jyotiba Temple", mr: "जोतिबा मंदिर " },
     alt: { en: "Jyotiba Temple", mr: "जोतिबा मंदिर" },
   },
   {
     year: "2014",
-    src: "/ganpati20143.jpeg",
+    src: "/ganpati20143.webp",
     caption: { en: "Jyotiba Temple", mr: "जोतिबा मंदिर " },
     alt: { en: "Jyotiba Temple", mr: "जोतिबा मंदिर" },
   },
   {
     year: "2013",
-    src: "/ganpati2013.jpeg",
+    src: "/ganpati2013.webp",
     caption: { en: "Women empowerment", mr: " स्त्री सशक्तीकरण" },
     alt: { en: "Women empowerment", mr: "स्त्री सशक्तीकरण" },
   },
   {
     year: "2012",
-    src: "/ganpati2012.jpeg",
+    src: "/ganpati2012.webp",
     caption: { en: "Save Trees", mr: "वृक्ष तोड " },
     alt: { en: "Save Trees", mr: "वृक्ष तोड" },
   },
   {
     year: "2011",
-    src: "/ganpati2011.jpeg",
+    src: "/ganpati2011.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "2010",
-    src: "/ganpati2010.jpeg",
+    src: "/ganpati2010.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "2009",
-    src: "/ganpati2009.jpeg",
+    src: "/ganpati2009.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "2008",
-    src: "/ganpati2008.jpeg",
+    src: "/ganpati2008.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "2007",
-    src: "/ganpati2007.jpeg",
+    src: "/ganpati2007.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "2006",
-    src: "/ganpati2006.jpeg",
+    src: "/ganpati2006.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "2005",
-    src: "/ganpati2005.jpeg",
+    src: "/ganpati2005.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "2004",
-    src: "/ganpati2004.jpeg",
+    src: "/ganpati2004.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "2003",
-    src: "/ganpati2003.jpeg",
+    src: "/ganpati2003.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "2002",
-    src: "/ganpati2002.jpeg",
+    src: "/ganpati2002.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "2001",
-    src: "/ganpati2001.jpeg",
+    src: "/ganpati2001.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "2000",
-    src: "/ganpati2000.jpeg",
+    src: "/ganpati2000.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "1999",
-    src: "/ganpati1999.jpeg",
+    src: "/ganpati1999.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "1998",
-    src: "/ganpati1998.jpeg",
+    src: "/ganpati1998.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "1997",
-    src: "/ganpati1997.jpeg",
+    src: "/ganpati1997.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "1996",
-    src: "/ganpati1996.jpeg",
+    src: "/ganpati1996.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "1995",
-    src: "/ganpati1995.jpeg",
+    src: "/ganpati1995.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "1994",
-    src: "/ganpati1994.jpeg",
+    src: "/ganpati1994.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "1993",
-    src: "/ganpati1993.jpeg",
+    src: "/ganpati1993.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "1992",
-    src: "/ganpati1992.jpeg",
+    src: "/ganpati1992.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "1991",
-    src: "/ganpati1991.jpeg",
+    src: "/ganpati1991.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
   {
     year: "1990",
-    src: "/ganpati1990.jpeg",
+    src: "/ganpati1990.webp",
     caption: { en: "Ganpati Darshan", mr: "गणपती दर्शन" },
     alt: { en: "Ganpati Darshan artwork", mr: "गणपती दर्शन कलाकृती" },
   },
@@ -1044,11 +1044,11 @@ export const sponsorImages = [
 
 
 
-    logo: '/images/jhakaas.png',
+    logo: '/images/jhakaas.webp',
 
 
 
-    images: ['/images/jhakaas.png', '/images/jhakaas1.jpeg',],
+    images: ['/images/jhakaas.webp', '/images/jhakaas1.webp',],
 
 
 
@@ -1072,11 +1072,11 @@ export const sponsorImages = [
 
 
 
-    logo: '/images/anchor.png',
+    logo: '/images/anchor.webp',
 
 
 
-    images: ['/images/anchor.png', '/images/Photo_01.jpg', '/images/Photo_03.jpg', '/images/Photo_04.jpg', '/images/Photo_05.jpg', '/images/Photo_09.jpg', '/images/Photo_10.jpg', '/images/Photo_11.jpg', '/images/Photo_12.jpg', '/images/Photo_13.jpg', '/images/Photo_16.jpg', '/images/Photo_17.jpg', '/images/Photo_18.jpg', '/images/Photo_24.jpg', '/images/Photo_25.jpg'],
+    images: ['/images/anchor.webp', '/images/Photo_01.webp', '/images/Photo_03.webp', '/images/Photo_04.webp', '/images/Photo_05.webp', '/images/Photo_09.webp', '/images/Photo_10.webp', '/images/Photo_11.webp', '/images/Photo_12.webp', '/images/Photo_13.webp', '/images/Photo_16.webp', '/images/Photo_17.webp', '/images/Photo_18.webp', '/images/Photo_24.webp', '/images/Photo_25.webp'],
 
 
 
@@ -1100,11 +1100,11 @@ export const sponsorImages = [
 
 
 
-    logo: '/images/jewellers.png',
+    logo: '/images/jewellers.webp',
 
 
 
-    images: ['/images/jewellers.png'],
+    images: ['/images/jewellers.webp'],
 
 
 
@@ -1128,11 +1128,11 @@ export const sponsorImages = [
 
 
 
-    logo: '/images/lic.png',
+    logo: '/images/lic.webp',
 
 
 
-    images: ['/images/lic.png', '/images/lic1.jpg', '/images/lic2.jpg'],
+    images: ['/images/lic.webp', '/images/lic1.webp', '/images/lic2.webp'],
 
 
 
@@ -1156,11 +1156,11 @@ export const sponsorImages = [
 
 
 
-    logo: '/images/assurance.png',
+    logo: '/images/assurance.webp',
 
 
 
-    images: ['/images/assurance.png', '/images/assurance1.jpg', '/images/assurance2.jpg'],
+    images: ['/images/assurance.webp', '/images/assurance1.webp', '/images/assurance2.webp'],
 
 
 
@@ -1184,15 +1184,15 @@ export const sponsorImages = [
 
 
 
-    logo: '/images/pepsi.png',
+    logo: '/images/pepsi.webp',
 
 
 
-    images: ['/images/pepsi.png', '/images/pepsi1.jpeg', '/images/pepsi2.jpeg',
+    images: ['/images/pepsi.webp', '/images/pepsi1.webp', '/images/pepsi2.webp',
 
 
 
-      '/images/pepsi3.jpeg', '/images/pepsi4.jpeg', '/images/pepsi5.jpeg'],
+      '/images/pepsi3.webp', '/images/pepsi4.webp', '/images/pepsi5.webp'],
 
 
 
@@ -1216,19 +1216,19 @@ export const sponsorImages = [
 
 
 
-    logo: '/images/slice.png',
+    logo: '/images/slice.webp',
 
 
 
-    images: ['/images/slice.png', '/images/slice1.jpeg', '/images/slice2.jpeg',
+    images: ['/images/slice.webp', '/images/slice1.webp', '/images/slice2.webp',
 
 
 
-      '/images/slice3.jpeg', '/images/slice4.jpeg', '/images/slice5.jpeg', '/images/slice6.jpeg',
+      '/images/slice3.webp', '/images/slice4.webp', '/images/slice5.webp', '/images/slice6.webp',
 
 
 
-      '/images/slice7.jpeg', '/images/slice8.jpeg', '/images/slice9.jpeg', '/images/slice10.jpeg'
+      '/images/slice7.webp', '/images/slice8.webp', '/images/slice9.webp', '/images/slice10.webp'
 
 
 
@@ -1256,11 +1256,11 @@ export const sponsorImages = [
 
 
 
-    logo: '/images/zee marathi.png',
+    logo: '/images/zee marathi.webp',
 
 
 
-    images: ['/images/zee marathi.png'],
+    images: ['/images/zee marathi.webp'],
 
 
 
