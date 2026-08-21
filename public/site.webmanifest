@@ -1,0 +1,19 @@
+{
+  "name": "Panchganga Sarvajanik Utsav Mandal",
+  "short_name": "Panchganga Mandal",
+  "icons": [
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0B3D1F",
+  "background_color": "#0B3D1F",
+  "display": "standalone"
+}
